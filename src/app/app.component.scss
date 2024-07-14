@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .title {
+    margin-top: 96px;
+    font-size: 48px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .subtitle {
+    margin-top: 36px;
+    font-size: 24px;
+  }
+}
