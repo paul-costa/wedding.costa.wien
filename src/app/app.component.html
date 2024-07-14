@@ -1,1 +1,8 @@
-<app-navbar />
+<mat-drawer-container class="container">
+  <mat-drawer mode="side" opened>
+    <app-sidenav />
+  </mat-drawer>
+  <mat-drawer-content class="content">
+    <app-main [activeNav]="activeNav" />
+  </mat-drawer-content>
+</mat-drawer-container>

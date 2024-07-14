@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from '../app/app.component';
+import { NavLinks } from '../app/constants/app.constants';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: AppComponent },
-  { path: 'location', component: AppComponent },
-  { path: 'timetable', component: AppComponent },
-  { path: 'dresscode', component: AppComponent },
-  { path: 'dos-donts', component: AppComponent },
-  { path: 'gift', component: AppComponent },
-  { path: 'gallery', component: AppComponent },
+  { path: NavLinks.Home, component: AppComponent },
+  { path: NavLinks.Location, component: AppComponent },
+  { path: NavLinks.Timetable, component: AppComponent },
+  { path: NavLinks.Dresscode, component: AppComponent },
+  { path: NavLinks.DosDonts, component: AppComponent },
+  { path: NavLinks.Gifts, component: AppComponent },
+  { path: NavLinks.Gallery, component: AppComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,12 @@
+<nav class="navbar" [ngClass]="{ hidden: sidenavHidden }">
+  <div class="logo" (click)="toggleSidenav()">
+    <img src="assets/wedding-ring/wedding-ring.svg" />
+    <span>P. & V. Costa</span>
+  </div>
+  <div class="button-container" *ngFor="let link of links">
+    <button mat-button color="accent" [routerLink]="'/' + link.url">
+      <mat-icon> {{ link.icon }} </mat-icon>
+      <span> {{ link.title }} </span>
+    </button>
+  </div>
+</nav>

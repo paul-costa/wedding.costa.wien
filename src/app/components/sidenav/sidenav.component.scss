@@ -1,0 +1,77 @@
+.navbar {
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  background-color: #4b4b4b;
+  flex-direction: column;
+  height: calc(100% - 24px);
+
+  .logo {
+    background-color: white;
+    border-radius: 24px;
+    padding: 0 24px;
+    height: 36px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+
+    img {
+      height: 100%;
+    }
+
+    span {
+      font-size: 16px;
+      font-style: italic;
+      font-weight: lighter;
+      color: black;
+    }
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+  }
+
+  &.hidden {
+    animation: toNarrow 500ms forwards 250ms;
+
+    .logo {
+      animation: toNarrowLogo 500ms forwards 250ms;
+    }
+
+    span {
+      animation: toHidden 250ms forwards;
+    }
+  }
+}
+
+@keyframes toHidden {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes toNarrow {
+  from {
+    width: fit-content;
+  }
+
+  to {
+    width: 52px;
+  }
+}
+
+@keyframes toNarrowLogo {
+  from {
+    padding: 0 24px;
+  }
+  to {
+    padding: 0 8px;
+  }
+}

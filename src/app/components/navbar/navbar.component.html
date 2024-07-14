@@ -1,8 +1,0 @@
-<nav class="navbar">
-  <div class="button-container" *ngFor="let link of navbarLinks">
-    <button mat-button color="accent" [routerLink]="'/' + link.url">
-      <mat-icon> {{ link.icon }} </mat-icon>
-      <span> {{ link.title }} </span>
-    </button>
-  </div>
-</nav>

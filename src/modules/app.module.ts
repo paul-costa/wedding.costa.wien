@@ -6,16 +6,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from '../app/app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { NavbarComponent } from '../app/components/navbar/navbar.component';
+import { SidenavComponent } from '../app/components/sidenav/sidenav.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MainComponent } from '../app/components/main/main.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent, SidenavComponent, MainComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatSidenavModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
