@@ -11,6 +11,11 @@
 npm-debug.log
 yarn-error.log
 
+# Firebase
+.firebaserc
+firebase.json
+hosting.*
+
 # IDEs and editors
 .idea/
 .project
@@ -36,9 +41,8 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+/src/assets/*
 
 # System files
 .DS_Store
 Thumbs.db
-
-/src/assets/*
