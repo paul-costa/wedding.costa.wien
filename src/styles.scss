@@ -1,10 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import "@cds/core/global.min.css";
-@import "@cds/core/styles/theme.dark.min.css";
-@import "@clr/ui/clr-ui.min.css";
-
 html,
 body {
+  margin: 0;
   height: 100%;
-  width: 100;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
