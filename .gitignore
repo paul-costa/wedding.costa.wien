@@ -41,7 +41,6 @@ hosting.*
 /libpeerconnection.log
 testem.log
 /typings
-/src/assets/*
 
 # System files
 .DS_Store
