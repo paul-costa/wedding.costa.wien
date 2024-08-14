@@ -2,7 +2,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './modules/app.module';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
-import { firebaseConfig } from './config/firebase.config';
+import { firebaseConfig } from '../src/config/firebase.config';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
