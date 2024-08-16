@@ -1,12 +1,18 @@
 <nav class="navbar" [ngClass]="{ hidden: sidenavHidden }">
-  <div class="logo" (click)="toggleSidenav(!!sidenavHidden)">
+  <div class="logo" (click)="toggleSidenav(!sidenavHidden)">
     <img src="assets/wedding-ring/wedding-ring.svg" />
     <span>P. & V. Costa</span>
   </div>
-  <div *ngFor="let link of links" class="button-container">
-    <button mat-button class="button" [ngClass]="{ active: activeNav?.url === link.url }" color="accent" [routerLink]="'/' + link.url">
-      <mat-icon class="button-icon"> {{ link.icon }} </mat-icon>
-      <span> {{ link.title }} </span>
+  <div *ngFor="let contentComponent of contentComponents" class="button-container">
+    <button
+      mat-button
+      class="button"
+      [ngClass]="{ active: currentContentComponent?.url === contentComponent.url }"
+      color="accent"
+      [routerLink]="'/' + contentComponent.url"
+    >
+      <mat-icon class="button-icon"> {{ contentComponent.icon }} </mat-icon>
+      <span> {{ contentComponent.title }} </span>
     </button>
   </div>
 </nav>

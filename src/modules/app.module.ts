@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from '../app/app.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { SidenavComponent } from '../app/components/sidenav/sidenav.component';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MainComponent } from '../app/components/main/main.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AppComponent } from '../app/app.component';
+import { SidenavComponent } from '../app/components/sidenav/sidenav.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [AppComponent, SidenavComponent, MainComponent],
-  imports: [BrowserModule, AppRoutingModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, SidenavComponent],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })

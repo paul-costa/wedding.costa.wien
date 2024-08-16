@@ -1,53 +1,70 @@
-export enum NavLinks {
-  Home = 'home',
-  Location = 'location',
-  Timetable = 'timetable',
-  Dresscode = 'dresscode',
-  DosDonts = 'dos-donts',
-  Gifts = 'gifts',
-  Gallery = 'gallery',
+import { Component, Type } from '@angular/core';
+import { DosDontsComponent } from '../components/content/dos-donts/dos-donts.component';
+import { DresscodeComponent } from '../components/content/dresscode/dresscode.component';
+import { GalleryComponent } from '../components/content/gallery/gallery.component';
+import { GiftsComponent } from '../components/content/gifts/gifts.component';
+import { HomeComponent } from '../components/content/home/home.component';
+import { LocationComponent } from '../components/content/location/location.component';
+import { TimetableComponent } from '../components/content/timetable/timetable.component';
+
+export enum Content {
+  Home,
+  Location,
+  Timetable,
+  Dresscode,
+  DosDonts,
+  Gifts,
+  Gallery,
 }
 
-export interface NavbarLink {
+export interface ContentComponent {
   url?: string;
   icon?: string;
   title?: string;
+  component?: Type<Component>;
 }
 
-export const NavbarLinks: Record<string, NavbarLink> = {
-  [NavLinks.Home]: {
+export const ContentComponents: Record<Content, ContentComponent> = {
+  [Content.Home]: {
     title: 'Homepage',
-    url: NavLinks.Home,
     icon: 'home',
+    url: 'home',
+    component: HomeComponent,
   },
-  [NavLinks.Location]: {
+  [Content.Location]: {
     title: 'Location & Anreise',
-    url: NavLinks.Location,
+    url: 'location',
     icon: 'location_on',
+    component: LocationComponent,
   },
-  [NavLinks.Timetable]: {
+  [Content.Timetable]: {
     title: 'Ablauf',
-    url: NavLinks.Timetable,
+    url: 'timetable',
     icon: 'schedule',
+    component: TimetableComponent,
   },
-  [NavLinks.Dresscode]: {
+  [Content.Dresscode]: {
     title: 'Dresscode',
-    url: NavLinks.Dresscode,
+    url: 'dresscode',
     icon: 'person_check',
+    component: DresscodeComponent,
   },
-  [NavLinks.DosDonts]: {
+  [Content.DosDonts]: {
     title: "Do's & Don'ts",
-    url: NavLinks.DosDonts,
+    url: 'dos-donts',
     icon: 'rule',
+    component: DosDontsComponent,
   },
-  [NavLinks.Gifts]: {
+  [Content.Gifts]: {
     title: 'Geschenke',
-    url: NavLinks.Gifts,
+    url: 'gifts',
     icon: 'redeem',
+    component: GiftsComponent,
   },
-  [NavLinks.Gallery]: {
+  [Content.Gallery]: {
     title: 'Galerie (Fotos)',
-    url: NavLinks.Gallery,
+    url: 'gallery',
     icon: 'camera',
+    component: GalleryComponent,
   },
 };
