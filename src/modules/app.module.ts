@@ -12,14 +12,7 @@ import { MainComponent } from '../app/components/main/main.component';
 
 @NgModule({
   declarations: [AppComponent, SidenavComponent, MainComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })

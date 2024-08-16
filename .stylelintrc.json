@@ -1,0 +1,42 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "plugins": ["stylelint-no-unsupported-browser-features"],
+  "rules": {
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "color-hex-length": "long",
+    "import-notation": null,
+    "length-zero-no-unit": null,
+    "media-feature-range-notation": "prefix",
+    "no-descending-specificity": null,
+    "selector-class-pattern": [
+      "^[a-z]([-]?[a-z0-9]+)*(__[a-z0-9]([-]?[a-z0-9]+)*)?(--[a-z0-9]([-]?[a-z0-9]+)*)?$",
+      {
+        "resolveNestedSelectors": true
+      }
+    ],
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": ["/^app-/", "/^gridster/", "/^mat-/", "/^ngx-/"]
+      }
+    ],
+    "selector-pseudo-element-no-unknown": [true, { "ignorePseudoElements": ["ng-deep"] }],
+    "scss/at-mixin-argumentless-call-parentheses": null,
+    "scss/at-import-partial-extension": null,
+    "scss/double-slash-comment-empty-line-before": null,
+    "scss/dollar-variable-colon-space-after": "always-single-line",
+    "scss/dollar-variable-empty-line-before": [
+      "always",
+      { "except": ["first-nested", "after-comment", "after-dollar-variable"], "ignore": ["after-comment"] }
+    ],
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "severity": "warning",
+        "ignore": ["css-nesting"],
+        "ignorePartialSupport": true
+      }
+    ]
+  }
+}

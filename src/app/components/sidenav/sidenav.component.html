@@ -3,8 +3,8 @@
     <img src="assets/wedding-ring/wedding-ring.svg" />
     <span>P. & V. Costa</span>
   </div>
-  <div class="button-container" *ngFor="let link of links">
-    <button class="button" mat-button color="accent" [routerLink]="'/' + link.url" [ngClass]="{'active': activeNav?.url === link.url}">
+  <div *ngFor="let link of links" class="button-container">
+    <button mat-button class="button" [ngClass]="{ active: activeNav?.url === link.url }" color="accent" [routerLink]="'/' + link.url">
       <mat-icon class="button-icon"> {{ link.icon }} </mat-icon>
       <span> {{ link.title }} </span>
     </button>

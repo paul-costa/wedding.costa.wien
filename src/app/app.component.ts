@@ -16,7 +16,7 @@ export class AppComponent {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
         const url = e.url.slice(1);
-        this.activeNav = !url ?  NavbarLinks[NavLinks.Home]: Object.values(NavbarLinks).find((v) => v.url === url);
+        this.activeNav = !url ? NavbarLinks[NavLinks.Home] : Object.values(NavbarLinks).find((v) => v.url === url);
       }
     });
   }

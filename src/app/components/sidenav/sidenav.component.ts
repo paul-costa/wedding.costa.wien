@@ -1,10 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NavbarLink, NavbarLinks } from '../../constants/app.constants';
-import {
-  BreakpointObserver,
-  Breakpoints,
-  BreakpointState
-} from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-sidenav',
@@ -20,15 +16,13 @@ export class SidenavComponent {
   readonly links: NavbarLink[] = Object.values(NavbarLinks);
 
   constructor(private breakpointObserver: BreakpointObserver) {
-    this.breakpointObserver
-    .observe([Breakpoints.XSmall])
-    .subscribe((state: BreakpointState) => {
-      this.toggleSidenav(!state.matches)
+    this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe((state: BreakpointState) => {
+      this.toggleSidenav(!state.matches);
     });
   }
 
   toggleSidenav(toggle: boolean) {
-    this.sidenavHidden = !toggle
+    this.sidenavHidden = !toggle;
     setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
   }
 }

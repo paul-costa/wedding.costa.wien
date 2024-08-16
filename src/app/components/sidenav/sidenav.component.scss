@@ -37,7 +37,7 @@ $animation-duration: 50ms;
 
     .button {
       &.active {
-        background: rgba(0, 225, 255,0.4);
+        background: rgba(0, 225, 255, 0.4);
       }
     }
   }
@@ -96,6 +96,6 @@ $animation-duration: 50ms;
     margin: initial;
   }
   to {
-     margin: auto;
+    margin: auto;
   }
 }

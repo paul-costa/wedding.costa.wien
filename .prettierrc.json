@@ -1,0 +1,25 @@
+{
+  "singleQuote": true,
+  "printWidth": 140,
+  "plugins": ["prettier-plugin-organize-attributes"],
+  "attributeIgnoreCase": false,
+  "attributeGroups": [
+    "$ANGULAR_STRUCTURAL_DIRECTIVE",
+    "^app[A-Z]",
+    "^mat",
+    "$CLASS",
+    "^\\[ngClass",
+    "^\\[ngStyle",
+    "^\\[style",
+    "$DEFAULT",
+    "$ANGULAR_ANIMATION",
+    "$ANGULAR_ANIMATION_INPUT",
+    "$ANGULAR_INPUT",
+    "$ANGULAR_TWO_WAY_BINDING",
+    "$ANGULAR_OUTPUT",
+    "$ANGULAR_ELEMENT_REF",
+    "^dataCy$",
+    "^\\[attr.data-cy",
+    "^data-cy$"
+  ]
+}
