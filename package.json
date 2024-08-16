@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "eslint": "^9.9.0",
-    "firebase": "^10.12.5",
+    "firebase": "^10.13.0",
     "ng": "^0.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-organize-attributes": "^1.0.0",
