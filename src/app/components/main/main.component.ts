@@ -11,6 +11,10 @@ export class MainComponent {
   activeNav?: NavbarLink;
 
   ngOnChanges() {
+    if(!this.activeNav) {
+      return;
+    }
+
     // TODO
     console.log(this.activeNav);
   }
