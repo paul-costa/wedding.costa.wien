@@ -3,7 +3,8 @@
     <img src="assets/wedding-ring/wedding-ring.svg" />
     <span>P. & V. Costa</span>
   </div>
-  <div *ngFor="let contentComponent of contentComponents" class="button-container">
+
+  @for (contentComponent of contentComponents; track contentComponent) {
     <button
       mat-button
       class="button"
@@ -14,5 +15,5 @@
       <mat-icon class="button-icon"> {{ contentComponent.icon }} </mat-icon>
       <span> {{ contentComponent.title }} </span>
     </button>
-  </div>
+  }
 </nav>

@@ -29,6 +29,6 @@ export class SidenavComponent {
 
   toggleSidenav(toggle: boolean) {
     this.sidenavHidden = toggle;
-    setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+    window.dispatchEvent(new Event('resize'));
   }
 }
