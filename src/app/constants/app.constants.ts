@@ -1,6 +1,6 @@
-import { Component, Type } from '@angular/core';
+import { Type } from '@angular/core';
 import { DosDontsComponent } from '../components/content/dos-donts/dos-donts.component';
-import { DresscodeComponent } from '../components/content/dresscode/dresscode.component';
+import { DressCodeComponent } from '../components/content/dress-code/dress-code.component';
 import { GalleryComponent } from '../components/content/gallery/gallery.component';
 import { GiftsComponent } from '../components/content/gifts/gifts.component';
 import { HomeComponent } from '../components/content/home/home.component';
@@ -11,17 +11,26 @@ export enum Content {
   Home,
   Location,
   Timetable,
-  Dresscode,
+  DressCode,
   DosDonts,
   Gifts,
   Gallery,
 }
 
+type ContentComponents =
+  | HomeComponent
+  | LocationComponent
+  | TimetableComponent
+  | DressCodeComponent
+  | DosDontsComponent
+  | GiftsComponent
+  | GalleryComponent;
+
 export interface ContentComponent {
   url?: string;
   icon?: string;
   title?: string;
-  component?: Type<Component>;
+  component?: Type<ContentComponents>;
 }
 
 export const ContentComponents: Record<Content, ContentComponent> = {
@@ -43,11 +52,11 @@ export const ContentComponents: Record<Content, ContentComponent> = {
     icon: 'schedule',
     component: TimetableComponent,
   },
-  [Content.Dresscode]: {
+  [Content.DressCode]: {
     title: 'Dresscode',
     url: 'dresscode',
     icon: 'person_check',
-    component: DresscodeComponent,
+    component: DressCodeComponent,
   },
   [Content.DosDonts]: {
     title: "Do's & Don'ts",
