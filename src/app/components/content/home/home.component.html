@@ -1,1 +1,3 @@
-<p>home works!</p>
+@for (data of homePageData; track data) {
+  <span *ngIf="data.introText"> {{ data.introText }} </span>
+}
