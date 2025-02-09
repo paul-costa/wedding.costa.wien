@@ -1,4 +1,4 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,7 +13,7 @@ import { GuestsDialogCloseConfig, GuestsDialogConfig, GuestsDialogContent } from
 @Component({
   selector: 'app-guests-dialog',
   standalone: true,
-  imports: [NgIf, NgClass, MatSelectModule, MatFormFieldModule, MatCheckboxModule, MatRadioModule, MatButtonModule, FormsModule],
+  imports: [NgIf, NgClass, NgFor, MatSelectModule, MatFormFieldModule, MatCheckboxModule, MatRadioModule, MatButtonModule, FormsModule],
   templateUrl: './guests-dialog.component.html',
   styleUrl: './guests-dialog.component.scss',
 })

@@ -8,11 +8,9 @@
     <mat-form-field class="guests-form-field">
       <mat-label>{{ content.guestSelectLabel }} </mat-label>
       <mat-select [(value)]="selectedGuest">
-        @for (guest of guests; track guest) {
-          <mat-option [value]="guest.id">
-            <span> {{ guest.firstName }} {{ guest.lastName }} </span>
-          </mat-option>
-        }
+        <mat-option *ngFor="let guest of guests" [value]="guest.id">
+          <span> {{ guest.firstName }} {{ guest.lastName }} </span>
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -38,8 +36,8 @@
       <button
         mat-flat-button
         class="confirm-button"
-        [ngClass]="{ disabled: !selectedGuest }"
-        [disabled]="!selectedGuest"
+        [ngClass]="{ disabled: !selectedGuest || isGuestShowingUp === undefined }"
+        [disabled]="!selectedGuest || isGuestShowingUp === undefined"
         (click)="onConfirmButtonClick()"
       >
         {{ content.actionConfirmLabel }}
