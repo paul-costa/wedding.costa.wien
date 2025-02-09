@@ -1,8 +1,9 @@
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
+import { Subject, takeUntil } from 'rxjs';
+import { BreakpointObserverService } from 'src/app/services/breakpoint-observer.service';
 import { AppRoutingModule } from 'src/modules/app-routing.module';
 import { ContentComponent, ContentComponents } from '../../constants/app.constants';
 
@@ -13,7 +14,7 @@ import { ContentComponent, ContentComponents } from '../../constants/app.constan
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnDestroy {
   @Input()
   currentContentComponent?: ContentComponent;
 
@@ -21,13 +22,24 @@ export class SidenavComponent {
 
   readonly contentComponents: ContentComponent[] = Object.values(ContentComponents);
 
-  constructor(private breakpointObserver: BreakpointObserver) {
-    this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe((state: BreakpointState) => {
-      this.toggleSidenav(state.matches);
-    });
+  private readonly breakpointObserverService = inject(BreakpointObserverService);
+  private readonly destroy$ = new Subject<void>();
+
+  constructor() {
+    this.breakpointObserverService
+      .observeIsBreakpointXs()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((isBreakpointXs) => {
+        this.onToggleSidenavClick(isBreakpointXs);
+      });
   }
 
-  toggleSidenav(toggle: boolean) {
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  onToggleSidenavClick(toggle: boolean) {
     this.sidenavHidden = toggle;
     window.dispatchEvent(new Event('resize'));
   }

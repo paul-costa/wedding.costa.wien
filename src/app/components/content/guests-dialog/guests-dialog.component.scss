@@ -1,0 +1,142 @@
+@import 'src/config.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 24px;
+
+  span {
+    text-align: justify;
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .header {
+      font-size: $l-font-size;
+      font-weight: 900;
+      color: $dark-gray;
+      text-align: center;
+
+      @media only screen and (max-width: $xs-breakpoint) {
+        font-size: $m-font-size;
+      }
+    }
+
+    .sub-header {
+      font-size: $s-font-size;
+      color: $light-gray;
+      font-weight: 300;
+      margin: 0 10%;
+
+      @media only screen and (max-width: $sm-breakpoint) {
+        margin: 0 5%;
+      }
+
+      @media only screen and (max-width: $xs-breakpoint) {
+        margin: 0;
+      }
+    }
+  }
+
+  .guests-select-container {
+    margin: 24px 0;
+    width: 65%;
+    align-self: center;
+
+    .guests-form-field {
+      width: 100%;
+    }
+
+    @media only screen and (max-width: $sm-breakpoint) {
+      width: 80%;
+    }
+
+    @media only screen and (max-width: $xs-breakpoint) {
+      width: 100%;
+    }
+  }
+
+  .disclaimer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .disclaimer,
+    .disabled-guest-hint {
+      font-size: $s-font-size;
+      color: $light-gray;
+      font-weight: 300;
+      margin: 0 5%;
+
+      @media only screen and (max-width: $xs-breakpoint) {
+        margin: 0;
+      }
+    }
+
+    .disabled-guest-hint {
+      font-size: $s-font-size;
+      font-weight: 500;
+      margin: 0 5%;
+
+      @media only screen and (max-width: $sm-breakpoint) {
+        margin: 0;
+      }
+    }
+  }
+
+  .actions-container {
+    margin-top: 24px;
+    text-align: center;
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+
+    .radio-button-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background: $medium-gray;
+      padding: 6px 12px;
+      margin: 0 17.5%;
+      border-radius: 24px;
+
+      mat-radio-button {
+        &.disabled {
+          opacity: 0.5;
+        }
+      }
+
+      @media only screen and (max-width: $sm-breakpoint) {
+        margin: 0 5%;
+      }
+
+      @media only screen and (max-width: $xs-breakpoint) {
+        margin: 0;
+      }
+    }
+
+    .action-buttons-container {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      justify-content: end;
+
+      .cancel-button {
+        color: $medium-gray;
+        border-color: $medium-gray;
+      }
+
+      .confirm-button {
+        color: $accent-red;
+        background: $medium-gray;
+
+        &.disabled {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

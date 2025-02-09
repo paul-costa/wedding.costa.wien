@@ -1,3 +1,5 @@
+@import 'src/config.scss';
+
 /* You can add global styles to this file, and also import other style files */
 html,
 body {
@@ -5,3 +7,23 @@ body {
   height: 100%;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+/* --- material custom styles ----------------------------------------------------- */
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: rgb(200, 200, 200) !important;
+}
+
+.mdc-text-field--filled {
+  background-color: rgb(160, 160, 160) !important;
+
+  .mdc-floating-label {
+    color: rgb(54, 54, 54) !important;
+  }
+}
+
+.mat-mdc-select-value-text {
+  color: $accent-red;
+}
+
+/* ------------------------------------------------------------------------------- */

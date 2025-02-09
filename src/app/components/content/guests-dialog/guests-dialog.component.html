@@ -1,0 +1,49 @@
+<div *ngIf="content" class="container">
+  <div class="header-container">
+    <span class="header"> {{ content.header }} </span>
+    <span class="sub-header"> {{ content.subHeader }} </span>
+  </div>
+
+  <div class="guests-select-container">
+    <mat-form-field class="guests-form-field">
+      <mat-label>{{ content.guestSelectLabel }} </mat-label>
+      <mat-select [(value)]="selectedGuest">
+        @for (guest of guests; track guest) {
+          <mat-option [value]="guest.id">
+            <span> {{ guest.firstName }} {{ guest.lastName }} </span>
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="disclaimer-container">
+    <span class="disclaimer"> {{ content.disclaimer }}</span>
+    <span class="disabled-guest-hint"> {{ content.disabledGuestHint }}</span>
+  </div>
+
+  <div class="actions-container">
+    <mat-radio-group
+      class="radio-button-group"
+      [ngClass]="{ disabled: !selectedGuest }"
+      [disabled]="!selectedGuest"
+      [(ngModel)]="isGuestShowingUp"
+    >
+      <mat-radio-button [value]="true">{{ content.isShowingUpLabel }}</mat-radio-button>
+      <mat-radio-button [value]="false">{{ content.isNotShowingUpLabel }}</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="action-buttons-container">
+      <button mat-stroked-button class="cancel-button" (click)="onCancelButtonClick()">{{ content.actionCancelLabel }}</button>
+      <button
+        mat-flat-button
+        class="confirm-button"
+        [ngClass]="{ disabled: !selectedGuest }"
+        [disabled]="!selectedGuest"
+        (click)="onConfirmButtonClick()"
+      >
+        {{ content.actionConfirmLabel }}
+      </button>
+    </div>
+  </div>
+</div>
