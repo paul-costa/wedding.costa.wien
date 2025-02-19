@@ -1,1 +1,49 @@
 @import 'src/config.scss';
+
+.container {
+  display: flex;
+  gap: 24px;
+
+  height: calc(100vh - 24px);
+
+  .content {
+    flex: 1;
+  }
+
+  .messages-container {
+    display: flex;
+    background-color: $off-white;
+    height: calc(100vh - 36px);
+    flex-direction: column;
+    font-size: $l-font-size;
+    padding: 24px 16px;
+    border-radius: $default-border-radius;
+
+    .header {
+      font-size: $l-font-size;
+      color: $medium-gray;
+      text-decoration: underline;
+    }
+
+    .messages {
+      flex: 1;
+    }
+
+    .input-form-container {
+      display: flex;
+      margin-bottom: 12px;
+      margin-right: -12px;
+
+      .input-form {
+        flex: 1;
+      }
+
+      .send-button {
+        margin-top: 4px;
+        color: $accent-red;
+
+
+      }
+    }
+  }
+}

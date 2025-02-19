@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.fireStoreService.getGuestsData().then((data) => {
-      this.initGuestsDialog(data);
+      // this.initGuestsDialog(data);
     });
   }
 

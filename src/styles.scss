@@ -18,12 +18,16 @@ body {
   background-color: rgb(160, 160, 160) !important;
 
   .mdc-floating-label {
-    color: rgb(54, 54, 54) !important;
+    color: $input-color !important;
   }
 }
 
 .mat-mdc-select-value-text {
   color: $accent-red;
+}
+
+.mat-mdc-input-element {
+  color: $input-color !important;
 }
 
 /* ------------------------------------------------------------------------------- */
