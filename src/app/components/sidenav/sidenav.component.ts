@@ -7,12 +7,14 @@ import { BreakpointObserverService } from 'src/app/services/breakpoint-observer.
 import { AppRoutingModule } from 'src/modules/app-routing.module';
 import { ContentComponent, ContentComponents } from '../../constants/app.constants';
 
+
+const materialModules = [MatIconModule, MatButtonModule]
+
 @Component({
-  selector: 'app-sidenav',
-  standalone: true,
-  imports: [BrowserModule, AppRoutingModule, MatIconModule, MatButtonModule],
-  templateUrl: './sidenav.component.html',
-  styleUrl: './sidenav.component.scss',
+    selector: 'app-sidenav',
+    imports: [BrowserModule, AppRoutingModule, ...materialModules],
+    templateUrl: './sidenav.component.html',
+    styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent implements OnDestroy {
   @Input()

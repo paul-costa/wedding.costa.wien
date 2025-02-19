@@ -11,19 +11,17 @@
     <div class="messages"></div>
 
     <div class="input-form-container">
-
       <mat-form-field class="input-form">
         <mat-label>Deine Nachricht...</mat-label>
-        <textarea matInput cdkTextareaAutosize #textarea></textarea>
+        <textarea matInput cdkTextareaAutosize [(ngModel)]="currentMessage"></textarea>
       </mat-form-field>
 
-      @let isTextareaEmpty = !textarea.value.length;
       <button
         mat-icon-button
         class="send-button"
-        [ngClass]="{ disabled: isTextareaEmpty }"
-        [disabled]="isTextareaEmpty"
-        (click)="onSendMessageButtonClick(textarea.value)"
+        [ngClass]="{ disabled: !currentMessage }"
+        [disabled]="!currentMessage"
+        (click)="onSendMessageButtonClick()"
       >
         <mat-icon>send</mat-icon>
       </button>

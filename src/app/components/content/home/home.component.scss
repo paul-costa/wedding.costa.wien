@@ -1,4 +1,4 @@
-@import 'src/config.scss';
+@use'src/config.scss' as *;
 
 .container {
   display: flex;
@@ -42,7 +42,9 @@
         margin-top: 4px;
         color: $accent-red;
 
-
+        &.disabled {
+          opacity: 0.75;
+        }
       }
     }
   }

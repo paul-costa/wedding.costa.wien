@@ -1,4 +1,4 @@
-@import 'src/config.scss';
+@use'src/config.scss' as *;
 
 .container {
   display: flex;
