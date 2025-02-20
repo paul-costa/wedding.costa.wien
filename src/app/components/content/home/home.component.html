@@ -6,23 +6,25 @@
   </div>
 
   <div class="messages-container">
-    <span class="header">Kommentar-Spalte</span>
+    <span class="header">Nachrichten</span>
 
-    <div class="messages"></div>
+    <div class="messages">
+      @for (message of messages; track message) {
+        <div class="message" [ngClass]="{ admin: message.isAdminMessage }">
+          <span>{{ message.value }}</span>
+          <span class="timestamp">{{ message.timestamp | date }}</span>
+        </div>
+      }
+    </div>
 
     <div class="input-form-container">
       <mat-form-field class="input-form">
-        <mat-label>Deine Nachricht...</mat-label>
-        <textarea matInput cdkTextareaAutosize [(ngModel)]="currentMessage"></textarea>
+        <mat-label>Nachricht</mat-label>
+        <textarea matInput required cdkTextareaAutosize [formControl]="currentMessage"></textarea>
+        <mat-error *ngIf="currentMessage.invalid">Nachricht ist ein Pflichtfeld</mat-error>
       </mat-form-field>
 
-      <button
-        mat-icon-button
-        class="send-button"
-        [ngClass]="{ disabled: !currentMessage }"
-        [disabled]="!currentMessage"
-        (click)="onSendMessageButtonClick()"
-      >
+      <button mat-icon-button class="send-button" (click)="onSendMessageButtonClick()">
         <mat-icon>send</mat-icon>
       </button>
     </div>

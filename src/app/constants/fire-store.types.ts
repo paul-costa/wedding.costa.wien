@@ -14,3 +14,10 @@ export interface Guest {
   id?: string;
   role?: string;
 }
+
+export interface Message {
+  id: string;
+  value: string;
+  timestamp: Date;
+  isAdminMessage?: boolean;
+}

@@ -1,4 +1,4 @@
-@use'src/config.scss' as *;
+@use 'src/config.scss' as *;
 
 .navbar {
   display: flex;
@@ -35,7 +35,7 @@
     width: 100%;
     padding: 12px;
     border-radius: 24px;
-    color: $off-white;
+    color: $beige;
     justify-content: flex-start;
 
     &.active {
