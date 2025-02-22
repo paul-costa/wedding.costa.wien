@@ -15,8 +15,8 @@
     height: calc(100vh - 36px);
     flex-direction: column;
     font-size: $l-font-size;
-    padding: 24px 16px;
-    border-radius: $light-border-radius;
+    padding: 24px 16px 0;
+    border-radius: $light-border-radius $light-border-radius 0 0;
     gap: 24px;
     width: 300px;
 
@@ -62,7 +62,7 @@
 
     .input-form-container {
       display: flex;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
       margin-right: -12px;
 
       .input-form {
@@ -80,8 +80,9 @@
     flex-direction: column;
 
     .messages-container {
-      height: auto;
+      min-height: 300px;
       width: auto;
+      border-radius: $light-border-radius;
     }
   }
 }
