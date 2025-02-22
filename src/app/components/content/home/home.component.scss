@@ -20,7 +20,7 @@
     flex-direction: column;
     font-size: $l-font-size;
     padding: 24px 16px 0;
-    border-radius: $light-border-radius $light-border-radius 0 0;
+    border-radius: $light-border-radius;
     gap: 24px;
     width: 300px;
 
@@ -84,9 +84,9 @@
     flex-direction: column;
 
     .messages-container {
+      height: 100%;
       min-height: 300px;
       width: auto;
-      border-radius: $light-border-radius;
     }
   }
 }
