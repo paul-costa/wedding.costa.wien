@@ -1,3 +1,5 @@
+@let homePageData = homePageData$ | async;
+
 <div class="container">
   <div class="content">
     @for (data of homePageData; track data) {
@@ -6,22 +8,32 @@
   </div>
 
   <div class="messages-container">
-    <span class="header">Nachrichten</span>
+    <span class="header">{{ content.messagesHeaderLabel }}</span>
 
     <div class="messages">
-      @for (message of messages; track message) {
-        <div class="message" [ngClass]="{ admin: message.isAdminMessage }">
-          <span>{{ message.value }}</span>
-          <span class="timestamp">{{ message.timestamp | date }}</span>
-        </div>
+      @switch (currentMessagesLoadingState) {
+        @case (LoadingState.Success) {
+          @for (message of messages; track message) {
+            <div class="message" [ngClass]="{ admin: message.isAdminMessage }">
+              <span>{{ message.value }}</span>
+              <span class="date">{{ message.date | date: 'dd.MM.' }}</span>
+            </div>
+          }
+        }
+        @case (LoadingState.Error) {
+          <span class="error">{{ content.messagesLoadingErrorLabel }}</span>
+        }
+        @case (LoadingState.Loading) {
+          <mat-spinner class="messages-spinner" />
+        }
       }
     </div>
 
     <div class="input-form-container">
       <mat-form-field class="input-form">
-        <mat-label>Nachricht</mat-label>
+        <mat-label>{{ content.messagesInputHeaderLabel }}</mat-label>
         <textarea matInput required cdkTextareaAutosize [formControl]="currentMessage"></textarea>
-        <mat-error *ngIf="currentMessage.invalid">Nachricht ist ein Pflichtfeld</mat-error>
+        <mat-error *ngIf="currentMessage.invalid">{{ content.messagesInputInvalidLabel }}</mat-error>
       </mat-form-field>
 
       <button mat-icon-button class="send-button" (click)="onSendMessageButtonClick()">

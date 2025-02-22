@@ -36,18 +36,27 @@
       overflow-y: scroll;
 
       .message {
+        display: flex;
+        gap: 4px;
+        justify-content: space-between;
         font-size: $s-font-size;
         border-radius: $lighter-border-radius;
         background-color: $lighter-gray;
         padding: 4px 12px;
 
-        .timestamp {
+        .date {
           font-size: $xs-font-size;
+          align-self: flex-end;
         }
 
         &.admin {
           background-color: $accent-red;
         }
+      }
+
+      .messages-spinner {
+        transform: scale(0.5);
+        margin: 24px auto 0;
       }
     }
 

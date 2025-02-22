@@ -2,6 +2,7 @@ import { DocumentReference } from 'firebase/firestore/lite';
 
 export const HomePageCollectionName = 'homepage';
 export const GuestsCollectionName = 'guests';
+export const MessagesCollectionName = 'messages';
 
 export interface Homepage {
   introText?: string;
@@ -18,6 +19,6 @@ export interface Guest {
 export interface Message {
   id: string;
   value: string;
-  timestamp: Date;
+  date: Date;
   isAdminMessage?: boolean;
 }
