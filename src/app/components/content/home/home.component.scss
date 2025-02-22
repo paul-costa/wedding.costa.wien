@@ -1,10 +1,15 @@
 @use 'src/config.scss' as *;
 
+:host {
+  display: block;
+  height: 100%;
+}
+
 .container {
   display: flex;
   gap: 24px;
   justify-content: space-between;
-  height: calc(100vh - 24px);
+  height: 100%;
 
   .content {
   }
@@ -12,7 +17,6 @@
   .messages-container {
     display: flex;
     background-color: $beige;
-    height: calc(100vh - 36px);
     flex-direction: column;
     font-size: $l-font-size;
     padding: 24px 16px 0;
