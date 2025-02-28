@@ -24,7 +24,9 @@
     <mat-form-field class="input-form">
       <mat-label>{{ content.messagesInputHeaderLabel }}</mat-label>
       <textarea matInput required cdkTextareaAutosize [formControl]="currentMessage"></textarea>
-      <mat-error *ngIf="currentMessage.invalid">{{ content.messagesInputInvalidLabel }}</mat-error>
+      @if (currentMessage.invalid) {
+        <mat-error>{{ content.messagesInputInvalidLabel }}</mat-error>
+      }
     </mat-form-field>
 
     <button mat-icon-button class="send-button" (click)="onSendMessageButtonClick()">

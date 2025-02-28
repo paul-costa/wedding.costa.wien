@@ -1,20 +1,101 @@
 @use 'src/config.scss' as *;
 
-:host {
-  display: block;
-  height: 100%;
-}
-
 .container {
   display: flex;
-  gap: 24px;
-  justify-content: space-between;
-  height: 100%;
+  gap: 36px;
+  margin: 12px 128px;
 
   .content {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    flex: 1;
+
+    .spinner {
+      transform: scale(0.5);
+      margin: 24px auto 0;
+    }
+
+    .content-block {
+      border-radius: $light-border-radius;
+      background-color: $light-beige;
+
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 24px 36px;
+
+      .header {
+        font-size: $xl-font-size;
+        line-height: $xl-font-size;
+        letter-spacing: 2.5px;
+        font-weight: 300;
+        color: $dark-gray;
+        text-align: center;
+      }
+
+      .body {
+        font-size: $m-font-size;
+        line-height: $m-font-size;
+        color: $medium-gray;
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .calendar-link {
+          display: none;
+        }
+      }
+    }
   }
 
-  @media only screen and (max-width: $sm-breakpoint) {
+  @media only screen and (max-width: $l-breakpoint) {
     flex-direction: column;
+    margin: 12px 64px;
+    gap: 24px;
+
+    .content {
+      gap: 24px;
+
+      .content-block {
+        padding: 24px 48px;
+        gap: 16px;
+
+        .header {
+          font-size: $l-font-size;
+          line-height: $l-font-size;
+          letter-spacing: 2px;
+        }
+
+        .body {
+          font-size: $m-font-size;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: $m-breakpoint) {
+    margin: 0;
+
+    .content {
+      .content-block {
+        padding: 24px;
+
+        .header {
+          font-size: $m-font-size;
+          line-height: $m-font-size;
+          letter-spacing: 1.5px;
+        }
+
+        .body {
+          font-size: $s-font-size;
+          line-height: $s-font-size;
+          padding: 0;
+          font-weight: normal;
+        }
+      }
+    }
   }
 }

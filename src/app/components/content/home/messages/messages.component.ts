@@ -74,7 +74,7 @@ export class MessagesComponent {
         return [] as Message[];
       })
       .then((res) => {
-        this.messages = res;
+        this.messages = res.reverse();
         this.currentMessagesLoadingState = LoadingState.Success;
       });
   }

@@ -2,12 +2,39 @@
 
 <div class="container">
   <div class="content">
-    @for (data of homePageData; track data) {
-      @if (data.introText) {
-        <span> {{ data.introText }} </span>
-      }
+    @if (currentLoadingState === LoadingState.Loading) {
+      <mat-spinner class="spinner" />
+    } @else if (currentLoadingState === LoadingState.Success && homePageData) {
+      <div class="content-block">
+        <div class="header">{{ homePageData.summaryHeaderText }}</div>
+        <div class="body">
+          @for (text of homePageData.summaryBodyText; track text) {
+            <span class="text"> {{ text }} </span>
+          }
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="header">{{ homePageData.dateEventHeaderText }}</div>
+        <div class="body">
+          <span class="text">{{ homePageData.dateEventBodyText }}</span>
+
+          <a class="calendar-link" href="../../../../assets/calendar-event.ics" download="Hochzeit_Costa" #calLink></a>
+          <button mat-button color="primary" (click)="calLink.click()">
+            <mat-icon>download</mat-icon>
+            <span>{{ homePageData.dateEventButtonText }} </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="header">{{ homePageData.contactsHeaderText }}</div>
+        <div class="body">
+          <span class="text">{{ homePageData.contactsBodyText }}</span>
+        </div>
+      </div>
     }
   </div>
 
-  <app-messages class="messages" />
+  <app-messages />
 </div>

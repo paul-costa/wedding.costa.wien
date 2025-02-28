@@ -7,6 +7,13 @@ export const MessagesCollectionName = 'messages';
 export interface Homepage {
   introText?: string;
   guests?: DocumentReference[];
+  summaryHeaderText?: string;
+  summaryBodyText?: string[];
+  dateEventHeaderText?: string;
+  dateEventBodyText?: string;
+  dateEventButtonText?: string;
+  contactsHeaderText?: string;
+  contactsBodyText?: string;
 }
 
 export interface Guest {

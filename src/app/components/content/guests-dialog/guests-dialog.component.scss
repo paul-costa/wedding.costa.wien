@@ -1,4 +1,4 @@
-@use'src/config.scss' as *;
+@use 'src/config.scss' as *;
 
 .container {
   display: flex;
@@ -20,7 +20,7 @@
       color: $dark-gray;
       text-align: center;
 
-      @media only screen and (max-width: $xs-breakpoint) {
+      @media only screen and (max-width: $s-breakpoint) {
         font-size: $m-font-size;
       }
     }
@@ -31,11 +31,11 @@
       font-weight: 300;
       margin: 0 10%;
 
-      @media only screen and (max-width: $sm-breakpoint) {
+      @media only screen and (max-width: $m-breakpoint) {
         margin: 0 5%;
       }
 
-      @media only screen and (max-width: $xs-breakpoint) {
+      @media only screen and (max-width: $s-breakpoint) {
         margin: 0;
       }
     }
@@ -50,11 +50,11 @@
       width: 100%;
     }
 
-    @media only screen and (max-width: $sm-breakpoint) {
+    @media only screen and (max-width: $m-breakpoint) {
       width: 80%;
     }
 
-    @media only screen and (max-width: $xs-breakpoint) {
+    @media only screen and (max-width: $s-breakpoint) {
       width: 100%;
     }
   }
@@ -71,7 +71,7 @@
       font-weight: 300;
       margin: 0 5%;
 
-      @media only screen and (max-width: $xs-breakpoint) {
+      @media only screen and (max-width: $s-breakpoint) {
         margin: 0;
       }
     }
@@ -81,7 +81,7 @@
       font-weight: 500;
       margin: 0 5%;
 
-      @media only screen and (max-width: $sm-breakpoint) {
+      @media only screen and (max-width: $m-breakpoint) {
         margin: 0;
       }
     }
@@ -109,11 +109,11 @@
         }
       }
 
-      @media only screen and (max-width: $sm-breakpoint) {
+      @media only screen and (max-width: $m-breakpoint) {
         margin: 0 5%;
       }
 
-      @media only screen and (max-width: $xs-breakpoint) {
+      @media only screen and (max-width: $s-breakpoint) {
         margin: 0;
       }
     }
