@@ -12,7 +12,7 @@
   display: flex;
   background-color: $beige;
   flex-direction: column;
-  font-size: $l-font-size;
+  font-size: $lg-font-size;
   padding: 24px 16px 0;
   border-radius: $light-border-radius;
   gap: 24px;
@@ -47,7 +47,7 @@
       display: flex;
       gap: 4px;
       justify-content: space-between;
-      font-size: $s-font-size;
+      font-size: $sm-font-size;
       border-radius: $lighter-border-radius;
       background-color: $medium-gray;
       padding: 4px 12px;
@@ -83,30 +83,30 @@
     }
   }
 
-  @media only screen and (max-width: $l-breakpoint) {
+  @media only screen and (max-width: $lg-breakpoint) {
     width: auto;
     margin-top: auto;
     padding: 24px 48px 0;
     gap: 16px;
 
     .header {
-      font-size: $l-font-size;
-      line-height: $l-font-size;
+      font-size: $lg-font-size;
+      line-height: $lg-font-size;
       letter-spacing: 2px;
     }
   }
 
-  @media only screen and (max-width: $m-breakpoint) {
+  @media only screen and (max-width: $md-breakpoint) {
     padding: 24px 24px 0;
 
     .header {
-      font-size: $m-font-size;
-      line-height: $m-font-size;
+      font-size: $md-font-size;
+      line-height: $md-font-size;
       letter-spacing: 1.5px;
     }
   }
 
-  @media only screen and (max-width: $xs-breakpoint) {
+  @media only screen and (max-width: $sm-breakpoint) {
     .input-form-container {
       margin-left: auto;
       width: 200px;

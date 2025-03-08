@@ -15,27 +15,27 @@
     gap: 16px;
 
     .header {
-      font-size: $l-font-size;
+      font-size: $lg-font-size;
       font-weight: 900;
       color: $darkest-gray;
       text-align: center;
 
-      @media only screen and (max-width: $s-breakpoint) {
-        font-size: $m-font-size;
+      @media only screen and (max-width: $sm-breakpoint) {
+        font-size: $md-font-size;
       }
     }
 
     .sub-header {
-      font-size: $s-font-size;
+      font-size: $sm-font-size;
       color: $dark-gray;
       font-weight: 300;
       margin: 0 10%;
 
-      @media only screen and (max-width: $m-breakpoint) {
+      @media only screen and (max-width: $md-breakpoint) {
         margin: 0 5%;
       }
 
-      @media only screen and (max-width: $s-breakpoint) {
+      @media only screen and (max-width: $sm-breakpoint) {
         margin: 0;
       }
     }
@@ -50,11 +50,11 @@
       width: 100%;
     }
 
-    @media only screen and (max-width: $m-breakpoint) {
+    @media only screen and (max-width: $md-breakpoint) {
       width: 80%;
     }
 
-    @media only screen and (max-width: $s-breakpoint) {
+    @media only screen and (max-width: $sm-breakpoint) {
       width: 100%;
     }
   }
@@ -66,22 +66,22 @@
 
     .disclaimer,
     .disabled-guest-hint {
-      font-size: $s-font-size;
+      font-size: $sm-font-size;
       color: $dark-gray;
       font-weight: 300;
       margin: 0 5%;
 
-      @media only screen and (max-width: $s-breakpoint) {
+      @media only screen and (max-width: $sm-breakpoint) {
         margin: 0;
       }
     }
 
     .disabled-guest-hint {
-      font-size: $s-font-size;
+      font-size: $sm-font-size;
       font-weight: 500;
       margin: 0 5%;
 
-      @media only screen and (max-width: $m-breakpoint) {
+      @media only screen and (max-width: $md-breakpoint) {
         margin: 0;
       }
     }
@@ -109,11 +109,11 @@
         }
       }
 
-      @media only screen and (max-width: $m-breakpoint) {
+      @media only screen and (max-width: $md-breakpoint) {
         margin: 0 5%;
       }
 
-      @media only screen and (max-width: $s-breakpoint) {
+      @media only screen and (max-width: $sm-breakpoint) {
         margin: 0;
       }
     }

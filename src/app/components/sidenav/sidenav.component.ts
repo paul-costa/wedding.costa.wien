@@ -7,20 +7,20 @@ import { BreakpointObserverService } from 'src/app/services/breakpoint-observer.
 import { AppRoutingModule } from 'src/modules/app-routing.module';
 import { ContentComponent, ContentComponents } from '../../constants/app.constants';
 
-
-const materialModules = [MatIconModule, MatButtonModule]
+const materialModules = [MatIconModule, MatButtonModule];
 
 @Component({
-    selector: 'app-sidenav',
-    imports: [BrowserModule, AppRoutingModule, ...materialModules],
-    templateUrl: './sidenav.component.html',
-    styleUrl: './sidenav.component.scss'
+  selector: 'app-sidenav',
+  imports: [BrowserModule, AppRoutingModule, ...materialModules],
+  templateUrl: './sidenav.component.html',
+  styleUrl: './sidenav.component.scss',
 })
 export class SidenavComponent implements OnDestroy {
   @Input()
   currentContentComponent?: ContentComponent;
 
   sidenavHidden?: boolean;
+  isXs = false;
 
   readonly contentComponents: ContentComponent[] = Object.values(ContentComponents);
 
@@ -29,10 +29,10 @@ export class SidenavComponent implements OnDestroy {
 
   constructor() {
     this.breakpointObserverService
-      .observeIsBreakpointXs()
+      .observeIsXs()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((isBreakpointXs) => {
-        this.onToggleSidenavClick(isBreakpointXs);
+      .subscribe((isXs) => {
+        this.toggleSideNav(isXs);
       });
   }
 
@@ -42,7 +42,18 @@ export class SidenavComponent implements OnDestroy {
   }
 
   onToggleSidenavClick(toggle: boolean) {
+    if (this.breakpointObserverService.isXs) {
+      return;
+    }
+
+    this.toggleSideNav(toggle);
+  }
+
+  private toggleSideNav(toggle: boolean) {
     this.sidenavHidden = toggle;
-    window.dispatchEvent(new Event('resize'));
+
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 150);
   }
 }

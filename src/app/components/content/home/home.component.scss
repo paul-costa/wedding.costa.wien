@@ -4,7 +4,7 @@
 .container {
   display: flex;
   gap: 36px;
-  margin: 12px 128px;
+  padding-right: calc(160px - 24px);
 
   .content {
     display: flex;
@@ -43,8 +43,8 @@
       }
 
       .body {
-        font-size: $m-font-size;
-        line-height: $m-font-size;
+        font-size: $md-font-size;
+        line-height: $md-font-size;
         color: $medium-gray;
         text-align: justify;
         display: flex;
@@ -84,25 +84,25 @@
               }
 
               .name {
-                font-size: $l-font-size;
+                font-size: $lg-font-size;
                 letter-spacing: 2px;
                 font-weight: 300;
                 color: $darker-gray;
               }
 
-              @media only screen and (max-width: $l-breakpoint) {
+              @media only screen and (max-width: $lg-breakpoint) {
                 .image {
                   width: 80px;
                 }
 
                 .name {
-                  font-size: $m-font-size;
+                  font-size: $md-font-size;
                 }
               }
 
-              @media only screen and (max-width: $m-breakpoint) {
+              @media only screen and (max-width: $md-breakpoint) {
                 .name {
-                  font-size: $s-font-size;
+                  font-size: $sm-font-size;
                   letter-spacing: 1.5px;
                 }
               }
@@ -125,18 +125,18 @@
                 word-break: break-all;
 
                 span {
-                  @include hide-on($xs-breakpoint);
+                  @include hide-on($xsm-breakpoint);
                   margin-right: auto;
                 }
 
-                @media only screen and (max-width: $xs-breakpoint) {
+                @media only screen and (max-width: $xsm-breakpoint) {
                   justify-content: center;
                 }
               }
             }
           }
 
-          @media only screen and (max-width: $m-breakpoint) {
+          @media only screen and (max-width: $md-breakpoint) {
             display: flex;
             flex-direction: column;
           }
@@ -145,9 +145,13 @@
     }
   }
 
-  @media only screen and (max-width: $l-breakpoint) {
+  @media only screen and (max-width: $xlg-breakpoint) {
+    padding-right: calc(80px - 24px);
+  }
+
+  @media only screen and (max-width: $lg-breakpoint) {
     flex-direction: column;
-    margin: 12px 64px;
+    padding: 0;
     gap: 24px;
 
     .content {
@@ -158,35 +162,33 @@
         gap: 16px;
 
         .header {
-          font-size: $l-font-size;
-          line-height: $l-font-size;
+          font-size: $lg-font-size;
+          line-height: $lg-font-size;
           letter-spacing: 2px;
         }
 
         .body {
-          font-size: $m-font-size;
+          font-size: $md-font-size;
           font-weight: normal;
         }
       }
     }
   }
 
-  @media only screen and (max-width: $m-breakpoint) {
-    margin: 0;
-
+  @media only screen and (max-width: $md-breakpoint) {
     .content {
       .content-block {
         padding: 24px;
 
         .header {
-          font-size: $m-font-size;
-          line-height: $m-font-size;
+          font-size: $md-font-size;
+          line-height: $md-font-size;
           letter-spacing: 1.5px;
         }
 
         .body {
-          font-size: $s-font-size;
-          line-height: $s-font-size;
+          font-size: $sm-font-size;
+          line-height: $sm-font-size;
           padding: 0;
           font-weight: normal;
         }
