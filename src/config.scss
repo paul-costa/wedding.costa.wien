@@ -8,18 +8,28 @@ $white: rgb(255, 255, 255);
 $light-beige: rgb(255, 250, 240);
 $beige: rgb(246, 241, 234);
 $transparent-teal: rgba(0, 225, 255, 0.4);
-$lighter-gray: rgb(90, 90, 90);
-$light-gray: rgb(70, 70, 70);
 $accent-red: rgb(130, 30, 30);
-$medium-gray: rgb(50, 50, 50);
-$dark-gray: rgb(30, 30, 30);
+$lightest-gray: rgb(220, 220, 220);
+$lighter-gray: rgb(210, 210, 210);
+$light-gray: rgb(200, 200, 200);
+$medium-gray: rgb(90, 90, 90);
+$dark-gray: rgb(70, 70, 70);
+$darker-gray: rgb(50, 50, 50);
+$darkest-gray: rgb(30, 30, 30);
 $input-color: rgb(30, 30, 30);
 $black: rgb(0, 0, 0);
 
 $l-breakpoint: 1440px;
 $m-breakpoint: 960px;
 $s-breakpoint: 600px;
+$xs-breakpoint: 440px;
 
 $default-border-radius: 24px;
 $light-border-radius: 12px;
 $lighter-border-radius: 6px;
+
+@mixin hide-on($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    display: none;
+  }
+}

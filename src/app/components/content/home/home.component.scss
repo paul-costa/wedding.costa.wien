@@ -1,4 +1,5 @@
 @use 'src/config.scss' as *;
+@use '@angular/material' as mat;
 
 .container {
   display: flex;
@@ -17,20 +18,27 @@
     }
 
     .content-block {
+      @include mat.elevation(4, $beige);
       border-radius: $light-border-radius;
       background-color: $light-beige;
-
       display: flex;
       flex-direction: column;
       gap: 24px;
       padding: 24px 36px;
+      transition: 200ms;
+
+      &:hover {
+        @include mat.elevation(10, $beige);
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
 
       .header {
         font-size: $xl-font-size;
         line-height: $xl-font-size;
         letter-spacing: 2.5px;
         font-weight: 300;
-        color: $dark-gray;
+        color: $darkest-gray;
         text-align: center;
       }
 
@@ -43,8 +51,95 @@
         flex-direction: column;
         gap: 16px;
 
-        .calendar-link {
-          display: none;
+        .contact-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+          gap: 24px;
+          margin-top: 12px;
+
+          .contact {
+            @include mat.elevation(4);
+            background-color: $lightest-gray;
+            padding: 24px;
+            border-radius: $light-border-radius;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            transition: 200ms;
+
+            &:hover {
+              @include mat.elevation(16);
+            }
+
+            .contact-header {
+              display: flex;
+              gap: 24px;
+              align-items: center;
+
+              .image {
+                @include mat.elevation(6);
+                border-radius: 50%;
+                width: 120px;
+              }
+
+              .name {
+                font-size: $l-font-size;
+                letter-spacing: 2px;
+                font-weight: 300;
+                color: $darker-gray;
+              }
+
+              @media only screen and (max-width: $l-breakpoint) {
+                .image {
+                  width: 80px;
+                }
+
+                .name {
+                  font-size: $m-font-size;
+                }
+              }
+
+              @media only screen and (max-width: $m-breakpoint) {
+                .name {
+                  font-size: $s-font-size;
+                  letter-spacing: 1.5px;
+                }
+              }
+            }
+
+            .contact-actions-container {
+              display: flex;
+              flex-direction: column;
+              align-items: start;
+              gap: 12px;
+
+              & > * {
+                width: 100%;
+              }
+
+              button {
+                justify-content: start;
+                padding-left: 24px;
+                text-align: start;
+                word-break: break-all;
+
+                span {
+                  @include hide-on($xs-breakpoint);
+                  margin-right: auto;
+                }
+
+                @media only screen and (max-width: $xs-breakpoint) {
+                  justify-content: center;
+                }
+              }
+            }
+          }
+
+          @media only screen and (max-width: $m-breakpoint) {
+            display: flex;
+            flex-direction: column;
+          }
         }
       }
     }

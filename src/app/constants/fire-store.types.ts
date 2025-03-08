@@ -14,6 +14,7 @@ export interface Homepage {
   dateEventButtonText?: string;
   contactsHeaderText?: string;
   contactsBodyText?: string;
+  contacts?: Contact[];
 }
 
 export interface Guest {
@@ -28,4 +29,12 @@ export interface Message {
   value: string;
   date: Date;
   isAdminMessage?: boolean;
+}
+
+export interface Contact {
+  id: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
 }

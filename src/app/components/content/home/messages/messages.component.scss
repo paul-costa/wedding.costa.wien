@@ -1,4 +1,5 @@
 @use 'src/config.scss' as *;
+@use '@angular/material' as mat;
 
 :host {
   display: flex;
@@ -7,6 +8,7 @@
 }
 
 .messages-container {
+  @include mat.elevation(4, $beige);
   display: flex;
   background-color: $beige;
   flex-direction: column;
@@ -16,6 +18,13 @@
   gap: 24px;
   width: 400px;
   height: 100%;
+  transition: 200ms;
+
+  &:hover {
+    @include mat.elevation(10, $beige);
+    padding-top: 30px;
+    padding-bottom: 22px;
+  }
 
   .header {
     font-size: $xl-font-size;
@@ -40,7 +49,7 @@
       justify-content: space-between;
       font-size: $s-font-size;
       border-radius: $lighter-border-radius;
-      background-color: $lighter-gray;
+      background-color: $medium-gray;
       padding: 4px 12px;
 
       .date {
@@ -94,6 +103,13 @@
       font-size: $m-font-size;
       line-height: $m-font-size;
       letter-spacing: 1.5px;
+    }
+  }
+
+  @media only screen and (max-width: $xs-breakpoint) {
+    .input-form-container {
+      margin-left: auto;
+      width: 200px;
     }
   }
 }

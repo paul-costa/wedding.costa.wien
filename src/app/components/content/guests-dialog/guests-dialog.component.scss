@@ -17,7 +17,7 @@
     .header {
       font-size: $l-font-size;
       font-weight: 900;
-      color: $dark-gray;
+      color: $darkest-gray;
       text-align: center;
 
       @media only screen and (max-width: $s-breakpoint) {
@@ -27,7 +27,7 @@
 
     .sub-header {
       font-size: $s-font-size;
-      color: $light-gray;
+      color: $dark-gray;
       font-weight: 300;
       margin: 0 10%;
 
@@ -67,7 +67,7 @@
     .disclaimer,
     .disabled-guest-hint {
       font-size: $s-font-size;
-      color: $light-gray;
+      color: $dark-gray;
       font-weight: 300;
       margin: 0 5%;
 
