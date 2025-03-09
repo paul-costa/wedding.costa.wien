@@ -29,6 +29,7 @@
 
       .item-content {
         .list {
+          list-style-type: '- ';
           padding-left: 24px;
         }
       }
@@ -62,7 +63,7 @@
 
     .dos-donts-container {
       flex-direction: column;
-      gap: 24px;
+      gap: 48px;
 
       .item-container .item-header {
         font-size: $md-font-size;

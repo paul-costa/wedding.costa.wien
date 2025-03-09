@@ -33,12 +33,11 @@
     text-align: justify;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
   }
 
   @media only screen and (max-width: $lg-breakpoint) {
     padding: 24px 48px;
-    gap: 16px;
 
     .header {
       font-size: $lg-font-size;

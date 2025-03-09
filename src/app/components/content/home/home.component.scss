@@ -12,7 +12,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 24px;
-  margin-top: 12px;
 
   .contact {
     @include mat.elevation(4);
@@ -65,7 +64,6 @@
         word-break: break-all;
 
         span {
-          @include hide-on($xsm-breakpoint);
           margin-right: auto;
         }
       }
@@ -88,14 +86,12 @@
 }
 
 @media only screen and (max-width: $md-breakpoint) {
-  .contact-container .contact .contact-header .name {
-    font-size: $sm-font-size;
-    letter-spacing: 1.5px;
-  }
-}
+  .contact-container {
+    grid-template-columns: 1fr;
 
-@media only screen and (max-width: $xsm-breakpoint) {
-  .contact-container .contact .contact-actions-container button {
-    justify-content: center;
+    .contact .contact-header .name {
+      font-size: $sm-font-size;
+      letter-spacing: 1.5px;
+    }
   }
 }

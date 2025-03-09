@@ -69,10 +69,3 @@
     font-size: $md-font-size;
   }
 }
-
-@media only screen and (max-width: $sm-breakpoint) {
-  .messages-container .input-form-container {
-    margin-left: auto;
-    width: 200px;
-  }
-}
