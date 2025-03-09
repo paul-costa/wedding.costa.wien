@@ -1,198 +1,101 @@
 @use 'src/config.scss' as *;
 @use '@angular/material' as mat;
 
-.container {
+.home-content {
   display: flex;
+  flex-direction: column;
   gap: 36px;
-  padding-right: calc(160px - 24px);
+  flex: 1;
+}
 
-  .content {
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+  margin-top: 12px;
+
+  .contact {
+    @include mat.elevation(4);
+    background-color: $lightest-gray;
+    padding: 24px;
+    border-radius: $m-border-radius;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 36px;
-    flex: 1;
+    gap: 24px;
+    transition: 200ms;
 
-    .spinner {
-      transform: scale(0.5);
-      margin: 24px auto 0;
+    &:hover {
+      @include mat.elevation(16);
     }
 
-    .content-block {
-      @include mat.elevation(4, $beige);
-      border-radius: $light-border-radius;
-      background-color: $light-beige;
+    .contact-header {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+
+      .image {
+        @include mat.elevation(6);
+        border-radius: 50%;
+        width: 120px;
+      }
+
+      .name {
+        font-size: $lg-font-size;
+        letter-spacing: 2px;
+        font-weight: 300;
+        color: $darker-gray;
+      }
+    }
+
+    .contact-actions-container {
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      padding: 24px 36px;
-      transition: 200ms;
+      align-items: start;
+      gap: 12px;
 
-      &:hover {
-        @include mat.elevation(10, $beige);
-        padding-top: 30px;
-        padding-bottom: 30px;
+      & > * {
+        width: 100%;
       }
 
-      .header {
-        font-size: $xl-font-size;
-        line-height: $xl-font-size;
-        letter-spacing: 2.5px;
-        font-weight: 300;
-        color: $darkest-gray;
-        text-align: center;
-      }
+      button {
+        justify-content: start;
+        padding-left: 24px;
+        text-align: start;
+        word-break: break-all;
 
-      .body {
-        font-size: $md-font-size;
-        line-height: $md-font-size;
-        color: $medium-gray;
-        text-align: justify;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-
-        .contact-container {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-          gap: 24px;
-          margin-top: 12px;
-
-          .contact {
-            @include mat.elevation(4);
-            background-color: $lightest-gray;
-            padding: 24px;
-            border-radius: $light-border-radius;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            transition: 200ms;
-
-            &:hover {
-              @include mat.elevation(16);
-            }
-
-            .contact-header {
-              display: flex;
-              gap: 24px;
-              align-items: center;
-
-              .image {
-                @include mat.elevation(6);
-                border-radius: 50%;
-                width: 120px;
-              }
-
-              .name {
-                font-size: $lg-font-size;
-                letter-spacing: 2px;
-                font-weight: 300;
-                color: $darker-gray;
-              }
-
-              @media only screen and (max-width: $lg-breakpoint) {
-                .image {
-                  width: 80px;
-                }
-
-                .name {
-                  font-size: $md-font-size;
-                }
-              }
-
-              @media only screen and (max-width: $md-breakpoint) {
-                .name {
-                  font-size: $sm-font-size;
-                  letter-spacing: 1.5px;
-                }
-              }
-            }
-
-            .contact-actions-container {
-              display: flex;
-              flex-direction: column;
-              align-items: start;
-              gap: 12px;
-
-              & > * {
-                width: 100%;
-              }
-
-              button {
-                justify-content: start;
-                padding-left: 24px;
-                text-align: start;
-                word-break: break-all;
-
-                span {
-                  @include hide-on($xsm-breakpoint);
-                  margin-right: auto;
-                }
-
-                @media only screen and (max-width: $xsm-breakpoint) {
-                  justify-content: center;
-                }
-              }
-            }
-          }
-
-          @media only screen and (max-width: $md-breakpoint) {
-            display: flex;
-            flex-direction: column;
-          }
+        span {
+          @include hide-on($xsm-breakpoint);
+          margin-right: auto;
         }
       }
     }
   }
+}
 
-  @media only screen and (max-width: $xlg-breakpoint) {
-    padding-right: calc(80px - 24px);
-  }
-
-  @media only screen and (max-width: $lg-breakpoint) {
-    flex-direction: column;
-    padding: 0;
+@media only screen and (max-width: $lg-breakpoint) {
+  .home-content {
     gap: 24px;
-
-    .content {
-      gap: 24px;
-
-      .content-block {
-        padding: 24px 48px;
-        gap: 16px;
-
-        .header {
-          font-size: $lg-font-size;
-          line-height: $lg-font-size;
-          letter-spacing: 2px;
-        }
-
-        .body {
-          font-size: $md-font-size;
-          font-weight: normal;
-        }
-      }
-    }
   }
 
-  @media only screen and (max-width: $md-breakpoint) {
-    .content {
-      .content-block {
-        padding: 24px;
+  .contact-container .contact .contact-header .image {
+    width: 80px;
+  }
 
-        .header {
-          font-size: $md-font-size;
-          line-height: $md-font-size;
-          letter-spacing: 1.5px;
-        }
+  .name {
+    font-size: $md-font-size;
+  }
+}
 
-        .body {
-          font-size: $sm-font-size;
-          line-height: $sm-font-size;
-          padding: 0;
-          font-weight: normal;
-        }
-      }
-    }
+@media only screen and (max-width: $md-breakpoint) {
+  .contact-container .contact .contact-header .name {
+    font-size: $sm-font-size;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media only screen and (max-width: $xsm-breakpoint) {
+  .contact-container .contact .contact-actions-container button {
+    justify-content: center;
   }
 }

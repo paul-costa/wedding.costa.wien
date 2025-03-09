@@ -1,0 +1,11 @@
+<div class="content-block">
+  @if (headerText) {
+    <div class="header">{{ headerText }}</div>
+  }
+  <div class="body">
+    @for (bodyText of bodyTexts; track bodyText) {
+      <span> {{ bodyText }}</span>
+    }
+    <ng-content />
+  </div>
+</div>

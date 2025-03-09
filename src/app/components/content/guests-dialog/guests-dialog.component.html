@@ -24,6 +24,7 @@
     <mat-radio-group
       class="radio-button-group"
       [ngClass]="{ disabled: !selectedGuest }"
+      color="primary"
       [disabled]="!selectedGuest"
       [(ngModel)]="isGuestShowingUp"
     >
@@ -37,6 +38,7 @@
         mat-flat-button
         class="confirm-button"
         [ngClass]="{ disabled: !selectedGuest || isGuestShowingUp === undefined }"
+        color="primary"
         [disabled]="!selectedGuest || isGuestShowingUp === undefined"
         (click)="onConfirmButtonClick()"
       >

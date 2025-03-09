@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ContentBlock } from 'src/app/components/shared/content-block.component';
 import { Message } from 'src/app/constants/fire-store.types';
 import { HomePageContent, LoadingState } from 'src/app/constants/shared-interfaces';
 import { FireStoreService } from 'src/app/services/fire-store.service';
@@ -16,13 +17,14 @@ const materialModules = [MatInputModule, MatButtonModule, MatIconModule, MatProg
   standalone: true,
   templateUrl: './messages.component.html',
   styleUrl: './messages.component.scss',
-  imports: [NgClass, ReactiveFormsModule, DatePipe, ...materialModules],
+  imports: [NgClass, ReactiveFormsModule, DatePipe, ContentBlock, ...materialModules],
 })
 export class MessagesComponent {
   currentMessage = new FormControl<string>('', [Validators.required]);
-
   currentMessagesLoadingState = LoadingState.None;
   messages: Message[] = [];
+  isInitialLoadSuccessful = false;
+
   readonly LoadingState = LoadingState;
   readonly content: HomePageContent = {
     messagesHeaderLabel: 'Nachrichten',
@@ -75,6 +77,7 @@ export class MessagesComponent {
       })
       .then((res) => {
         this.messages = res.reverse();
+        this.isInitialLoadSuccessful = true;
         this.currentMessagesLoadingState = LoadingState.Success;
       });
   }

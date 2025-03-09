@@ -8,12 +8,33 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+/* --- shared general components ----------------------------------------------------- */
 .display-none {
   display: none;
 }
 
-.main {
+.progress-bar {
+  position: absolute !important;
+  left: 0;
+  top: 0;
+}
+
+/* --- shared wrapping component ----------------------------------------------------- */
+.main-container {
+  display: flex;
+  gap: 36px;
+  padding-right: calc(160px - 24px);
   margin-bottom: 48px;
+
+  @media only screen and (max-width: $xl-breakpoint) {
+    padding-right: calc(80px - 24px);
+  }
+
+  @media only screen and (max-width: $lg-breakpoint) {
+    flex-direction: column;
+    padding: 0;
+    gap: 24px;
+  }
 }
 
 /* --- material custom styles ----------------------------------------------------- */

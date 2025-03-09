@@ -4,6 +4,8 @@ import 'firebase/firestore';
 import { collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
 import { firebaseConfig } from 'src/config/firebase.config';
 import {
+  DressCode,
+  DressCodeCollectionName,
   Guest,
   GuestsCollectionName,
   Homepage,
@@ -48,5 +50,12 @@ export class FireStoreService {
     return new Promise((resolve) => {
       setDoc(docRef, message).then(() => resolve(true));
     });
+  }
+
+  async getDressCodeData(): Promise<DressCode> {
+    const col = collection(this.db, DressCodeCollectionName);
+    const snapshot = await getDocs(col);
+    const list = snapshot.docs.map((d) => d.data());
+    return list[0] as DressCode;
   }
 }

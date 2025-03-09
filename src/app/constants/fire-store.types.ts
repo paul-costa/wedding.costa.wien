@@ -1,8 +1,9 @@
 import { DocumentReference } from 'firebase/firestore/lite';
 
-export const HomePageCollectionName = 'homepage';
+export const DressCodeCollectionName = 'dresscode';
 export const GuestsCollectionName = 'guests';
 export const MessagesCollectionName = 'messages';
+export const HomePageCollectionName = 'homepage';
 
 export interface Homepage {
   introText?: string;
@@ -37,4 +38,18 @@ export interface Contact {
   lastName?: string;
   email?: string;
   phone?: string;
+}
+
+export interface DressCode {
+  summaryHeaderText?: string;
+  summaryBodyTexts?: string[];
+  womenHeaderText?: string;
+  women?: ContentBlockHeaderAndList[];
+  menHeaderText?: string;
+  men?: ContentBlockHeaderAndList[];
+}
+
+export interface ContentBlockHeaderAndList {
+  header: string;
+  content: string[];
 }

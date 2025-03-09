@@ -16,13 +16,9 @@
 
     .header {
       font-size: $lg-font-size;
-      font-weight: 900;
+      font-weight: 300;
       color: $darkest-gray;
       text-align: center;
-
-      @media only screen and (max-width: $sm-breakpoint) {
-        font-size: $md-font-size;
-      }
     }
 
     .sub-header {
@@ -30,14 +26,6 @@
       color: $dark-gray;
       font-weight: 300;
       margin: 0 10%;
-
-      @media only screen and (max-width: $md-breakpoint) {
-        margin: 0 5%;
-      }
-
-      @media only screen and (max-width: $sm-breakpoint) {
-        margin: 0;
-      }
     }
   }
 
@@ -47,14 +35,6 @@
     align-self: center;
 
     .guests-form-field {
-      width: 100%;
-    }
-
-    @media only screen and (max-width: $md-breakpoint) {
-      width: 80%;
-    }
-
-    @media only screen and (max-width: $sm-breakpoint) {
       width: 100%;
     }
   }
@@ -70,20 +50,12 @@
       color: $dark-gray;
       font-weight: 300;
       margin: 0 5%;
-
-      @media only screen and (max-width: $sm-breakpoint) {
-        margin: 0;
-      }
     }
 
     .disabled-guest-hint {
       font-size: $sm-font-size;
       font-weight: 500;
       margin: 0 5%;
-
-      @media only screen and (max-width: $md-breakpoint) {
-        margin: 0;
-      }
     }
   }
 
@@ -98,7 +70,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      background: $medium-gray;
+      background: $gray;
       padding: 6px 12px;
       margin: 0 17.5%;
       border-radius: 24px;
@@ -107,14 +79,6 @@
         &.disabled {
           opacity: 0.5;
         }
-      }
-
-      @media only screen and (max-width: $md-breakpoint) {
-        margin: 0 5%;
-      }
-
-      @media only screen and (max-width: $sm-breakpoint) {
-        margin: 0;
       }
     }
 
@@ -130,13 +94,62 @@
       }
 
       .confirm-button {
-        color: $accent-red;
-        background: $medium-gray;
-
         &.disabled {
-          opacity: 0.5;
+          background: $gray;
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: $md-breakpoint) {
+  .container {
+    .header-container .sub-header {
+      margin: 0 5%;
+    }
+
+    .guests-select-container {
+      width: 80%;
+    }
+
+    .disclaimer-container {
+      .disclaimer,
+      .disabled-guest-hint {
+        margin: 0;
+      }
+    }
+
+    .actions-container .radio-button-group {
+      margin: 0 5%;
+    }
+  }
+}
+
+@media only screen and (max-width: $sm-breakpoint) {
+  .container {
+    .header-container {
+      .header {
+        font-size: $md-font-size;
+      }
+
+      .sub-header {
+        margin: 0;
+      }
+
+      .guests-select-container {
+        width: 100%;
+      }
+    }
+
+    .disclaimer-container {
+      .disclaimer,
+      .disabled-guest-hint {
+        margin: 0;
+      }
+    }
+
+    .actions-container .radio-button-group {
+      margin: 0;
     }
   }
 }

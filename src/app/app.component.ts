@@ -9,10 +9,10 @@ import { GuestsDialogCloseConfig, GuestsDialogConfig as GuestsDialogData } from 
 import { FireStoreService } from './services/fire-store.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  standalone: false,
 })
 export class AppComponent implements OnInit {
   title = 'wedding.costa.wien';
@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.fireStoreService.getGuestsData().then((data) => {
+      // TODO: enable
       // this.initGuestsDialog(data);
     });
   }

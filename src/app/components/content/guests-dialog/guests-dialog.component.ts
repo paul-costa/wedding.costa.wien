@@ -10,19 +10,21 @@ import { MatSelectModule } from '@angular/material/select';
 import { Guest } from 'src/app/constants/fire-store.types';
 import { GuestsDialogCloseConfig, GuestsDialogConfig, GuestsDialogContent } from 'src/app/constants/shared-interfaces';
 
-const materialModules=[MatSelectModule, MatFormFieldModule, MatCheckboxModule, MatRadioModule, MatButtonModule];
+const materialModules = [MatSelectModule, MatFormFieldModule, MatCheckboxModule, MatRadioModule, MatButtonModule];
 
 @Component({
-    selector: 'app-guests-dialog',
-    imports: [NgIf, NgClass, NgFor,  FormsModule, ...materialModules],
-    templateUrl: './guests-dialog.component.html',
-    styleUrl: './guests-dialog.component.scss'
+  selector: 'app-guests-dialog',
+  imports: [NgIf, NgClass, NgFor, FormsModule, ...materialModules],
+  templateUrl: './guests-dialog.component.html',
+  styleUrl: './guests-dialog.component.scss',
 })
 export class GuestsDialogComponent {
   isGuestShowingUp: boolean;
   selectedGuest: Guest;
 
   readonly guests: Guest[];
+
+  // TODO: fetch via firebase
   readonly content: GuestsDialogContent = {
     header: 'Gäste Verwaltung',
     subHeader: 'Bitte wähle deinen Namen aus der Liste aus, bestätige den Disclaimer und wähle ob du zur Hochzeit erscheinen kannst.',

@@ -1,39 +1,12 @@
 @use 'src/config.scss' as *;
 @use '@angular/material' as mat;
 
-:host {
-  display: flex;
-  height: 600px;
-  margin-bottom: 48px;
-}
-
 .messages-container {
-  @include mat.elevation(4, $beige);
   display: flex;
-  background-color: $beige;
   flex-direction: column;
-  font-size: $lg-font-size;
-  padding: 24px 16px 0;
-  border-radius: $light-border-radius;
-  gap: 24px;
+  height: 600px;
   width: 400px;
-  height: 100%;
-  transition: 200ms;
-
-  &:hover {
-    @include mat.elevation(10, $beige);
-    padding-top: 30px;
-    padding-bottom: 22px;
-  }
-
-  .header {
-    font-size: $xl-font-size;
-    line-height: $xl-font-size;
-    color: $medium-gray;
-    text-align: center;
-    font-weight: 300;
-    letter-spacing: 2.5px;
-  }
+  gap: 24px;
 
   .messages {
     flex: 1;
@@ -47,9 +20,10 @@
       display: flex;
       gap: 4px;
       justify-content: space-between;
-      font-size: $sm-font-size;
-      border-radius: $lighter-border-radius;
+      font-size: $md-font-size;
+      border-radius: $s-border-radius;
       background-color: $medium-gray;
+      color: $white;
       padding: 4px 12px;
 
       .date {
@@ -70,7 +44,6 @@
 
   .input-form-container {
     display: flex;
-    margin-bottom: 6px;
     margin-right: -12px;
 
     .input-form {
@@ -82,34 +55,24 @@
       color: $accent-red;
     }
   }
+}
 
-  @media only screen and (max-width: $lg-breakpoint) {
+@media only screen and (max-width: $lg-breakpoint) {
+  .messages-container {
+    height: 400px;
     width: auto;
-    margin-top: auto;
-    padding: 24px 48px 0;
-    gap: 16px;
-
-    .header {
-      font-size: $lg-font-size;
-      line-height: $lg-font-size;
-      letter-spacing: 2px;
-    }
   }
+}
 
-  @media only screen and (max-width: $md-breakpoint) {
-    padding: 24px 24px 0;
-
-    .header {
-      font-size: $md-font-size;
-      line-height: $md-font-size;
-      letter-spacing: 1.5px;
-    }
+@media only screen and (max-width: $md-breakpoint) {
+  .messages-container .messages .message {
+    font-size: $md-font-size;
   }
+}
 
-  @media only screen and (max-width: $sm-breakpoint) {
-    .input-form-container {
-      margin-left: auto;
-      width: 200px;
-    }
+@media only screen and (max-width: $sm-breakpoint) {
+  .messages-container .input-form-container {
+    margin-left: auto;
+    width: 200px;
   }
 }

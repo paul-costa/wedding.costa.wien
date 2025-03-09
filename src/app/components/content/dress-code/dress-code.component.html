@@ -1,1 +1,42 @@
-<p>dresscode works!</p>
+@let dressCodeData = $dressCodeData | async;
+
+@if (currentLoadingState === LoadingState.Loading) {
+  <mat-progress-bar class="progress-bar" color="primary" mode="indeterminate" />
+} @else if (currentLoadingState === LoadingState.Success && dressCodeData) {
+  <div class="main-container">
+    <app-content-block [headerText]="dressCodeData.summaryHeaderText" [bodyTexts]="dressCodeData.summaryBodyTexts" />
+
+    <div class="dress-code-content">
+      <app-content-block class="women-container" [headerText]="dressCodeData.womenHeaderText">
+        <ng-container *ngTemplateOutlet="dosDontsTemplate; context: { $implicit: dressCodeData.women, gender: 'women' }" />
+      </app-content-block>
+
+      <app-content-block class="men-container" [headerText]="dressCodeData.menHeaderText">
+        <ng-container *ngTemplateOutlet="dosDontsTemplate; context: { $implicit: dressCodeData.men, gender: 'men' }" />
+      </app-content-block>
+    </div>
+  </div>
+}
+
+<ng-template let-items let-gender="gender" #dosDontsTemplate>
+  <div class="dos-donts-container">
+    @for (item of items; track item; let index = $index) {
+      <div class="item-container">
+        <div class="item-header">{{ item.header }}</div>
+        <div class="item-content">
+          <ul class="list">
+            @for (c of item.content; track c) {
+              <li>{{ c }}</li>
+            }
+          </ul>
+
+          <div class="images-container">
+            @for (imageSrc of imagesSrc[gender][index]; track imageSrc) {
+              <img [src]="imageSrc" />
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</ng-template>

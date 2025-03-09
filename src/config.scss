@@ -8,10 +8,13 @@ $white: rgb(255, 255, 255);
 $light-beige: rgb(255, 250, 240);
 $beige: rgb(246, 241, 234);
 $transparent-teal: rgba(0, 225, 255, 0.4);
-$accent-red: rgb(130, 30, 30);
+$accent-red: rgb(194, 24, 91);
 $lightest-gray: rgb(220, 220, 220);
 $lighter-gray: rgb(210, 210, 210);
 $light-gray: rgb(200, 200, 200);
+$medium-lighter-gray: rgb(160, 160, 160);
+$medium-light-gray: rgb(140, 140, 140);
+$gray: rgb(120, 120, 120);
 $medium-gray: rgb(90, 90, 90);
 $dark-gray: rgb(70, 70, 70);
 $darker-gray: rgb(50, 50, 50);
@@ -19,15 +22,16 @@ $darkest-gray: rgb(30, 30, 30);
 $input-color: rgb(30, 30, 30);
 $black: rgb(0, 0, 0);
 
-$xlg-breakpoint: 1920px;
+$xl-breakpoint: 1920px;
 $lg-breakpoint: 1440px;
 $md-breakpoint: 960px;
 $sm-breakpoint: 600px;
 $xsm-breakpoint: 440px;
 
-$default-border-radius: 24px;
-$light-border-radius: 12px;
-$lighter-border-radius: 6px;
+$xl-border-radius: 36px;
+$l-border-radius: 24px;
+$m-border-radius: 12px;
+$s-border-radius: 6px;
 
 @mixin hide-on($breakpoint) {
   @media only screen and (max-width: $breakpoint) {

@@ -1,1 +1,79 @@
-@use'src/config.scss' as *;
+@use 'src/config.scss' as *;
+@use '@angular/material' as mat;
+
+.main-container {
+  flex-direction: column;
+}
+
+.dress-code-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  gap: 36px;
+  flex: 1;
+
+  .dos-donts-container {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+
+    .item-container {
+      flex: 1;
+
+      .item-header {
+        font-size: $lg-font-size;
+        letter-spacing: 2px;
+        font-weight: 300;
+        color: $medium-gray;
+        margin-bottom: 16px;
+      }
+
+      .item-content {
+        .list {
+          padding-left: 24px;
+        }
+      }
+    }
+  }
+
+  .images-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+    margin-top: 36px;
+
+    img {
+      @include mat.elevation(4);
+      border-radius: $xl-border-radius;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      &:hover {
+        @include mat.elevation(8);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $lg-breakpoint) {
+  .dress-code-content {
+    display: flex;
+    flex-direction: column;
+
+    .dos-donts-container {
+      flex-direction: column;
+      gap: 24px;
+
+      .item-container .item-header {
+        font-size: $md-font-size;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $md-breakpoint) {
+  .dress-code-content .dos-donts-container .item-container .item-header {
+    font-size: $sm-font-size;
+    letter-spacing: 1.5px;
+  }
+}
