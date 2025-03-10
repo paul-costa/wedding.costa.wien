@@ -9,11 +9,15 @@
       mat-button
       class="button"
       [ngClass]="{ active: currentContentComponent?.url === contentComponent.url }"
-      color="accent"
       [routerLink]="'/' + contentComponent.url"
     >
       <mat-icon class="button-icon"> {{ contentComponent.icon }} </mat-icon>
       <span> {{ contentComponent.title }} </span>
     </button>
   }
+
+  <button mat-button class="button account" color="primary" (click)="onAccountButtonClick()">
+    <mat-icon class="button-icon"> manage_accounts </mat-icon>
+    <span> Account (Ich) </span>
+  </button>
 </nav>

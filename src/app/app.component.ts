@@ -4,7 +4,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GuestsDialogComponent } from './components/content/guests-dialog/guests-dialog.component';
 import { Content, ContentComponent, ContentComponents } from './constants/app.constants';
-import { Guest } from './constants/fire-store.types';
 import { GuestsDialogCloseConfig, GuestsDialogConfig as GuestsDialogData } from './constants/shared-interfaces';
 import { FireStoreService } from './services/fire-store.service';
 
@@ -30,12 +29,9 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit() {
-    this.fireStoreService.getGuestsData().then((data) => {
-      // TODO: enable
-      // this.initGuestsDialog(data);
-    });
+  ngOnInit(): void {
+    // TODO: enable if data is not set
+    // this.initGuestsDialog();
   }
 
   ngOnDestroy() {
@@ -43,20 +39,26 @@ export class AppComponent implements OnInit {
     this.destroy$.complete();
   }
 
-  private initGuestsDialog(guests: Guest[]) {
-    const dialogRef = this.dialog.open(GuestsDialogComponent, {
-      width: '600px',
-      data: { guests } as GuestsDialogData,
-      disableClose: true,
-    });
+  onAccountButtonClicked() {
+    this.initGuestsDialog();
+  }
 
-    dialogRef
-      .afterClosed()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((guestsDialogCloseConfig: GuestsDialogCloseConfig) => {
-        if (guestsDialogCloseConfig) {
-          // TODO: send close config data to BE
-        }
+  private initGuestsDialog() {
+    this.fireStoreService.getGuestsData().then((guests) => {
+      const dialogRef = this.dialog.open(GuestsDialogComponent, {
+        width: '600px',
+        data: { guests } as GuestsDialogData,
+        disableClose: true,
       });
+
+      dialogRef
+        .afterClosed()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((guestsDialogCloseConfig: GuestsDialogCloseConfig) => {
+          if (guestsDialogCloseConfig) {
+            // TODO: send close config data to BE
+          }
+        });
+    });
   }
 }

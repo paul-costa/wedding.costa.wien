@@ -7,6 +7,7 @@
   background-color: $dark-gray;
   flex-direction: column;
   letter-spacing: 3px;
+  height: calc(100% - 48px);
 
   .logo {
     background-color: $white;
@@ -35,7 +36,7 @@
     width: 100%;
     padding: 12px;
     border-radius: 24px;
-    color: $beige;
+    // color: $beige;
     justify-content: flex-start;
     font-size: $lg-font-size;
     font-weight: 300;
@@ -46,6 +47,10 @@
     &.active {
       background: $transparent-teal;
       margin-bottom: 8px;
+    }
+
+    &.account {
+      margin-top: auto;
     }
 
     .button-icon {

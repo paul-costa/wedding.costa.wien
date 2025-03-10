@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnDestroy, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +18,9 @@ const materialModules = [MatIconModule, MatButtonModule];
 export class SidenavComponent implements OnDestroy {
   @Input()
   currentContentComponent?: ContentComponent;
+
+  @Output()
+  accountButtonClicked = new EventEmitter<void>();
 
   sidenavHidden?: boolean;
   isXs = false;
@@ -47,6 +50,10 @@ export class SidenavComponent implements OnDestroy {
     }
 
     this.toggleSideNav(toggle);
+  }
+
+  onAccountButtonClick() {
+    this.accountButtonClicked.emit();
   }
 
   private toggleSideNav(toggle: boolean) {
