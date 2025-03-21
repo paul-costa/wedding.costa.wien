@@ -1,10 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GuestsDialogComponent } from './components/content/guests-dialog/guests-dialog.component';
 import { Content, ContentComponent, ContentComponents } from './constants/app.constants';
-import { GuestsDialogCloseConfig, GuestsDialogConfig as GuestsDialogData } from './constants/shared-interfaces';
+import { GuestsDialogCloseConfig } from './constants/shared-interfaces';
 import { FireStoreService } from './services/fire-store.service';
 
 @Component({
@@ -13,25 +13,22 @@ import { FireStoreService } from './services/fire-store.service';
   styleUrl: './app.component.scss',
   standalone: false,
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnDestroy {
   title = 'wedding.costa.wien';
   currentContentComponent?: ContentComponent;
 
-  private readonly fireStoreService = inject(FireStoreService);
   private readonly destroy$ = new Subject<void>();
+  private readonly fireStoreService = inject(FireStoreService);
   private readonly dialog = inject(MatDialog);
+  private readonly router = inject(Router);
 
-  constructor(private router: Router) {
+  constructor() {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
         const url = e.url.slice(1);
         this.currentContentComponent = !url ? ContentComponents[Content.Home] : Object.values(ContentComponents).find((v) => v.url === url);
       }
     });
-  }
-  ngOnInit(): void {
-    // TODO: enable if data is not set
-    // this.initGuestsDialog();
   }
 
   ngOnDestroy() {
@@ -40,14 +37,14 @@ export class AppComponent implements OnInit {
   }
 
   onAccountButtonClicked() {
-    this.initGuestsDialog();
+    this.initAccountDialog();
   }
 
-  private initGuestsDialog() {
-    this.fireStoreService.getGuestsData().then((guests) => {
+  private initAccountDialog() {
+    this.fireStoreService.getAccountDialogData().then((config) => {
       const dialogRef = this.dialog.open(GuestsDialogComponent, {
-        width: '600px',
-        data: { guests } as GuestsDialogData,
+        width: '800px',
+        data: config,
         disableClose: true,
       });
 

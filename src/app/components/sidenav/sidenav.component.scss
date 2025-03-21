@@ -1,4 +1,5 @@
 @use 'src/config.scss' as *;
+@use '@angular/material' as mat;
 
 .navbar {
   display: flex;
@@ -10,7 +11,9 @@
   height: calc(100% - 48px);
 
   .logo {
-    background-color: $white;
+    @include mat.elevation(6, $accent-red);
+
+    background-color: $off-white;
     border-radius: 24px;
     padding: 0 24px;
     height: 36px;
@@ -30,13 +33,16 @@
     img {
       height: 100%;
     }
+
+    &:hover {
+      @include mat.elevation(12, $accent-red);
+    }
   }
 
   .button {
     width: 100%;
     padding: 12px;
     border-radius: 24px;
-    // color: $beige;
     justify-content: flex-start;
     font-size: $lg-font-size;
     font-weight: 300;

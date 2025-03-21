@@ -40,14 +40,14 @@ body {
 /* --- material custom styles ----------------------------------------------------- */
 
 .mat-mdc-dialog-container .mdc-dialog__surface {
-  background-color: rgb(200, 200, 200) !important;
+  background-color: $off-white !important;
 }
 
 .mdc-text-field--filled {
-  background-color: rgb(160, 160, 160) !important;
+  background-color: $light-gray !important;
 
   .mdc-floating-label {
-    color: $input-color !important;
+    color: $darkest-gray !important;
   }
 }
 
@@ -56,7 +56,18 @@ body {
 }
 
 .mat-mdc-input-element {
-  color: $input-color !important;
+  color: $darkest-gray !important;
+}
+
+.mdc-label {
+  color: $darker-gray;
+  font-size: $md-font-size;
+  text-align: left;
+  cursor: pointer;
+
+  @media only screen and (max-width: $sm-breakpoint) {
+    font-size: $sm-font-size;
+  }
 }
 
 /* ------------------------------------------------------------------------------- */

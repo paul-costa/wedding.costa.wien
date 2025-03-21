@@ -21,13 +21,7 @@
   </div>
 
   <div class="actions-container">
-    <mat-radio-group
-      class="radio-button-group"
-      [ngClass]="{ disabled: !selectedGuest }"
-      color="primary"
-      [disabled]="!selectedGuest"
-      [(ngModel)]="isGuestShowingUp"
-    >
+    <mat-radio-group class="radio-button-group" color="primary" [disabled]="!selectedGuest" [(ngModel)]="isGuestShowingUp">
       <mat-radio-button [value]="true">{{ content.isShowingUpLabel }}</mat-radio-button>
       <mat-radio-button [value]="false">{{ content.isNotShowingUpLabel }}</mat-radio-button>
     </mat-radio-group>

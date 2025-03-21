@@ -2,9 +2,10 @@
 @use '@angular/material' as mat;
 
 .content-block {
-  @include mat.elevation(4, $beige);
+  @include mat.elevation(4, $off-white);
+
   border-radius: $m-border-radius;
-  background-color: $light-beige;
+  background-color: $off-white;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -12,7 +13,8 @@
   transition: 200ms;
 
   &:hover {
-    @include mat.elevation(10, $beige);
+    @include mat.elevation(10, $off-white);
+
     padding-top: 30px;
     padding-bottom: 30px;
   }

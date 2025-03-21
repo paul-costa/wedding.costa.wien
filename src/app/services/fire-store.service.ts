@@ -4,9 +4,10 @@ import 'firebase/firestore';
 import { collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
 import { firebaseConfig } from 'src/config/firebase.config';
 import {
+  AccountDialogCollectionName,
+  AccountDialogConfig,
   DressCode,
   DressCodeCollectionName,
-  Guest,
   GuestsCollectionName,
   Homepage,
   HomePageCollectionName,
@@ -24,22 +25,27 @@ export class FireStoreService {
   async getHomePageData(): Promise<Homepage> {
     const col = collection(this.db, HomePageCollectionName);
     const snapshot = await getDocs(col);
-    const list = snapshot.docs.map((d) => d.data());
-    return list[0] as Homepage;
+    return snapshot.docs.map((d) => d.data())[0];
   }
 
-  async getGuestsData(): Promise<Guest[]> {
-    const col = collection(this.db, GuestsCollectionName);
-    const snapshot = await getDocs(col);
-    const list = snapshot.docs.map((d) => d.data());
-    return list as Guest[];
+  async getAccountDialogData(): Promise<AccountDialogConfig> {
+    const guests = collection(this.db, GuestsCollectionName);
+    const guestsSnapshot = await getDocs(guests);
+
+    const accountDialog = collection(this.db, AccountDialogCollectionName);
+    const accountSnapshot = await getDocs(accountDialog);
+
+    return {
+      guests: guestsSnapshot.docs.map((d) => d.data()),
+      accountDialogContent: accountSnapshot.docs.map((d) => d.data())[0],
+    };
   }
 
   async getMessages(): Promise<Message[]> {
     const col = collection(this.db, MessagesCollectionName);
     const snapshot = await getDocs(col);
-    const list = snapshot.docs.map((d) => d.data());
-    return (list as Message[])
+    return snapshot.docs
+      .map((d) => d.data() as Message)
       .map((d) => ({ ...d, date: new Date(d.date['seconds'] * 1000) }))
       .sort((mA, mB) => mA.date.getTime() - mB.date.getTime());
   }
@@ -55,7 +61,6 @@ export class FireStoreService {
   async getDressCodeData(): Promise<DressCode> {
     const col = collection(this.db, DressCodeCollectionName);
     const snapshot = await getDocs(col);
-    const list = snapshot.docs.map((d) => d.data());
-    return list[0] as DressCode;
+    return snapshot.docs.map((d) => d.data())[0];
   }
 }

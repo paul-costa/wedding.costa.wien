@@ -3,6 +3,8 @@
 @if (currentLoadingState === LoadingState.Loading) {
   <mat-progress-bar class="progress-bar" color="primary" mode="indeterminate" />
 } @else if (currentLoadingState === LoadingState.Success && homePageData) {
+  <app-content-block class="account-info" [headerText]="homePageData.accountHeaderText" [bodyTexts]="homePageData.accountBodyText" />
+
   <div class="main-container">
     <div class="home-content">
       <app-content-block [headerText]="homePageData.summaryHeaderText" [bodyTexts]="homePageData.summaryBodyText" />

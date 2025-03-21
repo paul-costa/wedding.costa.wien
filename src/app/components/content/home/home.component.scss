@@ -1,6 +1,22 @@
 @use 'src/config.scss' as *;
 @use '@angular/material' as mat;
 
+.account-info {
+  display: block;
+  margin-bottom: 36px;
+  padding-right: calc(160px - 24px);
+  opacity: 0.75;
+
+  @media only screen and (max-width: $xl-breakpoint) {
+    padding-right: calc(80px - 24px);
+  }
+
+  @media only screen and (max-width: $lg-breakpoint) {
+    margin-bottom: 24px;
+    padding: 0;
+  }
+}
+
 .home-content {
   display: flex;
   flex-direction: column;
@@ -15,6 +31,7 @@
 
   .contact {
     @include mat.elevation(4);
+
     background-color: $lightest-gray;
     padding: 24px;
     border-radius: $m-border-radius;
@@ -35,6 +52,7 @@
 
       .image {
         @include mat.elevation(6);
+
         border-radius: 50%;
         width: 120px;
       }

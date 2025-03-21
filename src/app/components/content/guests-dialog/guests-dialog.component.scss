@@ -3,32 +3,33 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin: 24px;
+  margin: 24px 48px;
+  gap: 36px;
 
   .header-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
 
     .header {
-      font-size: $lg-font-size;
+      font-size: $xl-font-size;
+      line-height: $xl-font-size;
       font-weight: 300;
       color: $darkest-gray;
       text-align: center;
     }
 
     .sub-header {
-      font-size: $sm-font-size;
+      font-size: $md-font-size;
       color: $dark-gray;
       font-weight: 300;
-      margin: 0 10%;
     }
   }
 
   .guests-select-container {
-    margin: 24px 0;
-    width: 65%;
-    align-self: center;
+    margin-bottom: -22px;
+    width: 100%;
+    align-items: center;
 
     .guests-form-field {
       width: 100%;
@@ -42,40 +43,31 @@
 
     .disclaimer,
     .disabled-guest-hint {
-      font-size: $sm-font-size;
+      font-size: $md-font-size;
       color: $dark-gray;
       font-weight: 300;
-      margin: 0 5%;
     }
 
     .disabled-guest-hint {
-      font-size: $sm-font-size;
+      font-size: $md-font-size;
       font-weight: 500;
-      margin: 0 5%;
     }
   }
 
   .actions-container {
-    margin-top: 24px;
     text-align: center;
     display: flex;
     gap: 24px;
     flex-direction: column;
 
     .radio-button-group {
+      margin-top: 16px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      background: $gray;
+      background: $light-gray;
       padding: 6px 12px;
-      margin: 0 17.5%;
-      border-radius: 24px;
-
-      mat-radio-button {
-        &.disabled {
-          opacity: 0.5;
-        }
-      }
+      border-radius: $m-border-radius;
     }
 
     .action-buttons-container {
@@ -85,8 +77,8 @@
       justify-content: end;
 
       .cancel-button {
-        color: $medium-gray;
-        border-color: $medium-gray;
+        color: $darker-gray;
+        border-color: $darker-gray;
       }
 
       .confirm-button {
@@ -100,52 +92,48 @@
 
 @media only screen and (max-width: $md-breakpoint) {
   .container {
-    .header-container .sub-header {
-      margin: 0 5%;
-    }
+    margin: 24px;
+    gap: 24px;
 
-    .guests-select-container {
-      width: 80%;
+    .header-container {
+      gap: 16px;
+
+      .header {
+        font-size: $lg-font-size;
+        line-height: $lg-font-size;
+      }
+
+      .sub-header {
+        font-size: $sm-font-size;
+        line-height: $sm-font-size;
+      }
     }
 
     .disclaimer-container {
       .disclaimer,
       .disabled-guest-hint {
-        margin: 0;
+        font-size: $sm-font-size;
       }
-    }
-
-    .actions-container .radio-button-group {
-      margin: 0 5%;
     }
   }
 }
 
 @media only screen and (max-width: $sm-breakpoint) {
   .container {
+    margin: 24px 16px;
+    gap: 16px;
+
     .header-container {
+      gap: 12px;
+
       .header {
         font-size: $md-font-size;
-      }
-
-      .sub-header {
-        margin: 0;
-      }
-
-      .guests-select-container {
-        width: 100%;
-      }
-    }
-
-    .disclaimer-container {
-      .disclaimer,
-      .disabled-guest-hint {
-        margin: 0;
+        line-height: $md-font-size;
       }
     }
 
     .actions-container .radio-button-group {
-      margin: 0;
+      margin-top: 12px;
     }
   }
 }
