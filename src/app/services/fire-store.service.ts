@@ -4,16 +4,18 @@ import 'firebase/firestore';
 import { collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
 import { firebaseConfig } from 'src/config/firebase.config';
 import {
-  AccountDialogCollectionName,
-  AccountDialogConfig,
-  DressCode,
-  DressCodeCollectionName,
-  GuestsCollectionName,
+  AccountDialogCollection,
+  Dresscode,
+  DresscodeCollection,
+  GuestsCollection,
   Homepage,
-  HomePageCollectionName,
-  Message,
-  MessagesCollectionName,
+  HomepageCollection,
+  Messages,
+  MessagesCollection,
+  UserMessage,
+  UserMessagesCollection,
 } from '../constants/fire-store.types';
+import { AccountDialogConfig } from '../constants/shared-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -22,35 +24,41 @@ export class FireStoreService {
   private readonly app = initializeApp(firebaseConfig);
   private readonly db = getFirestore(this.app);
 
-  async getHomePageData(): Promise<Homepage> {
-    const col = collection(this.db, HomePageCollectionName);
-    const snapshot = await getDocs(col);
-    return snapshot.docs.map((d) => d.data())[0];
-  }
-
-  async getAccountDialogData(): Promise<AccountDialogConfig> {
-    const guests = collection(this.db, GuestsCollectionName);
+  async getAccountDialog(): Promise<AccountDialogConfig> {
+    const guests = collection(this.db, GuestsCollection);
     const guestsSnapshot = await getDocs(guests);
 
-    const accountDialog = collection(this.db, AccountDialogCollectionName);
+    const accountDialog = collection(this.db, AccountDialogCollection);
     const accountSnapshot = await getDocs(accountDialog);
 
     return {
       guests: guestsSnapshot.docs.map((d) => d.data()),
-      accountDialogContent: accountSnapshot.docs.map((d) => d.data())[0],
+      accountDialog: accountSnapshot.docs.map((d) => d.data())[0],
     };
   }
 
-  async getMessages(): Promise<Message[]> {
-    const col = collection(this.db, MessagesCollectionName);
+  async getHomepage(): Promise<Homepage> {
+    const col = collection(this.db, HomepageCollection);
+    const snapshot = await getDocs(col);
+    return snapshot.docs.map((d) => d.data())[0];
+  }
+
+  async getMessages(): Promise<Messages> {
+    const col = collection(this.db, MessagesCollection);
+    const snapshot = await getDocs(col);
+    return snapshot.docs.map((d) => d.data())[0];
+  }
+
+  async getUserMessages(): Promise<UserMessage[]> {
+    const col = collection(this.db, UserMessagesCollection);
     const snapshot = await getDocs(col);
     return snapshot.docs
-      .map((d) => d.data() as Message)
+      .map((d) => d.data() as UserMessage)
       .map((d) => ({ ...d, date: new Date(d.date['seconds'] * 1000) }))
       .sort((mA, mB) => mA.date.getTime() - mB.date.getTime());
   }
 
-  async sendMessage(message: Message) {
+  async sendUserMessage(message: UserMessage) {
     const docRef = doc(this.db, 'messages', message.id);
 
     return new Promise((resolve) => {
@@ -58,8 +66,8 @@ export class FireStoreService {
     });
   }
 
-  async getDressCodeData(): Promise<DressCode> {
-    const col = collection(this.db, DressCodeCollectionName);
+  async getDresscode(): Promise<Dresscode> {
+    const col = collection(this.db, DresscodeCollection);
     const snapshot = await getDocs(col);
     return snapshot.docs.map((d) => d.data())[0];
   }

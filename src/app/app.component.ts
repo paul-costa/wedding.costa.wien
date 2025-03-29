@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GuestsDialogComponent } from './components/content/guests-dialog/guests-dialog.component';
-import { Content, ContentComponent, ContentComponents } from './constants/app.constants';
-import { GuestsDialogCloseConfig } from './constants/shared-interfaces';
+import { ContentComponents } from './constants/app.constants';
+import { Content, ContentComponent, GuestsDialogCloseConfig } from './constants/shared-interfaces';
 import { FireStoreService } from './services/fire-store.service';
 
 @Component({
@@ -41,7 +41,7 @@ export class AppComponent implements OnDestroy {
   }
 
   private initAccountDialog() {
-    this.fireStoreService.getAccountDialogData().then((config) => {
+    this.fireStoreService.getAccountDialog().then((config) => {
       const dialogRef = this.dialog.open(GuestsDialogComponent, {
         width: '800px',
         data: config,

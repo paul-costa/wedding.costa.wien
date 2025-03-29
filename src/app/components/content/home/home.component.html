@@ -1,28 +1,28 @@
-@let homePageData = $homePageData | async;
+@let d = homepage;
 
 @if (currentLoadingState === LoadingState.Loading) {
   <mat-progress-bar class="progress-bar" color="primary" mode="indeterminate" />
-} @else if (currentLoadingState === LoadingState.Success && homePageData) {
-  <app-content-block class="account-info" [headerText]="homePageData.accountHeaderText" [bodyTexts]="homePageData.accountBodyText" />
+} @else if (currentLoadingState === LoadingState.Success && d) {
+  <app-content-block class="account-info" [headerText]="d.accountHeaderText" [bodyTexts]="d.accountBodyText" />
 
   <div class="main-container">
     <div class="home-content">
-      <app-content-block [headerText]="homePageData.summaryHeaderText" [bodyTexts]="homePageData.summaryBodyText" />
+      <app-content-block [headerText]="d.summaryHeaderText" [bodyTexts]="d.summaryBodyText" />
 
-      <app-content-block [headerText]="homePageData.dateEventHeaderText" [bodyTexts]="[homePageData.dateEventBodyText]">
+      <app-content-block [headerText]="d.dateEventHeaderText" [bodyTexts]="[d.dateEventBodyText]">
         <a class="display-none" href="/assets/calendar-event.ics" download="Hochzeit_Costa" #calLink></a>
         <button mat-button color="primary" (click)="calLink.click()">
           <mat-icon>download</mat-icon>
-          <span>{{ homePageData.dateEventButtonText }} </span>
+          <span>{{ d.dateEventButtonText }} </span>
         </button>
       </app-content-block>
 
-      <app-content-block [headerText]="homePageData.contactsHeaderText" [bodyTexts]="[homePageData.contactsBodyText]">
+      <app-content-block [headerText]="d.contactsHeaderText" [bodyTexts]="[d.contactsBodyText]">
         <div class="contact-container">
-          @for (c of homePageData.contacts; track c) {
+          @for (c of d.contacts; track c) {
             <div class="contact">
               <div class="contact-header">
-                <img class="image" [src]="'/assets/images/' + c.id + '.jpg'" />
+                <img class="image" [src]="'/assets/images/shared/' + c.id + '.jpg'" />
                 <span class="name">{{ c.firstName }}</span>
               </div>
 
@@ -44,6 +44,6 @@
       </app-content-block>
     </div>
 
-    <app-messages />
+    <app-messages [config]="messages" />
   </div>
 }

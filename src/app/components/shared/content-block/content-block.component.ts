@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BodyLink } from 'src/app/constants/fire-store.types';
 
 const materialModules = [MatButtonModule, MatIconModule, MatProgressSpinnerModule];
 
@@ -17,4 +18,7 @@ export class ContentBlock {
 
   @Input()
   bodyTexts: string[] = [];
+
+  @Input()
+  bodyLinks: BodyLink[] = [];
 }

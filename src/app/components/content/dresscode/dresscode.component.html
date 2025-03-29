@@ -1,18 +1,18 @@
-@let dressCodeData = $dressCodeData | async;
+@let data = $dresscode | async;
 
 @if (currentLoadingState === LoadingState.Loading) {
   <mat-progress-bar class="progress-bar" color="primary" mode="indeterminate" />
-} @else if (currentLoadingState === LoadingState.Success && dressCodeData) {
+} @else if (currentLoadingState === LoadingState.Success && data) {
   <div class="main-container">
-    <app-content-block [headerText]="dressCodeData.summaryHeaderText" [bodyTexts]="dressCodeData.summaryBodyTexts" />
+    <app-content-block [headerText]="data.summaryHeaderText" [bodyTexts]="data.summaryBodyTexts" [bodyLinks]="data.summaryBodyLinks" />
 
-    <div class="dress-code-content">
-      <app-content-block class="women-container" [headerText]="dressCodeData.womenHeaderText">
-        <ng-container *ngTemplateOutlet="dosDontsTemplate; context: { $implicit: dressCodeData.women, gender: 'women' }" />
+    <div class="dresscode-content">
+      <app-content-block class="women-container" [headerText]="data.womenHeaderText" [bodyTexts]="data.womenBodyTexts">
+        <ng-container *ngTemplateOutlet="dosDontsTemplate; context: { $implicit: data.women, gender: 'women' }" />
       </app-content-block>
 
-      <app-content-block class="men-container" [headerText]="dressCodeData.menHeaderText">
-        <ng-container *ngTemplateOutlet="dosDontsTemplate; context: { $implicit: dressCodeData.men, gender: 'men' }" />
+      <app-content-block class="men-container" [headerText]="data.menHeaderText" [bodyTexts]="data.menBodyTexts">
+        <ng-container *ngTemplateOutlet="dosDontsTemplate; context: { $implicit: data.men, gender: 'men' }" />
       </app-content-block>
     </div>
   </div>

@@ -7,8 +7,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { AccountDialogConfig, AccountDialogContent, Guest } from 'src/app/constants/fire-store.types';
-import { GuestsDialogCloseConfig } from 'src/app/constants/shared-interfaces';
+import { AccountDialog, Guest } from 'src/app/constants/fire-store.types';
+import { AccountDialogConfig, GuestsDialogCloseConfig } from 'src/app/constants/shared-interfaces';
 
 const materialModules = [MatSelectModule, MatFormFieldModule, MatCheckboxModule, MatRadioModule, MatButtonModule];
 
@@ -23,14 +23,14 @@ export class GuestsDialogComponent {
   selectedGuest: Guest;
 
   readonly guests: Guest[];
-  readonly content: AccountDialogContent;
+  readonly content: AccountDialog;
 
-  private readonly data: AccountDialogConfig = inject(MAT_DIALOG_DATA);
+  private readonly config: AccountDialogConfig = inject(MAT_DIALOG_DATA);
   private readonly dialogRef: MatDialogRef<GuestsDialogComponent> = inject(MatDialogRef);
 
   constructor() {
-    this.guests = this.data.guests;
-    this.content = this.data.accountDialogContent;
+    this.guests = this.config.guests;
+    this.content = this.config.accountDialog;
   }
 
   onCancelButtonClick() {

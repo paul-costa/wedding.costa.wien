@@ -3,9 +3,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { Subject, takeUntil } from 'rxjs';
+import { ContentComponent } from 'src/app/constants/shared-interfaces';
 import { BreakpointObserverService } from 'src/app/services/breakpoint-observer.service';
 import { AppRoutingModule } from 'src/modules/app-routing.module';
-import { ContentComponent, ContentComponents } from '../../constants/app.constants';
+import { ContentComponents } from '../../constants/app.constants';
 
 const materialModules = [MatIconModule, MatButtonModule];
 

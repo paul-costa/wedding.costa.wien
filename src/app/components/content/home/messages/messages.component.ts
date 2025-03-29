@@ -1,13 +1,13 @@
 import { DatePipe, NgClass } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ContentBlock } from 'src/app/components/shared/content-block.component';
-import { Message } from 'src/app/constants/fire-store.types';
-import { HomePageContent, LoadingState } from 'src/app/constants/shared-interfaces';
+import { ContentBlock } from 'src/app/components/shared/content-block/content-block.component';
+import { Messages, UserMessage } from 'src/app/constants/fire-store.types';
+import { LoadingState } from 'src/app/constants/shared-interfaces';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 
 const materialModules = [MatInputModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule];
@@ -20,65 +20,60 @@ const materialModules = [MatInputModule, MatButtonModule, MatIconModule, MatProg
   imports: [NgClass, ReactiveFormsModule, DatePipe, ContentBlock, ...materialModules],
 })
 export class MessagesComponent {
-  currentMessage = new FormControl<string>('', [Validators.required]);
-  currentMessagesLoadingState = LoadingState.None;
-  messages: Message[] = [];
-  isInitialLoadSuccessful = false;
+  @Input()
+  config: Messages;
+
+  currentUserMessage = new FormControl<string>('', [Validators.required]);
+  currentUserMessagesLoadingState = LoadingState.None;
+  userMessages: UserMessage[] = [];
 
   readonly LoadingState = LoadingState;
-  readonly content: HomePageContent = {
-    messagesHeaderLabel: 'Nachrichten',
-    messagesLoadingErrorLabel: 'Nachrichten konnten nicht geladen werden!',
-    messagesInputHeaderLabel: 'Nachricht',
-    messagesInputInvalidLabel: 'Nachricht ist ein Pflichtfeld',
-  };
 
   private readonly fireStoreService = inject(FireStoreService);
 
   constructor() {
-    this.fetchAndSetMessages();
+    this.fetchAndSetUserMessages();
   }
 
-  onSendMessageButtonClick() {
-    this.currentMessage.markAsTouched();
+  onSendUserMessageButtonClick() {
+    this.currentUserMessage.markAsTouched();
 
-    if (this.currentMessage.invalid) {
+    if (this.currentUserMessage.invalid) {
       return;
     }
 
-    this.currentMessagesLoadingState = LoadingState.Loading;
+    this.currentUserMessagesLoadingState = LoadingState.Loading;
 
-    const message: Message = {
+    const userMessage: UserMessage = {
       id: crypto.randomUUID(),
-      value: this.currentMessage.value,
+      value: this.currentUserMessage.value,
       date: new Date(),
     };
 
-    this.fireStoreService.sendMessage(message).then((res) => {
+    this.fireStoreService.sendUserMessage(userMessage).then((res) => {
       if (res) {
-        this.currentMessage.reset();
-        this.fetchAndSetMessages();
+        this.currentUserMessage.reset();
+        this.fetchAndSetUserMessages();
         return;
       }
 
-      this.currentMessagesLoadingState = LoadingState.Error;
+      this.currentUserMessagesLoadingState = LoadingState.Error;
     });
   }
 
-  private fetchAndSetMessages() {
-    this.currentMessagesLoadingState = LoadingState.Loading;
+  private fetchAndSetUserMessages() {
+    this.currentUserMessagesLoadingState = LoadingState.Loading;
 
     this.fireStoreService
-      .getMessages()
+      .getUserMessages()
       .catch((err) => {
-        this.currentMessagesLoadingState = LoadingState.Error;
+        this.currentUserMessagesLoadingState = LoadingState.Error;
         console.error(err);
-        return [] as Message[];
+        return [] as UserMessage[];
       })
-      .then((res) => {
-        this.messages = res.reverse();
-        this.isInitialLoadSuccessful = true;
-        this.currentMessagesLoadingState = LoadingState.Success;
+      .then((userMessages) => {
+        this.userMessages = userMessages.reverse();
+        this.currentUserMessagesLoadingState = LoadingState.Success;
       });
   }
 }
