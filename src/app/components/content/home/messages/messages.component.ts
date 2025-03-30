@@ -14,7 +14,6 @@ const materialModules = [MatInputModule, MatButtonModule, MatIconModule, MatProg
 
 @Component({
   selector: 'app-messages',
-  standalone: true,
   templateUrl: './messages.component.html',
   styleUrl: './messages.component.scss',
   imports: [NgClass, ReactiveFormsModule, DatePipe, ContentBlock, ...materialModules],

@@ -7,6 +7,7 @@ export const AccountDialogCollection = 'accountDialog';
 export const UserMessagesCollection = 'userMessages';
 export const HomepageCollection = 'homepage';
 export const MessagesCollection = 'messages';
+export const LocationCollection = 'locationJourney';
 
 export interface AccountDialog {
   header?: string;
@@ -67,7 +68,7 @@ export interface Contact {
 export interface Dresscode {
   summaryHeaderText?: string;
   summaryBodyTexts?: string[];
-  summaryBodyLinks?: BodyLink[];
+  summaryHyperLinks?: Hyperlink[];
   womenHeaderText?: string;
   womenBodyTexts?: string[];
   women?: ContentBlockHeaderAndList[];
@@ -81,7 +82,40 @@ export interface ContentBlockHeaderAndList {
   content: string[];
 }
 
-export interface BodyLink {
+export interface Hyperlink {
   linkText: string;
   linkUrl: string;
+}
+
+export interface LocationJourney {
+  location?: Llocation;
+  journey?: Journey;
+}
+
+export interface Llocation {
+  headerText?: string;
+  bodyTexts?: string[];
+  googleMapsLink?: Hyperlink;
+  address?: Address;
+  website?: Hyperlink;
+}
+
+export interface Journey {
+  headerText?: string;
+  carTabLabel?: string;
+  carTabBodySteps?: string[];
+  carTabParkingHeaderText?: string;
+  carTabParkingBodyTexts?: string[];
+  publicTabLabel?: string;
+  publicTabSteps?: Record<number, string[]>;
+  googleMapsRoute?: { general: Hyperlink; car: Hyperlink; public: Hyperlink };
+}
+
+export interface Address {
+  streetName?: string;
+  streetNumber?: string;
+  title?: string;
+  zip?: string;
+  city?: string;
+  countryCode?: string;
 }

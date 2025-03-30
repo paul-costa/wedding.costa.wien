@@ -1,11 +1,17 @@
-@use 'src/config.scss' as *;
+@use '../styles/_mixins.scss' as mixin;
+@use '../styles/config.scss' as *;
 
 .container {
   height: 100%;
 
+  mat-drawer {
+    width: fit-content;
+  }
+
   .content {
+    @include mixin.l-transition;
+
     padding: 24px;
-    transition: 250ms;
 
     @media only screen and (max-width: $md-breakpoint) {
       padding: 12px 24px;

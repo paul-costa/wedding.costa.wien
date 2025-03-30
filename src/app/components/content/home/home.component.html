@@ -1,7 +1,7 @@
 @let d = homepage;
 
 @if (currentLoadingState === LoadingState.Loading) {
-  <mat-progress-bar class="progress-bar" color="primary" mode="indeterminate" />
+  <mat-progress-bar class="progress-bar tertiary" mode="indeterminate" />
 } @else if (currentLoadingState === LoadingState.Success && d) {
   <app-content-block class="account-info" [headerText]="d.accountHeaderText" [bodyTexts]="d.accountBodyText" />
 
@@ -11,8 +11,8 @@
 
       <app-content-block [headerText]="d.dateEventHeaderText" [bodyTexts]="[d.dateEventBodyText]">
         <a class="display-none" href="/assets/calendar-event.ics" download="Hochzeit_Costa" #calLink></a>
-        <button mat-button color="primary" (click)="calLink.click()">
-          <mat-icon>download</mat-icon>
+        <button mat-raised-button color="primary" (click)="calLink.click()">
+          <mat-icon>{{ MatIcons[2] }}</mat-icon>
           <span>{{ d.dateEventButtonText }} </span>
         </button>
       </app-content-block>
@@ -23,17 +23,17 @@
             <div class="contact">
               <div class="contact-header">
                 <img class="image" [src]="'/assets/images/shared/' + c.id + '.jpg'" />
-                <span class="name">{{ c.firstName }}</span>
+                <span class="title">{{ c.firstName }}</span>
               </div>
 
               <div class="contact-actions-container">
                 <a class="display-none" [href]="'mailto:' + c.email + '?subject=Costa%20Hochzeit:%20Website'" #emailLink></a>
-                <button mat-raised-button color="accent" (click)="emailLink.click()">
+                <button mat-raised-button color="primary" (click)="emailLink.click()">
                   <mat-icon>email</mat-icon>
                   <span>{{ c.email }} </span>
                 </button>
                 <a class="display-none" [href]="'tel:' + c.phone" #phoneLink></a>
-                <button mat-raised-button color="accent" (click)="phoneLink.click()">
+                <button mat-raised-button color="primary" (click)="phoneLink.click()">
                   <mat-icon>phone</mat-icon>
                   <span>{{ c.phone }} </span>
                 </button>

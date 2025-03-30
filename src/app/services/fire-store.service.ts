@@ -10,6 +10,8 @@ import {
   GuestsCollection,
   Homepage,
   HomepageCollection,
+  LocationCollection,
+  LocationJourney,
   Messages,
   MessagesCollection,
   UserMessage,
@@ -70,5 +72,18 @@ export class FireStoreService {
     const col = collection(this.db, DresscodeCollection);
     const snapshot = await getDocs(col);
     return snapshot.docs.map((d) => d.data())[0];
+  }
+
+  async getLocationJourney(): Promise<LocationJourney> {
+    const col = collection(this.db, LocationCollection);
+    const snapshot = await getDocs(col);
+    return snapshot.docs
+      .map((res) => {
+        const id = res.data()?.id;
+        const resData = res.data();
+        delete resData.id;
+        return { [id]: resData };
+      })
+      .reduce((f1, f2) => ({ ...f1, ...f2 }), {});
   }
 }

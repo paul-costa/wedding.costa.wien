@@ -2,12 +2,13 @@ $xl-font-size: 56px;
 $lg-font-size: 36px;
 $md-font-size: 20px;
 $sm-font-size: 16px;
-$xs-font-size: 10px;
+$xs-font-size: 14px;
+
+$default-header-font: 'Ubuntu Mono', monospace;
+$default-body-font: 'Roboto Mono', monospace;
 
 $white: rgb(255, 255, 255);
 $off-white: rgb(244, 237, 234);
-$transparent-teal: rgba(0, 225, 255, 0.4);
-$accent-red: rgb(194, 24, 91);
 $lightest-gray: rgb(220, 220, 220);
 $lighter-gray: rgb(210, 210, 210);
 $light-gray: rgb(200, 200, 200);
@@ -19,6 +20,13 @@ $dark-gray: rgb(70, 70, 70);
 $darker-gray: rgb(50, 50, 50);
 $darkest-gray: rgb(30, 30, 30);
 $black: rgb(0, 0, 0);
+
+$mat-theme-primary-green: #1f3521;
+$mat-theme-secondary-vomit-gray: #9bb989;
+$mat-theme-tertiary-burgundy: #450507;
+$mat-theme-error-red: #90003d;
+$mat-theme-neutral-smoke-blue: #2e5867;
+$mat-theme-neutralVariant-turquoise: #0085a2;
 
 $xl-breakpoint: 1920px;
 $lg-breakpoint: 1440px;

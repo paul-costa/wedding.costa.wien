@@ -1,14 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { Component, Input, TemplateRef } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BodyLink } from 'src/app/constants/fire-store.types';
+import { Hyperlink } from 'src/app/constants/fire-store.types';
 
 const materialModules = [MatButtonModule, MatIconModule, MatProgressSpinnerModule];
 
 @Component({
   selector: 'app-content-block',
-  imports: [...materialModules],
+  imports: [NgClass, NgTemplateOutlet, ...materialModules],
   templateUrl: './content-block.component.html',
   styleUrl: './content-block.component.scss',
 })
@@ -20,5 +21,11 @@ export class ContentBlock {
   bodyTexts: string[] = [];
 
   @Input()
-  bodyLinks: BodyLink[] = [];
+  hyperLinks: Hyperlink[] = [];
+
+  @Input()
+  contentPosition: 'flex' | 'grid' = 'flex';
+
+  @Input()
+  additionalInfoCards: TemplateRef<HTMLElement>[];
 }

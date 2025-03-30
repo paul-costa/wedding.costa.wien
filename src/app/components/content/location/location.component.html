@@ -1,1 +1,60 @@
-<p>location works!</p>
+@let data = $locationJourney | async;
+@let location = data?.location;
+@let journey = data?.journey;
+
+@if (currentLoadingState === LoadingState.Loading) {
+  <mat-progress-bar class="progress-bar tertiary" mode="indeterminate" />
+} @else if (currentLoadingState === LoadingState.Success && data) {
+  <div class="main-container">
+    <app-content-block contentPosition="grid" [headerText]="location.headerText" [bodyTexts]="location.bodyTexts">
+      <div class="images-container is-hovered">
+        @for (i of imageSrc.chadim; track i) {
+          <div class="img-container" (click)="websiteLink.click()"><img class="img" [src]="i" /></div>
+        }
+        <span class="hint">{{ location.website.linkText }}</span>
+        <a class="display-none" target="_blank" [href]="location.website.linkUrl" #websiteLink></a>
+      </div>
+
+      <div class="map-container">
+        <div class="img-wrapper is-hovered">
+          <img class="img" [src]="imageSrc.googleMaps" (click)="googleMapsLink.click()" />
+          <span class="hint">{{ location.googleMapsLink.linkText }}</span>
+          <a class="display-none" target="_blank" [href]="location.googleMapsLink.linkUrl" #googleMapsLink></a>
+        </div>
+
+        <ng-container *ngTemplateOutlet="additionalInfoCard" />
+      </div>
+
+      <button mat-raised-button class="google-maps-route-button" color="accent" (click)="googleMapsRoute.click()">
+        {{ journey.googleMapsRoute.general.linkText }}
+      </button>
+      <a class="display-none" target="_blank" [href]="journey.googleMapsRoute.general.linkUrl" #googleMapsRoute></a>
+    </app-content-block>
+  </div>
+
+  <app-journey [config]="journey" />
+}
+
+<ng-template #additionalInfoCard>
+  @let links = [location.website, location.googleMapsLink];
+
+  <div class="additional-info-card">
+    <div class="header">
+      <img class="image" [src]="imageSrc.chadimLogo" />
+      <span class="title">{{ location.address.title }}</span>
+    </div>
+
+    <div class="content">
+      <span class="address" [innerHTML]="location.address | UserAddress"></span>
+    </div>
+
+    <div class="actions">
+      @for (l of links; track $index; let idx = $index) {
+        <button mat-raised-button class="button" color="accent" (click)="onOpenLink(l)">
+          <mat-icon>{{ MatIcons[idx] }}</mat-icon>
+          <span> {{ l.linkText }} </span>
+        </button>
+      }
+    </div>
+  </div>
+</ng-template>

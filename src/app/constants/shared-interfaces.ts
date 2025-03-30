@@ -6,7 +6,7 @@ import { GiftsComponent } from '../components/content/gifts/gifts.component';
 import { HomeComponent } from '../components/content/home/home.component';
 import { LocationComponent } from '../components/content/location/location.component';
 import { TimetableComponent } from '../components/content/timetable/timetable.component';
-import { AccountDialog, Guest } from './fire-store.types';
+import { AccountDialog, Guest, Hyperlink } from './fire-store.types';
 
 export enum LoadingState {
   None,
@@ -50,3 +50,13 @@ export interface ContentComponent {
   title?: string;
   component?: Type<ContentComponents>;
 }
+
+export const MatIcons = ['public', 'location_on', 'download'];
+
+export const OnOpenUrl = (link: Hyperlink, target: '_blank' | '_parent' | '_self' | '_top' | 'URL' | 'name' = '_blank') => {
+  if (link?.linkUrl == null) {
+    return;
+  }
+
+  window.open(link.linkUrl, target);
+};

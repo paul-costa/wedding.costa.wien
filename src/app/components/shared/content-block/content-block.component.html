@@ -1,4 +1,4 @@
-<div class="content-block">
+<div class="content-block" [ngClass]="{ grid: contentPosition === 'grid' }">
   @if (headerText; as h) {
     <div class="header">{{ h }}</div>
   }
@@ -6,10 +6,16 @@
     @for (t of bodyTexts; track t) {
       <span> {{ t }}</span>
     }
-    @for (l of bodyLinks; track l) {
-      <button mat-button color="primary" (click)="link.click()">{{ l.linkText }}</button>
-      <a class="link" target="_blank" [href]="l.linkUrl" #link>{{ l.linkText }}</a>
+
+    @for (c of additionalInfoCards; track c) {
+      <ng-container *ngTemplateOutlet="c" />
     }
-    <ng-content />
+
+    @for (l of hyperLinks; track l) {
+      <button mat-button color="primary" (click)="link.click()">{{ l.linkText }}</button>
+      <a class="display-none" target="_blank" [href]="l.linkUrl" #link>{{ l.linkText }}</a>
+    }
   </div>
+
+  <ng-content class="ng-content" />
 </div>

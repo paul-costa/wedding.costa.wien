@@ -1,0 +1,171 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '../styles/config.scss' as *;
+
+$_palettes: (
+  primary: (
+    0: #000000,
+    10: #00210e,
+    20: #00391c,
+    25: #004523,
+    30: #0d522d,
+    35: #1d5e38,
+    40: #2b6a43,
+    50: #45845a,
+    60: #5f9e72,
+    70: #79b98b,
+    80: #94d5a5,
+    90: #aff2c0,
+    95: #c2ffd0,
+    98: #eaffeb,
+    99: #f5fff3,
+    100: #ffffff,
+  ),
+  secondary: (
+    0: #000000,
+    10: #092011,
+    20: #1e3525,
+    25: #294130,
+    30: #354c3a,
+    35: #405846,
+    40: #4c6451,
+    50: #647d69,
+    60: #7d9782,
+    70: #97b29c,
+    80: #b2cdb6,
+    90: #cee9d1,
+    95: #dcf8df,
+    98: #eaffeb,
+    99: #f5fff3,
+    100: #ffffff,
+  ),
+  tertiary: (
+    0: #000000,
+    10: #410000,
+    20: #650904,
+    25: #75170e,
+    30: #852218,
+    35: #952e22,
+    40: #a63a2c,
+    50: #c65242,
+    60: #e76a59,
+    70: #ff8a78,
+    80: #ffb4a8,
+    90: #ffdad4,
+    95: #ffedea,
+    98: #fff8f6,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+  neutral: (
+    0: #000000,
+    10: #1e1b14,
+    20: #333028,
+    25: #3f3b33,
+    30: #4a463e,
+    35: #565249,
+    40: #625e55,
+    50: #7b776d,
+    60: #959086,
+    70: #b0aba0,
+    80: #ccc6ba,
+    90: #e9e2d6,
+    95: #f7f0e4,
+    98: #fff8ef,
+    99: #fffbff,
+    100: #ffffff,
+    4: #100e08,
+    6: #16130c,
+    12: #221f18,
+    17: #2d2a22,
+    22: #38342c,
+    24: #3c3931,
+    87: #e0d9cd,
+    92: #eee7db,
+    94: #f4ede1,
+    96: #faf3e6,
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #151d17,
+    20: #2a322b,
+    25: #353e36,
+    30: #404941,
+    35: #4c554d,
+    40: #586158,
+    50: #707970,
+    60: #8a938a,
+    70: #a4aea4,
+    80: #c0c9bf,
+    90: #dce5da,
+    95: #eaf3e8,
+    98: #f3fcf1,
+    99: #f6fff4,
+    100: #ffffff,
+  ),
+  error: (
+    0: #000000,
+    10: #410002,
+    20: #690005,
+    25: #7e0007,
+    30: #93000a,
+    35: #a80710,
+    40: #ba1a1a,
+    50: #de3730,
+    60: #ff5449,
+    70: #ff897d,
+    80: #ffb4ab,
+    90: #ffdad6,
+    95: #ffedea,
+    98: #fff8f7,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+);
+
+$_rest: (
+  secondary: map.get($_palettes, secondary),
+  neutral: map.get($_palettes, neutral),
+  neutral-variant: map.get($_palettes, neutral-variant),
+  error: map.get($_palettes, error),
+);
+
+/*
+----- ------ ----------- ------ ------ custom palettes  ---- ----- -----  ---- ----- -----
+*/
+
+$primary-palette: map.merge(map.get($_palettes, primary), $_rest);
+$tertiary-palette: map.merge(map.get($_palettes, tertiary), $_rest);
+
+$secondary-palette: map.merge(map.get($_palettes, secondary), $_rest);
+$neutral-palette: map.merge(map.get($_palettes, neutral), $_rest);
+$neutral-variant-palette: map.merge(map.get($_palettes, neutral-variant), $_rest);
+$error-palette: map.merge(map.get($_palettes, error), $_rest);
+
+/*
+ ----- ------ ----------- ------ ------ custom themes  ---- ----- -----  ---- ----- -----
+*/
+
+$custom-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: $primary-palette,
+      tertiary: $tertiary-palette,
+    ),
+  )
+);
+
+$custom-button-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: $primary-palette,
+      tertiary: $tertiary-palette,
+    ),
+  )
+);
+
+/*
+----- ------ ----------- ------ ------  x x x   ---- ----- -----  ---- ----- -----
+*/

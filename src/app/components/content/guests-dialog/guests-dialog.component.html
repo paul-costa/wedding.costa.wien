@@ -27,12 +27,13 @@
     </mat-radio-group>
 
     <div class="action-buttons-container">
-      <button mat-stroked-button class="cancel-button" (click)="onCancelButtonClick()">{{ content.actionCancelLabel }}</button>
+      <button mat-stroked-button class="primary-button cancel-button" (click)="onCancelButtonClick()">
+        {{ content.actionCancelLabel }}
+      </button>
       <button
         mat-flat-button
-        class="confirm-button"
+        class="mat-button confirm-button"
         [ngClass]="{ disabled: !selectedGuest || isGuestShowingUp === undefined }"
-        color="primary"
         [disabled]="!selectedGuest || isGuestShowingUp === undefined"
         (click)="onConfirmButtonClick()"
       >

@@ -14,7 +14,7 @@ const materialModules = [MatIconModule, MatButtonModule];
   selector: 'app-sidenav',
   imports: [BrowserModule, AppRoutingModule, ...materialModules],
   templateUrl: './sidenav.component.html',
-  styleUrl: './sidenav.component.scss',
+  styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnDestroy {
   @Input()

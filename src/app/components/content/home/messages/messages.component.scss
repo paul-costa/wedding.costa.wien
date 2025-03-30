@@ -1,4 +1,4 @@
-@use 'src/config.scss' as *;
+@use '../../../../../styles/config.scss' as *;
 @use '@angular/material' as mat;
 
 .messages-container {
@@ -32,11 +32,11 @@
       }
 
       &.admin {
-        background-color: $accent-red;
+        background-color: $mat-theme-tertiary-burgundy;
       }
     }
 
-    .messages-spinner {
+    .spinner .messages {
       transform: scale(0.5);
       margin: 0 auto auto;
     }
@@ -52,7 +52,7 @@
 
     .send-button {
       margin-top: 4px;
-      color: $accent-red;
+      color: $mat-theme-tertiary-burgundy;
     }
   }
 }

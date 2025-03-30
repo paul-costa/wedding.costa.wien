@@ -8,6 +8,7 @@ import { FireStoreService } from 'src/app/services/fire-store.service';
 import { ContentBlock } from '../../shared/content-block/content-block.component';
 
 const materialModules = [MatProgressBarModule];
+
 @Component({
   selector: 'app-dresscode',
   imports: [AsyncPipe, ContentBlock, NgTemplateOutlet, ...materialModules],

@@ -1,0 +1,59 @@
+@use '../styles/config.scss' as *;
+@use '@angular/material' as mat;
+
+@mixin l-transition {
+  transition: 250ms;
+  animation-delay: 150ms;
+  animation-timing-function: forwards;
+}
+
+@mixin s-transition {
+  transition: 150ms;
+  animation-delay: 100ms;
+  animation-timing-function: forwards;
+}
+
+@mixin header-text {
+  font-size: $xl-font-size;
+  line-height: $xl-font-size;
+  letter-spacing: 3px;
+  font-weight: 300;
+  color: $darkest-gray;
+  font-family: $default-header-font;
+
+  @media only screen and (max-width: $lg-breakpoint) {
+    font-size: $lg-font-size;
+    line-height: $lg-font-size;
+    letter-spacing: 2px;
+  }
+
+  @media only screen and (max-width: $md-breakpoint) {
+    font-size: $md-font-size;
+    line-height: $md-font-size;
+    letter-spacing: 1.5px;
+  }
+}
+
+@mixin body-text {
+  font-size: $md-font-size;
+  line-height: $md-font-size;
+  color: $medium-gray;
+  font-family: $default-body-font, monospace;
+
+  @media only screen and (max-width: $md-breakpoint) {
+    font-size: $sm-font-size;
+    line-height: $sm-font-size;
+  }
+}
+
+@mixin brighten-on-hover($multiplier) {
+  transition: 250ms;
+  animation-delay: 150ms;
+  animation-timing-function: forwards;
+  filter: brightness(calc(1 - $multiplier));
+
+  &:hover {
+    transform: scale(1.05);
+    filter: brightness(calc(1 + $multiplier));
+  }
+}

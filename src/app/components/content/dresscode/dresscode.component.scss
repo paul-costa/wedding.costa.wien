@@ -1,4 +1,5 @@
-@use 'src/config.scss' as *;
+@use '../../../../styles/config.scss' as *;
+@use '../../../../styles/mixins.scss' as mixin;
 @use '@angular/material' as mat;
 
 .main-container {
@@ -21,15 +22,16 @@
       flex: 1;
 
       .item-header {
+        @include mixin.header-text;
+
         font-size: $lg-font-size;
         line-height: $lg-font-size;
-        letter-spacing: 3px;
-        font-weight: 300;
-        color: $medium-gray;
         margin-bottom: 16px;
       }
 
       .item-content {
+        @include mixin.body-text;
+
         .list {
           list-style-type: '- ';
           padding-left: 24px;
@@ -70,7 +72,6 @@
 
       .item-container .item-header {
         font-size: $md-font-size;
-        letter-spacing: 2px;
         line-height: $md-font-size;
       }
     }
@@ -81,6 +82,5 @@
   .dresscode-content .dos-donts-container .item-container .item-header {
     font-size: $sm-font-size;
     line-height: $sm-font-size;
-    letter-spacing: 1.5px;
   }
 }

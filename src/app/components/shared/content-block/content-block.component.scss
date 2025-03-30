@@ -1,8 +1,10 @@
-@use 'src/config.scss' as *;
+@use '../../../../styles/config.scss' as *;
+@use '../../../../styles/_mixins.scss' as mixin;
 @use '@angular/material' as mat;
 
 .content-block {
   @include mat.elevation(4, $off-white);
+  @include mixin.l-transition;
 
   border-radius: $m-border-radius;
   background-color: $off-white;
@@ -10,7 +12,6 @@
   flex-direction: column;
   gap: 24px;
   padding: 24px 36px;
-  transition: 200ms;
 
   &:hover {
     @include mat.elevation(10, $off-white);
@@ -19,56 +20,54 @@
   }
 
   .header {
-    font-size: $xl-font-size;
-    line-height: $xl-font-size;
-    letter-spacing: 3px;
-    font-weight: 300;
-    color: $darkest-gray;
+    @include mixin.header-text;
+
     text-align: center;
   }
 
   .body {
-    font-size: $md-font-size;
-    line-height: $md-font-size;
-    color: $medium-gray;
+    @include mixin.body-text;
+
     display: flex;
     flex-direction: column;
     gap: 24px;
 
-    .link {
-      display: none;
+    .hints {
+      display: flex;
+    }
+  }
+
+  .hint-card {
+    margin-top: 24px;
+  }
+
+  &.grid {
+    display: grid;
+    row-gap: 24px;
+    grid-template-columns: repeat(2, auto);
+
+    .header {
+      grid-column: 1 / span 2;
+    }
+
+    .body {
+      grid-column: 1 / span 1;
+    }
+
+    @media only screen and (max-width: $lg-breakpoint) {
+      row-gap: 12px;
+    }
+
+    @media only screen and (max-width: $md-breakpoint) {
+      display: flex;
     }
   }
 
   @media only screen and (max-width: $lg-breakpoint) {
     padding: 24px 48px;
-
-    .header {
-      font-size: $lg-font-size;
-      line-height: $lg-font-size;
-      letter-spacing: 2px;
-    }
-
-    .body {
-      font-size: $md-font-size;
-      font-weight: normal;
-    }
   }
 
   @media only screen and (max-width: $md-breakpoint) {
     padding: 24px;
-
-    .header {
-      font-size: $md-font-size;
-      line-height: $md-font-size;
-      letter-spacing: 1.5px;
-    }
-
-    .body {
-      font-size: $sm-font-size;
-      line-height: $sm-font-size;
-      padding: 0;
-      font-weight: normal;
-    }
   }
 }
