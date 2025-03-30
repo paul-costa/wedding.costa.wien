@@ -12,12 +12,12 @@
   height: calc(100% - 48px);
 
   .logo {
-    @include mat.elevation(6, rgba($mat-theme-primary-green, 0.3));
-    @include mixin.brighten-on-hover(0.025);
+    @include mat.elevation(6, rgba($mat-theme-primary-green, 0.6));
+    @include mixin.brighten-on-hover(0.01);
 
     background-color: $off-white;
     border-radius: 24px;
-    padding: 6px 24px;
+    padding: 0px 24px;
     height: 36px;
     align-items: center;
     display: flex;
@@ -25,11 +25,11 @@
     gap: 12px;
     cursor: pointer;
     width: calc(100% - 48px);
-    font-size: 22px;
-    line-height: 22px;
+    font-size: $md-font-size;
+    line-height: $md-font-size;
     letter-spacing: 3px;
     font-style: italic;
-    font-weight: 200;
+    font-weight: 300;
     color: $black;
     margin-bottom: 8px;
 
@@ -38,37 +38,49 @@
     }
 
     &:hover {
-      @include mat.elevation(12, rgba($mat-theme-primary-green, 0.3));
+      @include mat.elevation(12, rgba($mat-theme-primary-green, 0.9));
+      @include mixin.brighten-on-hover(0.01);
     }
   }
 
   .button {
-    @include mixin.s-transition;
-    @include mixin.brighten-on-hover(0.025);
+    @include mixin.brighten-on-hover(0.01);
 
     width: 100%;
     padding: 12px;
     border-radius: 24px;
     justify-content: flex-start;
     font-size: $md-font-size;
+    line-height: $md-font-size;
     font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: $off-white;
+    transition: 150ms;
 
     &.active {
-      @include mixin.brighten-on-hover(0.025);
+      @include mixin.brighten-on-hover(0.01);
 
       background: $mat-theme-primary-green;
       margin-bottom: 8px;
     }
 
     &.account {
+      @include mat.elevation(6, rgba($mat-theme-tertiary-burgundy, 0.8));
+      @include mixin.brighten-on-hover(0.01);
+
       margin-top: auto;
+      background: rgba($mat-theme-tertiary-burgundy, 0.8);
+
+      &:hover {
+        @include mat.elevation(12, rgba($mat-theme-tertiary-burgundy, 1));
+        @include mixin.brighten-on-hover(0.01);
+      }
     }
 
     .button-icon {
       font-size: $md-font-size;
+      line-height: $md-font-size;
       width: $md-font-size;
       height: $md-font-size;
       margin-right: 12px;
@@ -90,10 +102,12 @@
     .logo,
     .button {
       font-size: $sm-font-size;
+      line-height: $sm-font-size;
       letter-spacing: 1.5px;
 
       .button-icon {
         font-size: $sm-font-size;
+        line-height: $sm-font-size;
         width: $sm-font-size;
         height: $sm-font-size;
         margin-right: 8px;
@@ -106,12 +120,11 @@
     padding: 12px 0;
 
     .logo {
-      @include mixin.l-transition;
+      animation: centerButtonLogo 500ms forwards 150ms;
 
       border-radius: 0;
       width: 36px;
       padding: 0 6px 0 30px;
-      animation-name: centerButtonLogo;
     }
 
     span {
@@ -123,13 +136,12 @@
       padding: 0;
 
       .button-icon {
-        @include mixin.l-transition;
+        animation: centerButtonIcon 500ms forwards 150ms;
 
         font-size: $sm-font-size;
         width: $sm-font-size;
         height: $sm-font-size;
         margin: 0 18px;
-        animation-name: centerButtonIcon;
       }
     }
   }

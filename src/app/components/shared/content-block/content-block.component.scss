@@ -1,5 +1,6 @@
 @use '../../../../styles/config.scss' as *;
 @use '../../../../styles/_mixins.scss' as mixin;
+@use '../../../../styles/theme-colors.scss' as theme;
 @use '@angular/material' as mat;
 
 .content-block {
@@ -13,12 +14,6 @@
   gap: 24px;
   padding: 24px 36px;
 
-  &:hover {
-    @include mat.elevation(10, $off-white);
-
-    padding-bottom: 48px;
-  }
-
   .header {
     @include mixin.header-text;
 
@@ -31,14 +26,12 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-
-    .hints {
-      display: flex;
-    }
   }
 
-  .hint-card {
-    margin-top: 24px;
+  &:hover {
+    @include mat.elevation(8, $off-white);
+
+    padding-bottom: 36px;
   }
 
   &.grid {
@@ -69,5 +62,23 @@
 
   @media only screen and (max-width: $md-breakpoint) {
     padding: 24px;
+  }
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media only screen and (max-width: $xl-breakpoint) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media only screen and (max-width: $lg-breakpoint) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (max-width: $md-breakpoint) {
+    display: flex;
+    flex-direction: column;
   }
 }

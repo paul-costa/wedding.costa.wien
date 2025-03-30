@@ -11,10 +11,12 @@
       <ng-container *ngTemplateOutlet="c" />
     }
 
-    @for (l of hyperLinks; track l) {
-      <button mat-button color="primary" (click)="link.click()">{{ l.linkText }}</button>
-      <a class="display-none" target="_blank" [href]="l.linkUrl" #link>{{ l.linkText }}</a>
-    }
+    <div class="buttons">
+      @for (l of hyperLinks; track l) {
+        <button mat-raised-button class="mat-button" (click)="link.click()">{{ l.linkText }}</button>
+        <a class="display-none" target="_blank" [href]="l.linkUrl" #link>{{ l.linkText }}</a>
+      }
+    </div>
   </div>
 
   <ng-content class="ng-content" />

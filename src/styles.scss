@@ -5,11 +5,15 @@
 
 :root {
   color-scheme: dark;
+
+  /*
+  * ---  ---  --- reassign css variables ---  ---  ---
+  */
+  --mat-sys-background: #{$mat-theme-background-green};
 }
 
 html {
   @include mat.core();
-
   @include mat.theme(
     (
       color: (
@@ -36,6 +40,7 @@ body {
 }
 
 /* --- shared general components ----------------------------------------------------- */
+
 .display-none {
   display: none;
 }
@@ -46,7 +51,56 @@ body {
   top: 0;
 }
 
+.progress-bar,
+.spinner,
+.mat-button {
+  &.light-green {
+    @include mat.theme(
+      (
+        color: (
+          theme-type: light,
+          primary: mat.$green-palette,
+        ),
+      )
+    );
+  }
+
+  &.dark-green {
+    @include mat.theme(
+      (
+        color: (
+          theme-type: dark,
+          primary: mat.$green-palette,
+        ),
+      )
+    );
+  }
+
+  &.light-magenta {
+    @include mat.theme(
+      (
+        color: (
+          theme-type: light,
+          primary: mat.$magenta-palette,
+        ),
+      )
+    );
+  }
+
+  &.dark-magenta {
+    @include mat.theme(
+      (
+        color: (
+          theme-type: dark,
+          primary: mat.$magenta-palette,
+        ),
+      )
+    );
+  }
+}
+
 /* --- shared wrapping component ----------------------------------------------------- */
+
 .main-container {
   display: flex;
   gap: 36px;
@@ -72,7 +126,6 @@ body {
 
 .mdc-text-field--filled {
   background-color: $light-gray !important;
-
   .mdc-floating-label {
     color: $darkest-gray !important;
   }
@@ -87,20 +140,20 @@ body {
   font-size: $md-font-size;
   text-align: left;
   cursor: pointer;
-
   @media only screen and (max-width: $sm-breakpoint) {
     font-size: $sm-font-size;
   }
 }
 
-/* ------------------------------------------------------------------------------- */
-
+/**
+*  -------------------------------------------------------------------------------
+**/
 .additional-info-card {
   @include mat.elevation(4);
   @include mixin.l-transition;
-  @include mixin.brighten-on-hover(0.05);
+  @include mixin.brighten-on-hover(0.01);
 
-  background-color: $lightest-gray;
+  background-color: rgba($mat-theme-neutralVariant-turquoise, 0.25);
   padding: 24px;
   border-radius: $m-border-radius;
   flex: 1;
@@ -177,7 +230,7 @@ body {
   }
 
   @media only screen and (max-width: $xl-breakpoint) {
-    min-width: 360px;
+    min-width: 320px;
 
     .header .title {
       font-size: $md-font-size;

@@ -46,14 +46,14 @@
   }
 }
 
-@mixin brighten-on-hover($multiplier) {
+@mixin brighten-on-hover($changeVal) {
+  filter: brightness(calc(1 - $changeVal));
   transition: 250ms;
   animation-delay: 150ms;
   animation-timing-function: forwards;
-  filter: brightness(calc(1 - $multiplier));
 
   &:hover {
-    transform: scale(1.05);
-    filter: brightness(calc(1 + $multiplier));
+    transform: scale(calc(1 + $changeVal));
+    filter: brightness(calc(1 + $changeVal));
   }
 }

@@ -1,7 +1,7 @@
 @let d = homepage;
 
 @if (currentLoadingState === LoadingState.Loading) {
-  <mat-progress-bar class="progress-bar tertiary" mode="indeterminate" />
+  <mat-progress-bar class="progress-bar dark-magenta" mode="indeterminate" />
 } @else if (currentLoadingState === LoadingState.Success && d) {
   <app-content-block class="account-info" [headerText]="d.accountHeaderText" [bodyTexts]="d.accountBodyText" />
 
