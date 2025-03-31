@@ -12,8 +12,14 @@
     @include mixin.l-transition;
 
     padding: 24px;
+  }
 
-    @media only screen and (max-width: $md-breakpoint) {
+  @media only screen and (max-width: $md-breakpoint) {
+    mat-drawer {
+      border-radius: initial;
+    }
+
+    .content {
       padding: 12px 24px;
     }
   }

@@ -4,27 +4,26 @@
 
 .navbar {
   display: flex;
-  padding: 24px;
-  gap: 6px;
+  padding: 12px 6px;
   background-color: $dark-gray;
   flex-direction: column;
   letter-spacing: 3px;
-  height: calc(100% - 48px);
+  height: calc(100% - 24px);
 
   .logo {
     @include mat.elevation(6, rgba($mat-theme-primary-green, 0.6));
     @include mixin.brighten-on-hover(0.01);
 
     background-color: $off-white;
-    border-radius: 24px;
-    padding: 0px 24px;
-    height: 36px;
+    border-radius: 6px;
+    padding: 12px;
+    height: 42px;
     align-items: center;
     display: flex;
     justify-content: space-between;
     gap: 12px;
     cursor: pointer;
-    width: calc(100% - 48px);
+    width: calc(100% - 24px);
     font-size: $md-font-size;
     line-height: $md-font-size;
     letter-spacing: 3px;
@@ -47,8 +46,8 @@
     @include mixin.brighten-on-hover(0.01);
 
     width: 100%;
-    padding: 12px;
-    border-radius: 24px;
+    padding: 24px 12px;
+    border-radius: 6px;
     justify-content: flex-start;
     font-size: $md-font-size;
     line-height: $md-font-size;

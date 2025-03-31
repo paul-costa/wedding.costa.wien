@@ -22,10 +22,8 @@
       flex: 1;
 
       .item-header {
-        @include mixin.header-text;
+        @include mixin.nav-text;
 
-        font-size: $lg-font-size;
-        line-height: $lg-font-size;
         margin-bottom: 16px;
       }
 

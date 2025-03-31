@@ -25,18 +25,17 @@ html {
     )
   );
 
-  // @include mat.core-theme(theme.$custom-theme);
-
   height: 100%;
 }
 
 body {
+  @include mixin.body-text;
+
   margin: 0;
   height: 100%;
-  font-family: $default-body-font;
 
-  background: rgba(var(--mat-sys-surface), 0.4);
-  color: rgba(var(--mat-sys-on-surface), 0.4);
+  background: rgba(var(--mat-sys-surface), 0.5);
+  color: rgba(var(--mat-sys-on-surface), 0.5);
 }
 
 /* --- shared general components ----------------------------------------------------- */
@@ -149,11 +148,12 @@ body {
 *  -------------------------------------------------------------------------------
 **/
 .additional-info-card {
-  @include mat.elevation(4);
+  @include mat.elevation(4, rgba($mat-theme-neutralVariant-turquoise, 0.2));
   @include mixin.l-transition;
-  @include mixin.brighten-on-hover(0.01);
 
-  background-color: rgba($mat-theme-neutralVariant-turquoise, 0.25);
+  animation-delay: 250ms;
+  filter: brightness(0.95);
+  background-color: rgba($mat-theme-neutralVariant-turquoise, 0.2);
   padding: 24px;
   border-radius: $m-border-radius;
   flex: 1;
@@ -167,14 +167,15 @@ body {
 
   .header {
     display: flex;
-    gap: 24px;
+    gap: 12px;
     align-items: center;
 
     .image {
       @include mat.elevation(6);
 
       border-radius: 50%;
-      width: 120px;
+      width: 100px;
+      height: 100px;
     }
 
     .title {
@@ -192,8 +193,9 @@ body {
     .address {
       font-size: $md-font-size;
       line-height: $md-font-size;
+      letter-spacing: 2px;
       white-space: break-spaces;
-      font-weight: 300;
+      font-weight: 200;
     }
   }
 
@@ -226,17 +228,14 @@ body {
   }
 
   &:hover {
-    @include mat.elevation(12);
+    @include mat.elevation(12, rgba($mat-theme-neutralVariant-turquoise, 0.8));
+
+    transform: scale(1.025);
+    filter: brightness(1.05);
   }
 
   @media only screen and (max-width: $xl-breakpoint) {
     min-width: 320px;
-
-    .header .title {
-      font-size: $md-font-size;
-      line-height: $md-font-size;
-      letter-spacing: 2px;
-    }
   }
 
   @media only screen and (max-width: $lg-breakpoint) {
@@ -244,15 +243,30 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: end;
-    gap: 16px;
+    gap: 12px;
 
-    .header,
-    .content {
-      height: 80px;
+    .header {
+      gap: 12px;
+
+      .title {
+        font-size: $md-font-size;
+        line-height: $md-font-size;
+        letter-spacing: 1.5px;
+        font-weight: 200;
+      }
 
       .image {
         height: 80px;
         width: 80px;
+      }
+    }
+
+    .content {
+      height: 80px;
+
+      .address {
+        font-size: $sm-font-size;
+        line-height: $sm-font-size;
       }
     }
 
@@ -262,43 +276,66 @@ body {
   }
 
   @media only screen and (max-width: $md-breakpoint) {
-    display: flex;
-    min-width: auto;
-    align-items: normal;
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 
     .header {
-      height: fit-content;
-      gap: 12px;
+      grid-column: 1 / span 1;
+      gap: 6px;
 
       .image {
-        height: 60px;
-        width: 60px;
+        height: 50px;
+        width: 50px;
       }
     }
 
     .content {
-      height: fit-content;
+      grid-column: 2 / span 3;
+      height: 50px;
 
       .address {
         font-size: $xs-font-size;
-        line-height: $xs-font-size;
         line-height: $xs-font-size;
       }
     }
 
     .actions {
+      grid-column: 1 / span 3;
+
       .button {
+        border-radius: 12px;
+
         span {
           font-size: $xs-font-size;
           line-height: $xs-font-size;
           line-height: $xs-font-size;
           overflow: hidden;
         }
+      }
+    }
+  }
 
-        mat-icon {
-          display: none;
-        }
+  @media only screen and (max-width: $sm-breakpoint) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    min-width: auto;
+
+    .header .image {
+      display: none;
+    }
+
+    .content {
+      height: fit-content;
+    }
+
+    .actions {
+      gap: 6px;
+      width: 100%;
+
+      .button {
+        border-radius: 6px;
       }
     }
   }

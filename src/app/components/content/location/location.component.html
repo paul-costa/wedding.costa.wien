@@ -25,7 +25,7 @@
         <ng-container *ngTemplateOutlet="additionalInfoCard" />
       </div>
 
-      <button mat-raised-button class="google-maps-route-button" color="accent" (click)="googleMapsRoute.click()">
+      <button mat-raised-button class="google-maps-route-button" (click)="googleMapsRoute.click()">
         {{ journey.googleMapsRoute.general.linkText }}
       </button>
       <a class="display-none" target="_blank" [href]="journey.googleMapsRoute.general.linkUrl" #googleMapsRoute></a>

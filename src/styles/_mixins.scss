@@ -14,23 +14,43 @@
 }
 
 @mixin header-text {
-  font-size: $xl-font-size;
-  line-height: $xl-font-size;
-  letter-spacing: 3px;
-  font-weight: 300;
   color: $darkest-gray;
   font-family: $default-header-font;
+  font-size: $xl-font-size;
+  line-height: $xl-font-size;
+  font-weight: 300;
+  letter-spacing: 3px;
 
   @media only screen and (max-width: $lg-breakpoint) {
     font-size: $lg-font-size;
     line-height: $lg-font-size;
-    letter-spacing: 2px;
+    font-weight: 250;
+    letter-spacing: 2.5px;
   }
 
   @media only screen and (max-width: $md-breakpoint) {
     font-size: $md-font-size;
     line-height: $md-font-size;
-    letter-spacing: 1.5px;
+    font-weight: 200;
+    letter-spacing: 20px;
+  }
+}
+
+@mixin nav-text {
+  color: $darkest-gray;
+  font-family: $default-header-font;
+  font-size: $md-font-size;
+  line-height: $md-font-size;
+  font-weight: 250;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  @media only screen and (max-width: $lg-breakpoint) {
+    font-size: $sm-font-size;
+    line-height: $sm-font-size;
+    padding: 12px;
+    font-weight: 200;
+    letter-spacing: 2px;
   }
 }
 
@@ -38,7 +58,7 @@
   font-size: $md-font-size;
   line-height: $md-font-size;
   color: $medium-gray;
-  font-family: $default-body-font, monospace;
+  font-family: $default-body-font;
 
   @media only screen and (max-width: $md-breakpoint) {
     font-size: $sm-font-size;

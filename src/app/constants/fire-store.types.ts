@@ -78,13 +78,13 @@ export interface Dresscode {
 }
 
 export interface ContentBlockHeaderAndList {
-  header: string;
-  content: string[];
+  header?: string;
+  content?: string[];
 }
 
 export interface Hyperlink {
-  linkText: string;
-  linkUrl: string;
+  linkText?: string;
+  linkUrl?: string;
 }
 
 export interface LocationJourney {
@@ -108,7 +108,7 @@ export interface Journey {
   carTabParkingBodyTexts?: string[];
   publicTabLabel?: string;
   publicTabSteps?: Record<number, string[]>;
-  googleMapsRoute?: { general: Hyperlink; car: Hyperlink; public: Hyperlink };
+  googleMapsRoute?: { general?: Hyperlink; car?: Hyperlink; public?: Hyperlink };
 }
 
 export interface Address {
