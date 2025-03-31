@@ -1,4 +1,3 @@
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { provideRouter, RouterModule, Routes, withComponentInputBinding } from '@angular/router';
 import { DosDontsComponent } from 'src/app/components/content/dos-donts/dos-donts.component';
@@ -18,14 +17,20 @@ const routes: Routes = [
   { path: 'gifts', component: GiftsComponent },
   { path: 'gallery', component: GalleryComponent },
   {
-    path: '*',
+    path: '',
     redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [provideRouter(routes, withComponentInputBinding()), Location, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [provideRouter(routes, withComponentInputBinding())],
 })
 export class AppRoutingModule {}
