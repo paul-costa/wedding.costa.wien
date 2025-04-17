@@ -34,6 +34,10 @@
 
     .guests-form-field {
       width: 100%;
+
+      ::ng-deep .mat-mdc-select-value-text {
+        color: $darkest-gray !important;
+      }
     }
   }
 
@@ -66,9 +70,18 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      background: $light-gray;
+      background: $dark-gray;
+      color: $off-white;
       padding: 6px 12px;
       border-radius: $m-border-radius;
+
+      &.disabled {
+        opacity: 0.25;
+      }
+
+      ::ng-deep .mdc-label {
+        color: $off-white;
+      }
     }
 
     .action-buttons-container {
@@ -115,6 +128,10 @@
       .disabled-guest-hint {
         font-size: $sm-font-size;
       }
+    }
+
+    .actions-container .radio-button-group ::ng-deep .mdc-label {
+      font-size: $sm-font-size;
     }
   }
 }

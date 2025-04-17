@@ -77,8 +77,22 @@
 }
 
 @media only screen and (max-width: $md-breakpoint) {
-  .dresscode-content .dos-donts-container .item-container .item-header {
-    font-size: $sm-font-size;
-    line-height: $sm-font-size;
+  .dresscode-content .dos-donts-container .item-container {
+    .item-header {
+      font-size: $sm-font-size;
+      line-height: $sm-font-size;
+    }
+
+    .item-content .images-container {
+      gap: 16px;
+      margin-top: 16px;
+    }
+  }
+}
+
+@media only screen and (max-width: $sm-breakpoint) {
+  .dresscode-content .dos-donts-container .item-container .item-content .images-container {
+    display: flex;
+    flex-direction: column;
   }
 }

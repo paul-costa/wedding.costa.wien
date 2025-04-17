@@ -108,11 +108,23 @@
 
 @media only screen and (max-width: $md-breakpoint) {
   .contact-container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
 
     .contact .contact-header .name {
       font-size: $sm-font-size;
       letter-spacing: 1.5px;
+    }
+  }
+}
+
+@media only screen and (max-width: $sm-breakpoint) {
+  .contact-container .contact {
+    gap: 12px;
+
+    .contact-header {
+      flex-direction: column;
+      gap: 6px;
     }
   }
 }

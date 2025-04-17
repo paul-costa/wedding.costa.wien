@@ -29,6 +29,7 @@
     cursor: pointer;
     border-radius: $m-border-radius;
     grid-column: 1 / span 1;
+    object-fit: cover;
 
     &:nth-child(2) {
       grid-column: 2 / span 1;
@@ -61,6 +62,7 @@
       @include mixin.brighten-on-hover(0.025);
 
       aspect-ratio: 3 / 1;
+      border-radius: $m-border-radius;
       object-fit: cover;
       cursor: pointer;
       width: 100%;
@@ -94,7 +96,7 @@
 
     .img-container .img {
       width: 500px;
-      aspect-ratio: 3 / 1.5;
+      aspect-ratio: 3 / 1;
     }
   }
 
@@ -104,7 +106,7 @@
 
     .img {
       height: 100%;
-      aspect-ratio: 3 / 1.5;
+      aspect-ratio: 3 / 1;
     }
   }
 }
@@ -112,7 +114,7 @@
 @media only screen and (max-width: $lg-breakpoint) {
   .images-container {
     .img-container .img {
-      aspect-ratio: 3 / 1.5;
+      aspect-ratio: 2 / 1;
       width: 320px;
     }
 
@@ -144,7 +146,6 @@
 
     .img-container .img {
       width: 100%;
-      aspect-ratio: 3 / 1;
 
       &.is-hovered:hover .hint {
         font-size: $sm-font-size;
@@ -160,9 +161,8 @@
       gap: 12px;
 
       .img {
-        aspect-ratio: 3 / 1;
+        aspect-ratio: 2 / 1;
       }
-
       .hint {
         font-size: $xs-font-size;
         line-height: $xs-font-size;
@@ -175,9 +175,9 @@
     }
 
     .additional-info-card {
-      width: 100%;
+      min-width: auto;
+      display: flex;
       align-items: normal;
-      gap: 12px;
     }
   }
 }
@@ -185,13 +185,9 @@
 @media only screen and (max-width: $sm-breakpoint) {
   .map-container,
   .images-container {
-    width: 300px;
+    width: 100%;
     gap: 12px;
     align-self: flex-end;
     margin-top: 0;
-  }
-
-  .map-container:last-child {
-    width: calc(300px - 48px);
   }
 }
