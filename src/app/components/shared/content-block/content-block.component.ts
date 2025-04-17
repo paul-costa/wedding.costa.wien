@@ -24,7 +24,7 @@ export class ContentBlock {
   hyperLinks: Hyperlink[] = [];
 
   @Input()
-  contentPosition: 'flex' | 'grid' = 'flex';
+  contentPosition: 'flex' | 'grid' | 'tab' = 'flex';
 
   @Input()
   additionalInfoCards: TemplateRef<HTMLElement>[];

@@ -18,13 +18,13 @@
   font-family: $default-header-font;
   font-size: $xl-font-size;
   line-height: $xl-font-size;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 3px;
 
   @media only screen and (max-width: $lg-breakpoint) {
     font-size: $lg-font-size;
     line-height: $lg-font-size;
-    font-weight: 250;
+    font-weight: 300;
     letter-spacing: 2.5px;
   }
 
@@ -33,6 +33,25 @@
     line-height: $md-font-size;
     font-weight: 200;
     letter-spacing: 2px;
+  }
+}
+
+@mixin sub-header-text {
+  color: $darkest-gray;
+  font-family: $default-header-font;
+  font-size: $md-font-size;
+  line-height: $md-font-size;
+  font-weight: 300;
+  letter-spacing: 2px;
+
+  @media only screen and (max-width: $lg-breakpoint) {
+    font-weight: 200;
+    letter-spacing: 1.5px;
+  }
+
+  @media only screen and (max-width: $md-breakpoint) {
+    font-size: $sm-font-size;
+    line-height: $sm-font-size;
   }
 }
 

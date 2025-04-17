@@ -103,8 +103,6 @@ export interface Llocation {
 export interface Journey {
   headerText?: string;
   carTabLabel?: string;
-  carTabBodySteps?: string[];
-  carTabParkingHeaderText?: string;
   carTabParkingBodyTexts?: string[];
   publicTabLabel?: string;
   publicTabSteps?: Record<number, string[]>;

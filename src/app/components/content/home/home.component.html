@@ -12,7 +12,7 @@
       <app-content-block [headerText]="d.dateEventHeaderText" [bodyTexts]="[d.dateEventBodyText]">
         <a class="display-none" href="/assets/calendar-event.ics" download="Hochzeit_Costa" #calLink></a>
         <button mat-raised-button color="primary" (click)="calLink.click()">
-          <mat-icon>{{ MatIcons[2] }}</mat-icon>
+          <mat-icon>download</mat-icon>
           <span>{{ d.dateEventButtonText }} </span>
         </button>
       </app-content-block>

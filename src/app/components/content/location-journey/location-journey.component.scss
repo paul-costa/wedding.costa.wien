@@ -2,192 +2,275 @@
 @use '../../../../styles/_mixins.scss' as mixin;
 @use '@angular/material' as mat;
 
-.hint {
-  @include mixin.l-transition;
-  @include mixin.body-text;
+.main-container {
+  flex-direction: column;
 
-  font-size: $sm-font-size;
-  line-height: $sm-font-size;
-  text-align: center;
-  grid-column: 1 / span 2;
-  letter-spacing: 2px;
-}
+  .hint {
+    @include mixin.l-transition;
+    @include mixin.body-text;
 
-.images-container {
-  @include mixin.l-transition;
-
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(2, 1fr);
-  width: 800px;
-
-  .img-container .img {
-    @include mat.elevation(4);
-    @include mixin.brighten-on-hover(0.025);
-
-    width: 100%;
-    cursor: pointer;
-    border-radius: $m-border-radius;
-    grid-column: 1 / span 1;
-    object-fit: cover;
-
-    &:nth-child(2) {
-      grid-column: 2 / span 1;
-    }
+    font-size: $sm-font-size;
+    line-height: $sm-font-size;
+    text-align: center;
+    grid-column: 1 / span 2;
+    letter-spacing: 2px;
   }
 
-  &.is-hovered:hover .hint {
-    font-size: $lg-font-size;
-    line-height: $lg-font-size;
-    font-weight: 500;
-  }
-}
+  .images-container {
+    @include mixin.l-transition;
 
-.map-container {
-  grid-column: 1 / span 2;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 24px;
-  margin-top: 12px;
-
-  .img-wrapper {
-    display: flex;
+    display: grid;
     gap: 24px;
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    width: 800px;
 
-    .img {
+    .img-container .img {
       @include mat.elevation(4);
       @include mixin.brighten-on-hover(0.025);
 
-      aspect-ratio: 3 / 1;
-      border-radius: $m-border-radius;
-      object-fit: cover;
-      cursor: pointer;
       width: 100%;
-    }
+      cursor: pointer;
+      border-radius: $m-border-radius;
+      grid-column: 1 / span 1;
+      object-fit: cover;
 
-    &.is-hovered:hover {
-      .img {
-        @include mat.elevation(8);
+      &:nth-child(2) {
+        grid-column: 2 / span 1;
       }
-
-      .hint {
-        font-size: $lg-font-size;
-        line-height: $lg-font-size;
-        font-weight: 500;
-      }
-    }
-  }
-}
-
-.google-maps-route-button {
-  margin-top: 12px;
-  grid-column: 1 / span 2;
-  width: 100%;
-}
-
-@media only screen and (max-width: $xl-breakpoint) {
-  .images-container {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-
-    .img-container .img {
-      width: 500px;
-      aspect-ratio: 3 / 1;
-    }
-  }
-
-  .map-container .img-wrapper {
-    height: 100%;
-    gap: 16px;
-
-    .img {
-      height: 100%;
-      aspect-ratio: 3 / 1;
-    }
-  }
-}
-
-@media only screen and (max-width: $lg-breakpoint) {
-  .images-container {
-    .img-container .img {
-      aspect-ratio: 2 / 1;
-      width: 320px;
     }
 
     &.is-hovered:hover .hint {
       font-size: $lg-font-size;
       line-height: $lg-font-size;
-      letter-spacing: 2px;
-    }
-  }
-
-  .map-container .img-wrapper {
-    &.is-hovered &:hover .hint {
-      font-size: $lg-font-size;
-      line-height: $lg-font-size;
-      letter-spacing: 2px;
-    }
-  }
-}
-
-@media only screen and (max-width: $md-breakpoint) {
-  .images-container {
-    margin-top: 12px;
-    width: 100%;
-
-    .hint {
-      font-size: $xs-font-size;
-      line-height: $xs-font-size;
-    }
-
-    .img-container .img {
-      width: 100%;
-
-      &.is-hovered:hover .hint {
-        font-size: $sm-font-size;
-        line-height: $sm-font-size;
-      }
+      font-weight: 500;
     }
   }
 
   .map-container {
-    flex-direction: column;
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 12px;
 
     .img-wrapper {
-      gap: 12px;
+      display: flex;
+      gap: 24px;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
 
       .img {
-        aspect-ratio: 2 / 1;
+        @include mat.elevation(4);
+        @include mixin.brighten-on-hover(0.025);
+
+        aspect-ratio: 3 / 1;
+        border-radius: $m-border-radius;
+        object-fit: cover;
+        cursor: pointer;
+        width: 100%;
       }
+
+      &.is-hovered:hover {
+        .img {
+          @include mat.elevation(8);
+        }
+
+        .hint {
+          font-size: $lg-font-size;
+          line-height: $lg-font-size;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .google-maps-route-button {
+    margin-top: 12px;
+    grid-column: 1 / span 2;
+    width: 100%;
+  }
+
+  .journey {
+    .body {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      padding: 24px 36px;
+
+      .texts {
+        @include mixin.body-text;
+
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        flex: 1;
+      }
+
+      .images-container {
+        display: flex;
+        max-width: 468px;
+
+        .img-container .img {
+          aspect-ratio: 1.5 / 1;
+        }
+      }
+
+      &.two-sides {
+        & > * {
+          flex: 1;
+        }
+
+        .route {
+          .sub-header {
+            @include mixin.sub-header-text;
+          }
+
+          .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 8px;
+            margin-left: 12px;
+
+            @include mixin.body-text;
+
+            .step {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .actions-container {
+      padding: 0 36px 24px 36px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media only screen and (max-width: $xl-breakpoint) {
+    .images-container {
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+
+      .img-container .img {
+        width: 500px;
+        aspect-ratio: 3 / 1;
+      }
+    }
+
+    .map-container .img-wrapper {
+      height: 100%;
+      gap: 16px;
+
+      .img {
+        height: 100%;
+        aspect-ratio: 3 / 1;
+      }
+    }
+  }
+
+  @media only screen and (max-width: $lg-breakpoint) {
+    .images-container {
+      .img-container .img {
+        aspect-ratio: 2 / 1;
+        width: 320px;
+      }
+
+      &.is-hovered:hover .hint {
+        font-size: $lg-font-size;
+        line-height: $lg-font-size;
+        letter-spacing: 2px;
+      }
+    }
+
+    .map-container .img-wrapper {
+      &.is-hovered &:hover .hint {
+        font-size: $lg-font-size;
+        line-height: $lg-font-size;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: $md-breakpoint) {
+    .images-container {
+      margin-top: 12px;
+      width: 100%;
+
       .hint {
         font-size: $xs-font-size;
         line-height: $xs-font-size;
       }
 
-      &.is-hovered:hover .hint {
-        font-size: $sm-font-size;
-        line-height: $sm-font-size;
+      .img-container .img {
+        width: 100%;
+
+        &.is-hovered:hover .hint {
+          font-size: $sm-font-size;
+          line-height: $sm-font-size;
+        }
       }
     }
 
-    .additional-info-card {
-      min-width: auto;
-      display: flex;
-      align-items: normal;
+    .map-container {
+      flex-direction: column;
+
+      .img-wrapper {
+        gap: 12px;
+
+        .img {
+          aspect-ratio: 2 / 1;
+        }
+        .hint {
+          font-size: $xs-font-size;
+          line-height: $xs-font-size;
+        }
+
+        &.is-hovered:hover .hint {
+          font-size: $sm-font-size;
+          line-height: $sm-font-size;
+        }
+      }
+
+      .additional-info-card {
+        min-width: auto;
+        display: flex;
+        align-items: normal;
+      }
+    }
+
+    .journey {
+      .body {
+        padding: 24px;
+        flex-direction: column;
+
+        .texts {
+          gap: 12px;
+        }
+
+        .images-container {
+          max-width: none;
+        }
+      }
+
+      .actions-container {
+        padding: 0 24px 24px 24px;
+      }
     }
   }
-}
 
-@media only screen and (max-width: $sm-breakpoint) {
-  .map-container,
-  .images-container {
-    width: 100%;
-    gap: 12px;
-    align-self: flex-end;
-    margin-top: 0;
+  @media only screen and (max-width: $sm-breakpoint) {
+    .map-container,
+    .images-container {
+      width: 100%;
+      gap: 12px;
+      align-self: flex-end;
+      margin-top: 0;
+    }
   }
 }

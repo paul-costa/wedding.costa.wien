@@ -1,21 +1,22 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 import { finalize, from, Observable } from 'rxjs';
 import { LocationJourney } from 'src/app/constants/fire-store.types';
-import { LoadingState, MatIcons, OnOpenUrl as onOpenLink } from 'src/app/constants/shared-interfaces';
+import { LoadingState, OnOpenUrl } from 'src/app/constants/shared-interfaces';
 import { UserAddressPipe } from 'src/app/pipes/user-address.pipe';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 import { ContentBlock } from '../../shared/content-block/content-block.component';
 
-const materialModules = [MatProgressBarModule, MatButtonModule, MatCardModule, MatIcon];
+const materialModules = [MatProgressBarModule, MatButtonModule, MatCardModule, MatIcon, MatTabsModule];
 
 @Component({
   selector: 'app-location-journey',
-  imports: [AsyncPipe, ContentBlock, UserAddressPipe, ...materialModules],
+  imports: [AsyncPipe, ContentBlock, UserAddressPipe, NgTemplateOutlet, ...materialModules],
   templateUrl: './location-journey.component.html',
   styleUrl: './location-journey.component.scss',
 })
@@ -29,10 +30,11 @@ export class LocationJourneyComponent {
     googleMaps: '/assets/images/location/googlemaps.jpg',
     chadim: ['/assets/images/location/chadim1.jpg', '/assets/images/location/chadim2.jpg'],
     chadimLogo: '/assets/images/location/chadim-logo.jpg',
+    parking: 'assets/images/location/parking.jpg',
   };
 
-  readonly MatIcons = MatIcons;
-  readonly onOpenLink = onOpenLink;
+  readonly additionalInfoIcons = ['public', 'location_on'];
+  readonly OnOpenUrl = OnOpenUrl;
 
   private readonly fireStoreService = inject(FireStoreService);
 

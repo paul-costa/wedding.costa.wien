@@ -1,7 +1,8 @@
-<div class="content-block" [ngClass]="{ grid: contentPosition === 'grid' }">
+<div class="content-block" [ngClass]="{ grid: contentPosition === 'grid', tab: contentPosition === 'tab' }">
   @if (headerText; as h) {
     <div class="header">{{ h }}</div>
   }
+
   <div class="body">
     @for (t of bodyTexts; track t) {
       <span> {{ t }}</span>

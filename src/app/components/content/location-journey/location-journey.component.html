@@ -9,7 +9,9 @@
     <app-content-block contentPosition="grid" [headerText]="location.headerText" [bodyTexts]="location.bodyTexts">
       <div class="images-container is-hovered">
         @for (i of imageSrc.chadim; track i) {
-          <div class="img-container" (click)="websiteLink.click()"><img class="img" [src]="i" /></div>
+          <div class="img-container" (click)="websiteLink.click()">
+            <img class="img" [src]="i" />
+          </div>
         }
         <span class="hint">{{ location.website.linkText }}</span>
         <a class="display-none" target="_blank" [href]="location.website.linkUrl" #websiteLink></a>
@@ -26,14 +28,70 @@
       </div>
 
       <button mat-raised-button class="google-maps-route-button" (click)="googleMapsRoute.click()">
-        {{ journey.googleMapsRoute.general.linkText }}
+        <mat-icon>pin_drop</mat-icon>
+        <span> {{ journey.googleMapsRoute.general.linkText }}</span>
       </button>
       <a class="display-none" target="_blank" [href]="journey.googleMapsRoute.general.linkUrl" #googleMapsRoute></a>
     </app-content-block>
-  </div>
 
-  <div class="main-container">
-    <app-content-block contentPosition="grid" [headerText]="'HEADER TEXT'" [bodyTexts]="['body', 'texts']"></app-content-block>
+    <app-content-block class="journey" contentPosition="tab" [headerText]="journey.headerText">
+      <mat-tab-group>
+        <mat-tab [label]="journey.carTabLabel">
+          <div class="body">
+            <div class="texts">
+              @for (t of journey.carTabParkingBodyTexts; track t) {
+                <span> {{ t }}</span>
+              }
+            </div>
+            <div class="images-container is-hovered">
+              <div class="img-container">
+                <img class="img" [src]="imageSrc.parking" />
+              </div>
+            </div>
+          </div>
+
+          <div class="actions-container">
+            <a class="display-none" target="_blank" [href]="journey.googleMapsRoute.car.linkUrl" #googleMapsCarLink></a>
+            <button mat-raised-button color="primary" (click)="googleMapsCarLink.click()">
+              <mat-icon>directions_car</mat-icon>
+              <span>{{ journey.googleMapsRoute.car.linkText }} </span>
+            </button>
+          </div>
+        </mat-tab>
+        <mat-tab [label]="journey.publicTabLabel">
+          <div class="body two-sides">
+            <div class="route">
+              <div class="sub-header">{{ journey.publicTabSteps[0][0] }}</div>
+              <div class="steps">
+                @for (step of journey.publicTabSteps[0]; track step; let first = $first) {
+                  @if (!first) {
+                    <span class="step"> - {{ step }}</span>
+                  }
+                }
+              </div>
+            </div>
+            <div class="route">
+              <div class="sub-header">{{ journey.publicTabSteps[1][0] }}</div>
+              <div class="steps">
+                @for (step of journey.publicTabSteps[1]; track step; let first = $first) {
+                  @if (!first) {
+                    <span class="step"> - {{ step }}</span>
+                  }
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="actions-container">
+            <a class="display-none" target="_blank" [href]="journey.googleMapsRoute.public.linkUrl" #googleMapsPublicLink></a>
+            <button mat-raised-button color="primary" (click)="googleMapsPublicLink.click()">
+              <mat-icon>subway</mat-icon>
+              <span>{{ journey.googleMapsRoute.public.linkText }} </span>
+            </button>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </app-content-block>
   </div>
 }
 
@@ -52,8 +110,8 @@
 
     <div class="actions">
       @for (l of links; track $index; let idx = $index) {
-        <button mat-raised-button class="button" color="accent" (click)="onOpenLink(l)">
-          <mat-icon>{{ MatIcons[idx] }}</mat-icon>
+        <button mat-raised-button class="button" color="accent" (click)="OnOpenUrl(l)">
+          <mat-icon>{{ additionalInfoIcons[idx] }}</mat-icon>
           <span> {{ l.linkText }} </span>
         </button>
       }

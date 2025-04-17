@@ -119,6 +119,10 @@ body {
 
 /* --- material custom styles ----------------------------------------------------- */
 
+.mat-drawer {
+  border-radius: 0 !important;
+}
+
 .mat-mdc-dialog-container .mdc-dialog__surface {
   background-color: $off-white !important;
 }
@@ -139,14 +143,30 @@ body {
   font-size: $md-font-size;
   text-align: left;
   cursor: pointer;
+
   @media only screen and (max-width: $sm-breakpoint) {
     font-size: $sm-font-size;
   }
 }
 
+mat-tab-group {
+  .mat-mdc-tab-label-container {
+    border: none !important;
+  }
+
+  .mat-mdc-tab-header-pagination {
+    display: none !important;
+  }
+
+  .mdc-tab__text-label {
+    color: $darkest-gray !important;
+  }
+}
+
 /**
-*  -------------------------------------------------------------------------------
+*  Additional Info Card-------------------------------------------------------------------------------
 **/
+
 .additional-info-card {
   @include mat.elevation(4, rgba($mat-theme-neutralVariant-turquoise, 0.2));
   @include mixin.l-transition;
