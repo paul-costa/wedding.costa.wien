@@ -66,19 +66,7 @@
 }
 
 .buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-
-  @media only screen and (max-width: $xl-breakpoint) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media only screen and (max-width: $lg-breakpoint) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media only screen and (max-width: $md-breakpoint) {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
