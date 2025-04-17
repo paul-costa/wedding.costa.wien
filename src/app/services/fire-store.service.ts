@@ -61,7 +61,7 @@ export class FireStoreService {
   }
 
   async sendUserMessage(message: UserMessage) {
-    const docRef = doc(this.db, 'messages', message.id);
+    const docRef = doc(this.db, 'userMessages', message.id);
 
     return new Promise((resolve) => {
       setDoc(docRef, message).then(() => resolve(true));

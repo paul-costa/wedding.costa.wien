@@ -15,7 +15,7 @@
     @if (hyperLinks?.length) {
       <div class="buttons">
         @for (l of hyperLinks; track l) {
-          <button mat-raised-button class="mat-button" (click)="link.click()">{{ l.linkText }}</button>
+          <button mat-raised-button class="mat-button light-green" (click)="link.click()">{{ l.linkText }}</button>
           <a class="display-none" target="_blank" [href]="l.linkUrl" #link>{{ l.linkText }}</a>
         }
       </div>

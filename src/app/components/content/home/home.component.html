@@ -11,7 +11,7 @@
 
       <app-content-block [headerText]="d.dateEventHeaderText" [bodyTexts]="[d.dateEventBodyText]">
         <a class="display-none" href="/assets/calendar-event.ics" download="Hochzeit_Costa" #calLink></a>
-        <button mat-raised-button color="primary" (click)="calLink.click()">
+        <button mat-raised-button class="mat-button light-green" (click)="calLink.click()">
           <mat-icon>download</mat-icon>
           <span>{{ d.dateEventButtonText }} </span>
         </button>
@@ -28,12 +28,12 @@
 
               <div class="contact-actions-container">
                 <a class="display-none" [href]="'mailto:' + c.email + '?subject=Costa%20Hochzeit:%20Website'" #emailLink></a>
-                <button mat-raised-button color="primary" (click)="emailLink.click()">
+                <button mat-raised-button class="mat-button light-green" (click)="emailLink.click()">
                   <mat-icon>email</mat-icon>
                   <span>{{ c.email }} </span>
                 </button>
                 <a class="display-none" [href]="'tel:' + c.phone" #phoneLink></a>
-                <button mat-raised-button color="primary" (click)="phoneLink.click()">
+                <button mat-raised-button class="mat-button light-green" (click)="phoneLink.click()">
                   <mat-icon>phone</mat-icon>
                   <span>{{ c.phone }} </span>
                 </button>

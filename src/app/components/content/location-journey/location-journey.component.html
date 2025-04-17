@@ -27,7 +27,7 @@
         <ng-container *ngTemplateOutlet="additionalInfoCard" />
       </div>
 
-      <button mat-raised-button class="google-maps-route-button" (click)="googleMapsRoute.click()">
+      <button mat-raised-button class="google-maps-route-button mat-button light-green" (click)="googleMapsRoute.click()">
         <mat-icon>pin_drop</mat-icon>
         <span> {{ journey.googleMapsRoute.general.linkText }}</span>
       </button>
@@ -52,7 +52,7 @@
 
           <div class="actions-container">
             <a class="display-none" target="_blank" [href]="journey.googleMapsRoute.car.linkUrl" #googleMapsCarLink></a>
-            <button mat-raised-button color="primary" (click)="googleMapsCarLink.click()">
+            <button mat-raised-button class="mat-button light-green" (click)="googleMapsCarLink.click()">
               <mat-icon>directions_car</mat-icon>
               <span>{{ journey.googleMapsRoute.car.linkText }} </span>
             </button>
@@ -84,7 +84,7 @@
 
           <div class="actions-container">
             <a class="display-none" target="_blank" [href]="journey.googleMapsRoute.public.linkUrl" #googleMapsPublicLink></a>
-            <button mat-raised-button color="primary" (click)="googleMapsPublicLink.click()">
+            <button mat-raised-button class="mat-button light-green" (click)="googleMapsPublicLink.click()">
               <mat-icon>subway</mat-icon>
               <span>{{ journey.googleMapsRoute.public.linkText }} </span>
             </button>
@@ -110,7 +110,7 @@
 
     <div class="actions">
       @for (l of links; track $index; let idx = $index) {
-        <button mat-raised-button class="button" color="accent" (click)="OnOpenUrl(l)">
+        <button mat-raised-button class="mat-button light-green" color="accent" (click)="OnOpenUrl(l)">
           <mat-icon>{{ additionalInfoIcons[idx] }}</mat-icon>
           <span> {{ l.linkText }} </span>
         </button>

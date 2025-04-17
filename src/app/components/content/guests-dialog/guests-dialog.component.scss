@@ -90,14 +90,9 @@
       gap: 12px;
       justify-content: end;
 
-      .cancel-button {
-        color: $darker-gray;
-        border-color: $darker-gray;
-      }
-
       .confirm-button {
         &.disabled {
-          background: $gray;
+          background: $light-gray;
         }
       }
     }
