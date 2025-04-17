@@ -32,7 +32,9 @@
     </app-content-block>
   </div>
 
-  <app-journey [config]="journey" />
+  <div class="main-container">
+    <app-content-block contentPosition="grid" [headerText]="'HEADER TEXT'" [bodyTexts]="['body', 'texts']"></app-content-block>
+  </div>
 }
 
 <ng-template #additionalInfoCard>

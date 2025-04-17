@@ -1,4 +1,4 @@
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -10,17 +10,16 @@ import { LoadingState, MatIcons, OnOpenUrl as onOpenLink } from 'src/app/constan
 import { UserAddressPipe } from 'src/app/pipes/user-address.pipe';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 import { ContentBlock } from '../../shared/content-block/content-block.component';
-import { JourneyComponent } from './journey/journey.component';
 
 const materialModules = [MatProgressBarModule, MatButtonModule, MatCardModule, MatIcon];
 
 @Component({
-  selector: 'app-location',
-  imports: [AsyncPipe, ContentBlock, JourneyComponent, UserAddressPipe, NgTemplateOutlet, ...materialModules],
-  templateUrl: './location.component.html',
-  styleUrl: './location.component.scss',
+  selector: 'app-location-journey',
+  imports: [AsyncPipe, ContentBlock, UserAddressPipe, ...materialModules],
+  templateUrl: './location-journey.component.html',
+  styleUrl: './location-journey.component.scss',
 })
-export class LocationComponent {
+export class LocationJourneyComponent {
   currentLoadingState = LoadingState.None;
 
   readonly $locationJourney: Observable<LocationJourney>;

@@ -5,12 +5,12 @@ import { DresscodeComponent } from 'src/app/components/content/dresscode/dressco
 import { GalleryComponent } from 'src/app/components/content/gallery/gallery.component';
 import { GiftsComponent } from 'src/app/components/content/gifts/gifts.component';
 import { HomeComponent } from 'src/app/components/content/home/home.component';
-import { LocationComponent } from 'src/app/components/content/location/location.component';
+import { LocationJourneyComponent } from 'src/app/components/content/location-journey/location-journey.component';
 import { TimetableComponent } from 'src/app/components/content/timetable/timetable.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'location', component: LocationComponent },
+  { path: 'location-journey', component: LocationJourneyComponent },
   { path: 'timetable', component: TimetableComponent },
   { path: 'dresscode', component: DresscodeComponent },
   { path: 'dos-donts', component: DosDontsComponent },

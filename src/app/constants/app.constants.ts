@@ -3,7 +3,7 @@ import { DresscodeComponent } from '../components/content/dresscode/dresscode.co
 import { GalleryComponent } from '../components/content/gallery/gallery.component';
 import { GiftsComponent } from '../components/content/gifts/gifts.component';
 import { HomeComponent } from '../components/content/home/home.component';
-import { LocationComponent } from '../components/content/location/location.component';
+import { LocationJourneyComponent } from '../components/content/location-journey/location-journey.component';
 import { TimetableComponent } from '../components/content/timetable/timetable.component';
 import { Content, ContentComponent } from './shared-interfaces';
 
@@ -14,11 +14,11 @@ export const ContentComponents: Record<Content, ContentComponent> = {
     url: 'home',
     component: HomeComponent,
   },
-  [Content.Location]: {
+  [Content.LocationJourney]: {
     title: 'Location & Anreise',
-    url: 'location',
+    url: 'location-journey',
     icon: 'location_on',
-    component: LocationComponent,
+    component: LocationJourneyComponent,
   },
   [Content.Timetable]: {
     title: 'Ablauf',

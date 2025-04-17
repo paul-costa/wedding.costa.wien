@@ -4,7 +4,7 @@ import { DresscodeComponent } from '../components/content/dresscode/dresscode.co
 import { GalleryComponent } from '../components/content/gallery/gallery.component';
 import { GiftsComponent } from '../components/content/gifts/gifts.component';
 import { HomeComponent } from '../components/content/home/home.component';
-import { LocationComponent } from '../components/content/location/location.component';
+import { LocationJourneyComponent } from '../components/content/location-journey/location-journey.component';
 import { TimetableComponent } from '../components/content/timetable/timetable.component';
 import { AccountDialog, Guest, Hyperlink } from './fire-store.types';
 
@@ -27,7 +27,7 @@ export interface AccountDialogConfig {
 
 export enum Content {
   Home,
-  Location,
+  LocationJourney,
   Timetable,
   Dresscode,
   DosDonts,
@@ -37,7 +37,7 @@ export enum Content {
 
 type ContentComponents =
   | HomeComponent
-  | LocationComponent
+  | LocationJourneyComponent
   | TimetableComponent
   | DresscodeComponent
   | DosDontsComponent
