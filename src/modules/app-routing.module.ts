@@ -8,7 +8,7 @@ import { HomeComponent } from 'src/app/components/content/home/home.component';
 import { LocationJourneyComponent } from 'src/app/components/content/location-journey/location-journey.component';
 import { TimetableComponent } from 'src/app/components/content/timetable/timetable.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'location-journey', component: LocationJourneyComponent },
   { path: 'timetable', component: TimetableComponent },

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import 'firebase/firestore';
 import { collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
-import { firebaseConfig } from 'src/config/firebase.config';
+import { environment } from 'src/config/environment.config';
 import {
   AccountDialogCollection,
   Dresscode,
@@ -23,7 +23,7 @@ import { AccountDialogConfig } from '../constants/shared-interfaces';
   providedIn: 'root',
 })
 export class FireStoreService {
-  private readonly app = initializeApp(firebaseConfig);
+  private readonly app = initializeApp(environment.firebase);
   private readonly db = getFirestore(this.app);
 
   async getAccountDialog(): Promise<AccountDialogConfig> {

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
@@ -13,7 +13,7 @@ import { FireStoreService } from './services/fire-store.service';
   styleUrl: './app.component.scss',
   standalone: false,
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'wedding.costa.wien';
   currentContentComponent?: ContentComponent;
 
@@ -29,6 +29,10 @@ export class AppComponent implements OnDestroy {
         this.currentContentComponent = !url ? ContentComponents[Content.Home] : Object.values(ContentComponents).find((v) => v.url === url);
       }
     });
+  }
+
+  ngOnInit() {
+    this.initAccountDialog();
   }
 
   ngOnDestroy() {
