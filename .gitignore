@@ -15,7 +15,8 @@ yarn-error.log
 .firebaserc
 firebase.json
 hosting.*
-src/config/firebase.config.ts
+src/config/auth-email.config.ts
+src/config/environment.config.ts
 
 # IDEs and editors
 .idea/

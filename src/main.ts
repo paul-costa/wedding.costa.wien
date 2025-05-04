@@ -1,7 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
-import { authEmailFirebase } from './config/auth-email.firebase';
+import { authEmailFirebase } from './config/auth-email.config';
 import { environment } from './config/environment.config';
 import { AppModule } from './modules/app.module';
 
