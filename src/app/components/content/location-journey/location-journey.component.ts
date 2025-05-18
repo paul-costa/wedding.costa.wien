@@ -1,4 +1,4 @@
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, NgStyle, NgTemplateOutlet } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -7,7 +7,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { finalize, from, Observable } from 'rxjs';
 import { LocationJourney } from 'src/app/constants/fire-store.types';
-import { LoadingState, OnOpenUrl } from 'src/app/constants/shared-interfaces';
+import { DefaultOverlayBrightness, LoadingState } from 'src/app/constants/shared-constants';
+import { OnOpenUrl } from 'src/app/functions/on-open-url.function';
 import { UserAddressPipe } from 'src/app/pipes/user-address.pipe';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 import { ContentBlock } from '../../shared/content-block/content-block.component';
@@ -16,12 +17,16 @@ const materialModules = [MatProgressBarModule, MatButtonModule, MatCardModule, M
 
 @Component({
   selector: 'app-location-journey',
-  imports: [AsyncPipe, ContentBlock, UserAddressPipe, NgTemplateOutlet, ...materialModules],
+  imports: [AsyncPipe, ContentBlock, UserAddressPipe, NgTemplateOutlet, NgStyle, ...materialModules],
   templateUrl: './location-journey.component.html',
   styleUrl: './location-journey.component.scss',
 })
 export class LocationJourneyComponent {
   currentLoadingState = LoadingState.None;
+  googleMapsPreviewNoteOpacity = 0;
+  googleMapsPreviewFilter = 'none';
+  parkingPreviewNoteOpacity = 0;
+  parkingPreviewFilter = 'none';
 
   readonly $locationJourney: Observable<LocationJourney>;
   readonly LoadingState = LoadingState;
@@ -45,5 +50,15 @@ export class LocationJourneyComponent {
         this.currentLoadingState = LoadingState.Success;
       }),
     );
+  }
+
+  onMouseGoogleMapsImage(enter: boolean) {
+    this.googleMapsPreviewFilter = enter ? `brightness(${DefaultOverlayBrightness})` : 'none';
+    this.googleMapsPreviewNoteOpacity = enter ? 1 : 0;
+  }
+
+  onMouseParkingImage(enter: boolean) {
+    this.parkingPreviewFilter = enter ? `brightness(${DefaultOverlayBrightness})` : 'none';
+    this.parkingPreviewNoteOpacity = enter ? 1 : 0;
   }
 }

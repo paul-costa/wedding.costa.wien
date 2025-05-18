@@ -19,7 +19,18 @@
 
       <div class="map-container">
         <div class="img-wrapper is-hovered">
-          <img class="img" [src]="imageSrc.googleMaps" (click)="googleMapsLink.click()" />
+          <span [ngStyle]="{ opacity: googleMapsPreviewNoteOpacity }" id="google-maps-preview-note" (click)="googleMapsLink.click()">
+            {{ location.googleMapsLink.linkNote }}
+          </span>
+          <img
+            class="img"
+            [ngStyle]="{ filter: googleMapsPreviewFilter }"
+            [src]="imageSrc.googleMaps"
+            (click)="googleMapsLink.click()"
+            (mouseenter)="onMouseGoogleMapsImage(true)"
+            (mouseleave)="onMouseGoogleMapsImage(false)"
+          />
+
           <span class="hint">{{ location.googleMapsLink.linkText }}</span>
           <a class="display-none" target="_blank" [href]="location.googleMapsLink.linkUrl" #googleMapsLink></a>
         </div>
@@ -45,7 +56,18 @@
             </div>
             <div class="images-container is-hovered">
               <div class="img-container">
-                <img class="img" [src]="imageSrc.parking" />
+                <span [ngStyle]="{ opacity: parkingPreviewNoteOpacity }" id="parking-image-preview-note" (click)="parkingLink.click()">
+                  {{ location.parkingLink.linkNote }}
+                </span>
+                <img
+                  class="img"
+                  [ngStyle]="{ filter: parkingPreviewFilter }"
+                  [src]="imageSrc.parking"
+                  (mouseenter)="onMouseParkingImage(true)"
+                  (mouseleave)="onMouseParkingImage(false)"
+                />
+
+                <a class="display-none" target="_blank" [href]="location.parkingLink.linkUrl" #parkingLink></a>
               </div>
             </div>
           </div>

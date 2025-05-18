@@ -20,22 +20,28 @@
     @include mixin.l-transition;
 
     display: grid;
-    gap: 24px;
+    gap: 16px;
     grid-template-columns: repeat(2, 1fr);
     width: 800px;
 
-    .img-container .img {
-      @include mat.elevation(4);
-      @include mixin.brighten-on-hover(0.025);
+    .img-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      width: 100%;
-      cursor: pointer;
-      border-radius: $m-border-radius;
-      grid-column: 1 / span 1;
-      object-fit: cover;
+      .img {
+        @include mat.elevation(4);
+        @include mixin.brighten-on-hover(0.025);
 
-      &:nth-child(2) {
-        grid-column: 2 / span 1;
+        width: 100%;
+        cursor: pointer;
+        border-radius: $m-border-radius;
+        grid-column: 1 / span 1;
+        object-fit: cover;
+
+        &:nth-child(2) {
+          grid-column: 2 / span 1;
+        }
       }
     }
 
@@ -56,9 +62,10 @@
 
     .img-wrapper {
       display: flex;
-      gap: 24px;
+      gap: 16px;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       width: 100%;
 
       .img {
@@ -158,7 +165,6 @@
       width: fit-content;
 
       .img-container .img {
-        width: 500px;
         aspect-ratio: 3 / 1;
       }
     }
@@ -182,16 +188,16 @@
       }
 
       &.is-hovered:hover .hint {
-        font-size: $lg-font-size;
-        line-height: $lg-font-size;
+        font-size: $md-font-size;
+        line-height: $md-font-size;
         letter-spacing: 2px;
       }
     }
 
     .map-container .img-wrapper {
-      &.is-hovered &:hover .hint {
-        font-size: $lg-font-size;
-        line-height: $lg-font-size;
+      &.is-hovered:hover .hint {
+        font-size: $md-font-size;
+        line-height: $md-font-size;
         letter-spacing: 2px;
       }
     }
@@ -209,11 +215,11 @@
 
       .img-container .img {
         width: 100%;
+      }
 
-        &.is-hovered:hover .hint {
-          font-size: $sm-font-size;
-          line-height: $sm-font-size;
-        }
+      &.is-hovered:hover .hint {
+        font-size: $sm-font-size;
+        line-height: $sm-font-size;
       }
     }
 
@@ -221,8 +227,6 @@
       flex-direction: column;
 
       .img-wrapper {
-        gap: 12px;
-
         .img {
           aspect-ratio: 2 / 1;
         }
@@ -273,4 +277,32 @@
       margin-top: 0;
     }
   }
+}
+
+#parking-image-preview-note,
+#google-maps-preview-note {
+  position: absolute;
+  transition: 500ms;
+  color: $white;
+  font-size: $lg-font-size;
+  line-height: $lg-font-size;
+  letter-spacing: 1.5px;
+  pointer-events: none;
+  z-index: 2;
+
+  @media only screen and (max-width: $lg-breakpoint) {
+    font-size: $md-font-size;
+    line-height: $md-font-size;
+    letter-spacing: 1.2px;
+  }
+
+  @media only screen and (max-width: $sm-breakpoint) {
+    letter-spacing: normal;
+    font-size: $sm-font-size;
+    line-height: $sm-font-size;
+  }
+}
+
+#google-maps-preview-note {
+  margin-top: -40px;
 }

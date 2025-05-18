@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { AccountDialog, Guest } from 'src/app/constants/fire-store.types';
+import { LocalStorageKeys } from 'src/app/constants/shared-constants';
 import { AccountDialogConfig, GuestsDialogCloseConfig } from 'src/app/constants/shared-interfaces';
 
 const materialModules = [MatSelectModule, MatFormFieldModule, MatCheckboxModule, MatRadioModule, MatButtonModule];
@@ -20,7 +21,7 @@ const materialModules = [MatSelectModule, MatFormFieldModule, MatCheckboxModule,
 })
 export class GuestsDialogComponent {
   isGuestShowingUp: boolean;
-  selectedGuest: Guest;
+  selectedGuestId: string;
 
   readonly guests: Guest[];
   readonly content: AccountDialog;
@@ -31,6 +32,23 @@ export class GuestsDialogComponent {
   constructor() {
     this.guests = this.config.guests;
     this.content = this.config.accountDialog;
+
+    const submittedGuestId = localStorage.getItem(LocalStorageKeys.SubmittedGuestId);
+
+    if (submittedGuestId) {
+      this.selectedGuestId = submittedGuestId;
+      this.onSelectedGuestChange(submittedGuestId);
+    }
+  }
+
+  onSelectedGuestChange(guestId: string) {
+    const guest = this.guests.find((g) => g?.id === guestId);
+
+    if (!guest) {
+      return;
+    }
+
+    this.isGuestShowingUp = guest.isGuestShowingUp;
   }
 
   onCancelButtonClick() {
@@ -39,7 +57,7 @@ export class GuestsDialogComponent {
 
   onConfirmButtonClick() {
     const guestsDialogCloseConfig: GuestsDialogCloseConfig = {
-      selectedGuest: this.selectedGuest,
+      selectedGuest: this.guests.find((g) => g.id === this.selectedGuestId),
       isGuestShowingUp: this.isGuestShowingUp,
     };
 

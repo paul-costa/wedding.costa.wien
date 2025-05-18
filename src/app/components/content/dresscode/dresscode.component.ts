@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Observable, finalize, from } from 'rxjs';
 import { Dresscode } from 'src/app/constants/fire-store.types';
-import { LoadingState } from 'src/app/constants/shared-interfaces';
+import { LoadingState } from 'src/app/constants/shared-constants';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 import { ContentBlock } from '../../shared/content-block/content-block.component';
 

@@ -1,10 +1,12 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GuestsDialogComponent } from './components/content/guests-dialog/guests-dialog.component';
 import { ContentComponents } from './constants/app.constants';
-import { Content, ContentComponent, GuestsDialogCloseConfig } from './constants/shared-interfaces';
+import { Content, DefaultSnackbarConfig, LocalStorageKeys } from './constants/shared-constants';
+import { ContentComponent, GuestsDialogCloseConfig } from './constants/shared-interfaces';
 import { FireStoreService } from './services/fire-store.service';
 
 @Component({
@@ -22,6 +24,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private readonly dialog = inject(MatDialog);
   private readonly router = inject(Router);
 
+  private readonly _snackBar = inject(MatSnackBar);
+
   constructor() {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
@@ -32,7 +36,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.initAccountDialog();
+    const submittedGuestId = localStorage.getItem(LocalStorageKeys.SubmittedGuestId);
+
+    if (!submittedGuestId) {
+      this.initAccountDialog();
+    }
   }
 
   ngOnDestroy() {
@@ -57,7 +65,10 @@ export class AppComponent implements OnInit, OnDestroy {
         .pipe(takeUntil(this.destroy$))
         .subscribe((guestsDialogCloseConfig: GuestsDialogCloseConfig) => {
           if (guestsDialogCloseConfig) {
-            // TODO: send close config data to BE
+            this.fireStoreService.setGuest(guestsDialogCloseConfig).then(() => {
+              this._snackBar.open(config.accountDialog.guestSubmittedMessage, null, DefaultSnackbarConfig);
+              localStorage.setItem(LocalStorageKeys.SubmittedGuestId, guestsDialogCloseConfig.selectedGuest?.id);
+            });
           }
         });
     });

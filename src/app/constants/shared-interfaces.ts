@@ -6,14 +6,7 @@ import { GiftsComponent } from '../components/content/gifts/gifts.component';
 import { HomeComponent } from '../components/content/home/home.component';
 import { LocationJourneyComponent } from '../components/content/location-journey/location-journey.component';
 import { TimetableComponent } from '../components/content/timetable/timetable.component';
-import { AccountDialog, Guest, Hyperlink } from './fire-store.types';
-
-export enum LoadingState {
-  None,
-  Loading,
-  Error,
-  Success,
-}
+import { AccountDialog, Guest } from './fire-store.types';
 
 export interface GuestsDialogCloseConfig {
   selectedGuest?: Guest;
@@ -23,16 +16,6 @@ export interface GuestsDialogCloseConfig {
 export interface AccountDialogConfig {
   guests?: Guest[];
   accountDialog?: AccountDialog;
-}
-
-export enum Content {
-  Home,
-  LocationJourney,
-  Timetable,
-  Dresscode,
-  DosDonts,
-  Gifts,
-  Gallery,
 }
 
 type ContentComponents =
@@ -50,11 +33,3 @@ export interface ContentComponent {
   title?: string;
   component?: Type<ContentComponents>;
 }
-
-export const OnOpenUrl = (link: Hyperlink, target: '_blank' | '_parent' | '_self' | '_top' | 'URL' | 'name' = '_blank') => {
-  if (link?.linkUrl == null) {
-    return;
-  }
-
-  window.open(link.linkUrl, target);
-};

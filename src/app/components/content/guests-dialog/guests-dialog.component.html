@@ -7,7 +7,7 @@
   <div class="guests-select-container">
     <mat-form-field class="guests-form-field">
       <mat-label>{{ content.guestSelectLabel }} </mat-label>
-      <mat-select [(value)]="selectedGuest">
+      <mat-select [(value)]="selectedGuestId" (selectionChange)="onSelectedGuestChange($event.value)">
         <mat-option *ngFor="let guest of guests" [value]="guest.id">
           <span> {{ guest.firstName }} {{ guest.lastName }} </span>
         </mat-option>
@@ -23,9 +23,9 @@
   <div class="actions-container">
     <mat-radio-group
       class="radio-button-group"
-      [ngClass]="{ disabled: !selectedGuest }"
+      [ngClass]="{ disabled: !selectedGuestId }"
       color="primary"
-      [disabled]="!selectedGuest"
+      [disabled]="!selectedGuestId"
       [(ngModel)]="isGuestShowingUp"
     >
       <mat-radio-button [value]="true">{{ content.isShowingUpLabel }}</mat-radio-button>
@@ -39,8 +39,8 @@
       <button
         mat-flat-button
         class="mat-button light-green confirm-button"
-        [ngClass]="{ disabled: !selectedGuest || isGuestShowingUp === undefined }"
-        [disabled]="!selectedGuest || isGuestShowingUp === undefined"
+        [ngClass]="{ disabled: !selectedGuestId || isGuestShowingUp === undefined }"
+        [disabled]="!selectedGuestId || isGuestShowingUp === undefined"
         (click)="onConfirmButtonClick()"
       >
         {{ content.actionConfirmLabel }}

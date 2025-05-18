@@ -17,7 +17,7 @@ import {
   UserMessage,
   UserMessagesCollection,
 } from '../constants/fire-store.types';
-import { AccountDialogConfig } from '../constants/shared-interfaces';
+import { AccountDialogConfig, GuestsDialogCloseConfig } from '../constants/shared-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +37,16 @@ export class FireStoreService {
       guests: guestsSnapshot.docs.map((d) => d.data()),
       accountDialog: accountSnapshot.docs.map((d) => d.data())[0],
     };
+  }
+
+  async setGuest(guestsDialogCloseConfig: GuestsDialogCloseConfig): Promise<boolean> {
+    const docRef = doc(this.db, GuestsCollection, guestsDialogCloseConfig.selectedGuest.id);
+
+    return new Promise((resolve) => {
+      setDoc(docRef, { ...guestsDialogCloseConfig.selectedGuest, isGuestShowingUp: guestsDialogCloseConfig.isGuestShowingUp }).then(() =>
+        resolve(true),
+      );
+    });
   }
 
   async getHomepage(): Promise<Homepage> {
@@ -60,8 +70,8 @@ export class FireStoreService {
       .sort((mA, mB) => mA.date.getTime() - mB.date.getTime());
   }
 
-  async sendUserMessage(message: UserMessage) {
-    const docRef = doc(this.db, 'userMessages', message.id);
+  async sendUserMessage(message: UserMessage): Promise<boolean> {
+    const docRef = doc(this.db, UserMessagesCollection, message.id);
 
     return new Promise((resolve) => {
       setDoc(docRef, message).then(() => resolve(true));

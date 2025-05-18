@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ContentBlock } from 'src/app/components/shared/content-block/content-block.component';
 import { Messages, UserMessage } from 'src/app/constants/fire-store.types';
-import { LoadingState } from 'src/app/constants/shared-interfaces';
+import { LoadingState } from 'src/app/constants/shared-constants';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 
 const materialModules = [MatInputModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule];

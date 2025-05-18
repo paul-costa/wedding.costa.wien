@@ -19,6 +19,7 @@ export interface AccountDialog {
   isNotShowingUpLabel?: string;
   actionCancelLabel?: string;
   actionConfirmLabel?: string;
+  guestSubmittedMessage?: string;
 }
 
 export interface Guest {
@@ -26,6 +27,7 @@ export interface Guest {
   lastName?: string;
   id?: string;
   role?: string;
+  isGuestShowingUp?: boolean;
 }
 
 export interface Homepage {
@@ -85,6 +87,7 @@ export interface ContentBlockHeaderAndList {
 export interface Hyperlink {
   linkText?: string;
   linkUrl?: string;
+  linkNote?: string;
 }
 
 export interface LocationJourney {
@@ -98,6 +101,7 @@ export interface Llocation {
   googleMapsLink?: Hyperlink;
   address?: Address;
   website?: Hyperlink;
+  parkingLink?: Hyperlink;
 }
 
 export interface Journey {
