@@ -5,6 +5,8 @@ import { collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firesto
 import { environment } from 'src/config/environment.config';
 import {
   AccountDialogCollection,
+  DoesAndDonts,
+  DosAndDontsCollection,
   Dresscode,
   DresscodeCollection,
   GuestsCollection,
@@ -95,5 +97,11 @@ export class FireStoreService {
         return { [id]: resData };
       })
       .reduce((f1, f2) => ({ ...f1, ...f2 }), {});
+  }
+
+  async getDosAndDonts(): Promise<DoesAndDonts> {
+    const col = collection(this.db, DosAndDontsCollection);
+    const snapshot = await getDocs(col);
+    return snapshot.docs.map((d) => d.data())[0];
   }
 }

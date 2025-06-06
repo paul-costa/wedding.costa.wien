@@ -1,4 +1,4 @@
-import { DosDontsComponent } from '../components/content/dos-donts/dos-donts.component';
+import { DosAndDontsComponent } from '../components/content/dos-and-donts/dos-and-donts.component';
 import { DresscodeComponent } from '../components/content/dresscode/dresscode.component';
 import { GalleryComponent } from '../components/content/gallery/gallery.component';
 import { GiftsComponent } from '../components/content/gifts/gifts.component';
@@ -35,9 +35,9 @@ export const ContentComponents: Record<Content, ContentComponent> = {
   },
   [Content.DosDonts]: {
     title: "Do's & Don'ts",
-    url: 'dos-donts',
+    url: 'dos-and-donts',
     icon: 'rule',
-    component: DosDontsComponent,
+    component: DosAndDontsComponent,
   },
   [Content.Gifts]: {
     title: 'Geschenke',

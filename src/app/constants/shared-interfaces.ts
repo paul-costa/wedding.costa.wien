@@ -1,5 +1,5 @@
 import { Type } from '@angular/core';
-import { DosDontsComponent } from '../components/content/dos-donts/dos-donts.component';
+import { DosAndDontsComponent } from '../components/content/dos-and-donts/dos-and-donts.component';
 import { DresscodeComponent } from '../components/content/dresscode/dresscode.component';
 import { GalleryComponent } from '../components/content/gallery/gallery.component';
 import { GiftsComponent } from '../components/content/gifts/gifts.component';
@@ -23,7 +23,7 @@ type ContentComponents =
   | LocationJourneyComponent
   | TimetableComponent
   | DresscodeComponent
-  | DosDontsComponent
+  | DosAndDontsComponent
   | GiftsComponent
   | GalleryComponent;
 

@@ -8,6 +8,7 @@ export const UserMessagesCollection = 'userMessages';
 export const HomepageCollection = 'homepage';
 export const MessagesCollection = 'messages';
 export const LocationCollection = 'locationJourney';
+export const DosAndDontsCollection = 'dosAndDonts';
 
 export interface AccountDialog {
   header?: string;
@@ -120,4 +121,10 @@ export interface Address {
   zip?: string;
   city?: string;
   countryCode?: string;
+}
+
+export interface DoesAndDonts {
+  summary?: ContentBlockHeaderAndList;
+  before?: ContentBlockHeaderAndList;
+  during?: ContentBlockHeaderAndList;
 }

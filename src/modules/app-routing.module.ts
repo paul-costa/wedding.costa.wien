@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { provideRouter, RouterModule, Routes, withComponentInputBinding } from '@angular/router';
-import { DosDontsComponent } from 'src/app/components/content/dos-donts/dos-donts.component';
+import { DosAndDontsComponent } from 'src/app/components/content/dos-and-donts/dos-and-donts.component';
 import { DresscodeComponent } from 'src/app/components/content/dresscode/dresscode.component';
 import { GalleryComponent } from 'src/app/components/content/gallery/gallery.component';
 import { GiftsComponent } from 'src/app/components/content/gifts/gifts.component';
@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'location-journey', component: LocationJourneyComponent },
   { path: 'timetable', component: TimetableComponent },
   { path: 'dresscode', component: DresscodeComponent },
-  { path: 'dos-donts', component: DosDontsComponent },
+  { path: 'dos-and-donts', component: DosAndDontsComponent },
   { path: 'gifts', component: GiftsComponent },
   { path: 'gallery', component: GalleryComponent },
   {
