@@ -20,6 +20,7 @@ export class GiftsComponent {
 
   readonly $dosAndDonts: Observable<Gifts>;
   readonly LoadingState = LoadingState;
+  readonly giftBoxImageSrc = '/assets/images/gifts/gift-box.png';
 
   private readonly fireStoreService = inject(FireStoreService);
 

@@ -22,4 +22,4 @@ export enum Content {
 }
 
 export const DefaultOverlayBrightness = 0.25;
-export const DefaultSnackbarConfig: MatSnackBarConfig = { duration: 2000000, panelClass: 'default-snackbar' };
+export const DefaultSnackbarConfig: MatSnackBarConfig = { duration: 2000, panelClass: 'default-snackbar' };
