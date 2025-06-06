@@ -4,8 +4,16 @@
   }
 
   <div class="body">
-    @for (t of bodyTexts; track t) {
-      <span> {{ t }}</span>
+    @for (t of bodyTexts; track $index) {
+      <span
+        [ngClass]="{
+          bold: bodyTextStylePerIndex?.[$index] === 'bold',
+          italic: bodyTextStylePerIndex?.[$index] === 'italic',
+          underline: bodyTextStylePerIndex?.[$index] === 'underline',
+        }"
+      >
+        {{ t }}</span
+      >
     }
 
     @for (c of additionalInfoCards; track c) {

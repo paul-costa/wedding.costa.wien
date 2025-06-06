@@ -1,11 +1,35 @@
-import { Component } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { Observable, finalize, from } from 'rxjs';
+import { Gifts } from 'src/app/constants/fire-store.types';
+import { LoadingState } from 'src/app/constants/shared-constants';
+import { FireStoreService } from 'src/app/services/fire-store.service';
+import { ContentBlock } from '../../shared/content-block/content-block.component';
+
+const materialModules = [MatProgressBar];
 
 @Component({
-    selector: 'app-gifts',
-    imports: [],
-    templateUrl: './gifts.component.html',
-    styleUrl: './gifts.component.scss'
+  selector: 'app-gifts',
+  imports: [ContentBlock, AsyncPipe, ...materialModules],
+  templateUrl: './gifts.component.html',
+  styleUrl: './gifts.component.scss',
 })
 export class GiftsComponent {
+  currentLoadingState = LoadingState.None;
 
+  readonly $dosAndDonts: Observable<Gifts>;
+  readonly LoadingState = LoadingState;
+
+  private readonly fireStoreService = inject(FireStoreService);
+
+  constructor() {
+    this.currentLoadingState = LoadingState.Loading;
+
+    this.$dosAndDonts = from(this.fireStoreService.getGifts()).pipe(
+      finalize(() => {
+        this.currentLoadingState = LoadingState.Success;
+      }),
+    );
+  }
 }

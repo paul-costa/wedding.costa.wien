@@ -1,5 +1,4 @@
 import { DocumentReference } from 'firebase/firestore/lite';
-import {} from './shared-interfaces';
 
 export const DresscodeCollection = 'dresscode';
 export const GuestsCollection = 'guests';
@@ -9,6 +8,9 @@ export const HomepageCollection = 'homepage';
 export const MessagesCollection = 'messages';
 export const LocationCollection = 'locationJourney';
 export const DosAndDontsCollection = 'dosAndDonts';
+export const TimetableCollection = 'timetable';
+export const GiftsCollection = 'gifts';
+export const GalleryCollection = 'gallery';
 
 export interface AccountDialog {
   header?: string;
@@ -92,11 +94,11 @@ export interface Hyperlink {
 }
 
 export interface LocationJourney {
-  location?: Llocation;
+  location?: LocationInfo;
   journey?: Journey;
 }
 
-export interface Llocation {
+export interface LocationInfo {
   headerText?: string;
   bodyTexts?: string[];
   googleMapsLink?: Hyperlink;
@@ -127,4 +129,18 @@ export interface DoesAndDonts {
   summary?: ContentBlockHeaderAndList;
   before?: ContentBlockHeaderAndList;
   during?: ContentBlockHeaderAndList;
+}
+
+export interface Timetable {
+  summary?: ContentBlockHeaderAndList;
+  more?: ContentBlockHeaderAndList;
+}
+
+export interface Gifts {
+  summary?: ContentBlockHeaderAndList;
+}
+
+export interface Gallery {
+  summary?: ContentBlockHeaderAndList;
+  access?: ContentBlockHeaderAndList;
 }

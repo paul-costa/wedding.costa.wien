@@ -1,1 +1,11 @@
-<p>timetable works!</p>
+@let data = $timetable | async;
+
+@if (currentLoadingState === LoadingState.Loading) {
+  <mat-progress-bar class="progress-bar dark-magenta" mode="indeterminate" />
+} @else if (currentLoadingState === LoadingState.Success && data) {
+  @for (c of [data.summary, data.more]; track $index) {
+    <div class="main-container">
+      <app-content-block [headerText]="c.header" [bodyTexts]="c.content" />
+    </div>
+  }
+}

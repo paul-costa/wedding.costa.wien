@@ -28,4 +28,7 @@ export class ContentBlock {
 
   @Input()
   additionalInfoCards: TemplateRef<HTMLElement>[];
+
+  @Input()
+  bodyTextStylePerIndex: Record<number, 'bold' | 'italic' | 'underline'>;
 }

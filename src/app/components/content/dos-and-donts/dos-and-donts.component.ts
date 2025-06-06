@@ -7,9 +7,11 @@ import { LoadingState } from 'src/app/constants/shared-constants';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 import { ContentBlock } from '../../shared/content-block/content-block.component';
 
+const materialModules = [MatProgressBar];
+
 @Component({
   selector: 'app-dos-and-donts',
-  imports: [MatProgressBar, ContentBlock, AsyncPipe],
+  imports: [ContentBlock, AsyncPipe, ...materialModules],
   templateUrl: './dos-and-donts.component.html',
   styleUrl: './dos-and-donts.component.scss',
 })
@@ -23,6 +25,7 @@ export class DosAndDontsComponent {
 
   constructor() {
     this.currentLoadingState = LoadingState.Loading;
+
     this.$dosAndDonts = from(this.fireStoreService.getDosAndDonts()).pipe(
       finalize(() => {
         this.currentLoadingState = LoadingState.Success;

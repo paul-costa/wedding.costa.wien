@@ -9,6 +9,10 @@ import {
   DosAndDontsCollection,
   Dresscode,
   DresscodeCollection,
+  Gallery,
+  GalleryCollection,
+  Gifts,
+  GiftsCollection,
   GuestsCollection,
   Homepage,
   HomepageCollection,
@@ -16,6 +20,8 @@ import {
   LocationJourney,
   Messages,
   MessagesCollection,
+  Timetable,
+  TimetableCollection,
   UserMessage,
   UserMessagesCollection,
 } from '../constants/fire-store.types';
@@ -101,6 +107,24 @@ export class FireStoreService {
 
   async getDosAndDonts(): Promise<DoesAndDonts> {
     const col = collection(this.db, DosAndDontsCollection);
+    const snapshot = await getDocs(col);
+    return snapshot.docs.map((d) => d.data())[0];
+  }
+
+  async getTimetable(): Promise<Timetable> {
+    const col = collection(this.db, TimetableCollection);
+    const snapshot = await getDocs(col);
+    return snapshot.docs.map((d) => d.data())[0];
+  }
+
+  async getGifts(): Promise<Gifts> {
+    const col = collection(this.db, GiftsCollection);
+    const snapshot = await getDocs(col);
+    return snapshot.docs.map((d) => d.data())[0];
+  }
+
+  async getGallery(): Promise<Gallery> {
+    const col = collection(this.db, GalleryCollection);
     const snapshot = await getDocs(col);
     return snapshot.docs.map((d) => d.data())[0];
   }

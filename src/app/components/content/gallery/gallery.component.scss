@@ -1,1 +1,10 @@
-@use '../../../../styles/config.scss' as *;
+@import 'src/styles/config.scss';
+
+.main-container.split {
+  flex-direction: row;
+  gap: 48px;
+
+  @media only screen and (max-width: $md-breakpoint) {
+    flex-direction: column;
+  }
+}

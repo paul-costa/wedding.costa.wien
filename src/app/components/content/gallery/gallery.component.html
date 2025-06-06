@@ -1,1 +1,11 @@
-<p>gallery works!</p>
+@let data = $gallery | async;
+
+@if (currentLoadingState === LoadingState.Loading) {
+  <mat-progress-bar class="progress-bar dark-magenta" mode="indeterminate" />
+} @else if (currentLoadingState === LoadingState.Success && data) {
+  <div class="main-container split">
+    @for (c of [data.summary, data.access]; track $index) {
+      <app-content-block [headerText]="c.header" [bodyTexts]="c.content" />
+    }
+  </div>
+}

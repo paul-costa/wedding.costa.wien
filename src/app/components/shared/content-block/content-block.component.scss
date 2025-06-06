@@ -34,6 +34,20 @@
     &:empty {
       display: none;
     }
+
+    span {
+      &.bold {
+        font-weight: bold;
+      }
+
+      &.italic {
+        font-style: italic;
+      }
+
+      &.underline {
+        text-decoration: underline;
+      }
+    }
   }
 
   &:hover {
