@@ -16,13 +16,13 @@
       >
     }
 
-    @for (c of additionalInfoCards; track c) {
+    @for (c of additionalInfoCards; track $index) {
       <ng-container *ngTemplateOutlet="c" />
     }
 
     @if (hyperLinks?.length) {
       <div class="buttons">
-        @for (l of hyperLinks; track l) {
+        @for (l of hyperLinks; track $index) {
           <button mat-raised-button class="mat-button light-green" (click)="link.click()">{{ l.linkText }}</button>
           <a class="display-none" target="_blank" [href]="l.linkUrl" #link>{{ l.linkText }}</a>
         }

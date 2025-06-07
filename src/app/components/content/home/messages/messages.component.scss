@@ -18,7 +18,7 @@
 
     .message {
       display: flex;
-      gap: 4px;
+      gap: 6px;
       justify-content: space-between;
       font-size: $md-font-size;
       border-radius: $s-border-radius;
@@ -26,9 +26,12 @@
       color: $lightest-gray;
       padding: 4px 12px;
 
-      .date {
+      .meta-data {
         font-size: $xs-font-size;
         align-self: flex-end;
+        display: flex;
+        flex-direction: column;
+        text-align: end;
       }
 
       &.admin {

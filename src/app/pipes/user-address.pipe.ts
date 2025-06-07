@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Address } from '../constants/fire-store.types';
+import { Address } from '../constants/firebase/fire-store.types';
 
 export type AdditionalInfoType = Address;
 

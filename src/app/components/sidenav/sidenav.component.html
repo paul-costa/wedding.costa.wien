@@ -4,7 +4,7 @@
     <span>P. & V. Costa</span>
   </div>
 
-  @for (c of contentComponents; track c) {
+  @for (c of contentComponents; track $index) {
     <button mat-button class="button" [ngClass]="{ active: currentContentComponent?.url === c.url }" [routerLink]="c.url">
       <mat-icon class="button-icon"> {{ c.icon }} </mat-icon>
       <span> {{ c.title }} </span>

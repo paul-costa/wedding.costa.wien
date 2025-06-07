@@ -1,12 +1,15 @@
 <app-content-block [headerText]="config.messagesHeaderLabel">
   <div class="messages-container">
     <div class="messages">
-      @switch (currentUserMessagesLoadingState) {
+      @switch (currentLoadingState) {
         @case (LoadingState.Success) {
-          @for (userMessage of userMessages; track userMessage) {
-            <div class="message" [ngClass]="{ admin: userMessage.isAdminMessage }">
+          @for (userMessage of userMessages; track $index) {
+            <div class="message" [ngClass]="{ admin: MessageAdminFirstNames.includes(userMessage.authorFirstName) }">
               <span>{{ userMessage.value }}</span>
-              <span class="date">{{ userMessage.date | date: 'dd.MM.' }}</span>
+              <div class="meta-data">
+                <span> {{ userMessage.date | date: 'dd.MM.' }} </span>
+                <span> {{ userMessage.authorFirstName || '' }} </span>
+              </div>
             </div>
           }
         }

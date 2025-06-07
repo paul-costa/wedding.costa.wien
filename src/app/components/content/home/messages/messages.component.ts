@@ -6,9 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ContentBlock } from 'src/app/components/shared/content-block/content-block.component';
-import { Messages, UserMessage } from 'src/app/constants/fire-store.types';
-import { LoadingState } from 'src/app/constants/shared-constants';
+import { Messages, UserMessage } from 'src/app/constants/firebase/fire-store.types';
+import { LoadingState, LocalStorageKeys } from 'src/app/constants/general.constants';
 import { FireStoreService } from 'src/app/services/fire-store.service';
+import { MessageAdminFirstNames } from './messages.constants';
 
 const materialModules = [MatInputModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule];
 
@@ -22,11 +23,12 @@ export class MessagesComponent {
   @Input()
   config: Messages;
 
-  currentUserMessage = new FormControl<string>('', [Validators.required]);
-  currentUserMessagesLoadingState = LoadingState.None;
+  currentLoadingState = LoadingState.None;
   userMessages: UserMessage[] = [];
 
+  readonly currentUserMessage = new FormControl<string>('', [Validators.required]);
   readonly LoadingState = LoadingState;
+  readonly MessageAdminFirstNames = MessageAdminFirstNames;
 
   private readonly fireStoreService = inject(FireStoreService);
 
@@ -41,12 +43,13 @@ export class MessagesComponent {
       return;
     }
 
-    this.currentUserMessagesLoadingState = LoadingState.Loading;
+    this.currentLoadingState = LoadingState.Loading;
 
     const userMessage: UserMessage = {
       id: crypto.randomUUID(),
       value: this.currentUserMessage.value,
       date: new Date(),
+      authorFirstName: localStorage.getItem(LocalStorageKeys.SubmittedGuestFirstName),
     };
 
     this.fireStoreService.sendUserMessage(userMessage).then((res) => {
@@ -56,23 +59,23 @@ export class MessagesComponent {
         return;
       }
 
-      this.currentUserMessagesLoadingState = LoadingState.Error;
+      this.currentLoadingState = LoadingState.Error;
     });
   }
 
   private fetchAndSetUserMessages() {
-    this.currentUserMessagesLoadingState = LoadingState.Loading;
+    this.currentLoadingState = LoadingState.Loading;
 
     this.fireStoreService
       .getUserMessages()
       .catch((err) => {
-        this.currentUserMessagesLoadingState = LoadingState.Error;
+        this.currentLoadingState = LoadingState.Error;
         console.error(err);
         return [] as UserMessage[];
       })
       .then((userMessages) => {
         this.userMessages = userMessages.reverse();
-        this.currentUserMessagesLoadingState = LoadingState.Success;
+        this.currentLoadingState = LoadingState.Success;
       });
   }
 }

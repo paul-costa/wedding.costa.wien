@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { Homepage, Messages } from 'src/app/constants/fire-store.types';
-import { LoadingState } from 'src/app/constants/shared-constants';
+import { Homepage, Messages } from 'src/app/constants/firebase/fire-store.types';
+import { LoadingState } from 'src/app/constants/general.constants';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 import { ContentBlock } from '../../shared/content-block/content-block.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -18,7 +18,6 @@ const materialModules = [MatButtonModule, MatIconModule, MatProgressBarModule];
 })
 export class HomeComponent {
   currentLoadingState = LoadingState.None;
-
   homepage: Homepage;
   messages: Messages;
 

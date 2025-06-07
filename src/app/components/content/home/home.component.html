@@ -1,25 +1,23 @@
-@let d = homepage;
-
 @if (currentLoadingState === LoadingState.Loading) {
   <mat-progress-bar class="progress-bar dark-magenta" mode="indeterminate" />
-} @else if (currentLoadingState === LoadingState.Success && d) {
-  <app-content-block class="account-info" [headerText]="d.accountHeaderText" [bodyTexts]="d.accountBodyText" />
+} @else if (currentLoadingState === LoadingState.Success && homepage) {
+  <app-content-block class="account-info" [headerText]="homepage.accountHeaderText" [bodyTexts]="homepage.accountBodyText" />
 
   <div class="main-container">
     <div class="home-content">
-      <app-content-block [headerText]="d.summaryHeaderText" [bodyTexts]="d.summaryBodyText" />
+      <app-content-block [headerText]="homepage.summaryHeaderText" [bodyTexts]="homepage.summaryBodyText" />
 
-      <app-content-block [headerText]="d.dateEventHeaderText" [bodyTexts]="[d.dateEventBodyText]">
+      <app-content-block [headerText]="homepage.dateEventHeaderText" [bodyTexts]="[homepage.dateEventBodyText]">
         <a class="display-none" href="/assets/calendar-event.ics" download="Hochzeit_Costa" #calLink></a>
         <button mat-raised-button class="mat-button light-green" (click)="calLink.click()">
           <mat-icon>download</mat-icon>
-          <span>{{ d.dateEventButtonText }} </span>
+          <span>{{ homepage.dateEventButtonText }} </span>
         </button>
       </app-content-block>
 
-      <app-content-block [headerText]="d.contactsHeaderText" [bodyTexts]="[d.contactsBodyText]">
+      <app-content-block [headerText]="homepage.contactsHeaderText" [bodyTexts]="[homepage.contactsBodyText]">
         <div class="contact-container">
-          @for (c of d.contacts; track c) {
+          @for (c of homepage.contacts; track $index) {
             <div class="contact">
               <div class="contact-header">
                 <img class="image" [src]="'/assets/images/shared/' + c.id + '.jpg'" />

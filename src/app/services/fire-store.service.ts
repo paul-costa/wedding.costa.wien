@@ -3,29 +3,32 @@ import { initializeApp } from 'firebase/app';
 import 'firebase/firestore';
 import { collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
 import { environment } from 'src/config/environment.config';
+
 import {
   AccountDialogCollection,
-  DoesAndDonts,
   DosAndDontsCollection,
-  Dresscode,
   DresscodeCollection,
-  Gallery,
   GalleryCollection,
-  Gifts,
   GiftsCollection,
   GuestsCollection,
-  Homepage,
   HomepageCollection,
   LocationCollection,
+  MessagesCollection,
+  TimetableCollection,
+  UserMessagesCollection,
+} from '../constants/firebase/fire-store.constants';
+import {
+  DoesAndDonts,
+  Dresscode,
+  Gallery,
+  Gifts,
+  Homepage,
   LocationJourney,
   Messages,
-  MessagesCollection,
   Timetable,
-  TimetableCollection,
   UserMessage,
-  UserMessagesCollection,
-} from '../constants/fire-store.types';
-import { AccountDialogConfig, GuestsDialogCloseConfig } from '../constants/shared-interfaces';
+} from '../constants/firebase/fire-store.types';
+import { AccountDialogConfig, GuestsDialogCloseConfig } from '../constants/general.interfaces';
 
 @Injectable({
   providedIn: 'root',

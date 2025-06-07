@@ -7,9 +7,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { AccountDialog, Guest } from 'src/app/constants/fire-store.types';
-import { LocalStorageKeys } from 'src/app/constants/shared-constants';
-import { AccountDialogConfig, GuestsDialogCloseConfig } from 'src/app/constants/shared-interfaces';
+import { AccountDialog, Guest } from 'src/app/constants/firebase/fire-store.types';
+import { LocalStorageKeys } from 'src/app/constants/general.constants';
+import { AccountDialogConfig, GuestsDialogCloseConfig } from 'src/app/constants/general.interfaces';
 
 const materialModules = [MatSelectModule, MatFormFieldModule, MatCheckboxModule, MatRadioModule, MatButtonModule];
 

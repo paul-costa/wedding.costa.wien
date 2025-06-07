@@ -2,8 +2,8 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { Observable, finalize, from } from 'rxjs';
-import { DoesAndDonts } from 'src/app/constants/fire-store.types';
-import { LoadingState } from 'src/app/constants/shared-constants';
+import { DoesAndDonts } from 'src/app/constants/firebase/fire-store.types';
+import { LoadingState } from 'src/app/constants/general.constants';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 import { ContentBlock } from '../../shared/content-block/content-block.component';
 

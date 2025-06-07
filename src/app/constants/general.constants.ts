@@ -2,6 +2,7 @@ import { MatSnackBarConfig } from '@angular/material/snack-bar';
 
 export enum LocalStorageKeys {
   SubmittedGuestId = 'submittedGuestId',
+  SubmittedGuestFirstName = 'submittedGuestFirstName',
 }
 
 export enum LoadingState {

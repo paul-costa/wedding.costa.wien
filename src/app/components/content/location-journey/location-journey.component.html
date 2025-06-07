@@ -8,7 +8,7 @@
   <div class="main-container">
     <app-content-block contentPosition="grid" [headerText]="location.headerText" [bodyTexts]="location.bodyTexts">
       <div class="images-container is-hovered">
-        @for (i of imageSrc.chadim; track i) {
+        @for (i of imageSrc.chadim; track $index) {
           <div class="img-container" (click)="websiteLink.click()">
             <img class="img" [src]="i" />
           </div>
@@ -50,7 +50,7 @@
         <mat-tab [label]="journey.carTabLabel">
           <div class="body">
             <div class="texts">
-              @for (t of journey.carTabParkingBodyTexts; track t) {
+              @for (t of journey.carTabParkingBodyTexts; track $index) {
                 <span> {{ t }}</span>
               }
             </div>
@@ -85,7 +85,7 @@
             <div class="route">
               <div class="sub-header">{{ journey.publicTabSteps[0][0] }}</div>
               <div class="steps">
-                @for (step of journey.publicTabSteps[0]; track step; let first = $first) {
+                @for (step of journey.publicTabSteps[0]; track $index; let first = $first) {
                   @if (!first) {
                     <span class="step"> - {{ step }}</span>
                   }
@@ -95,7 +95,7 @@
             <div class="route">
               <div class="sub-header">{{ journey.publicTabSteps[1][0] }}</div>
               <div class="steps">
-                @for (step of journey.publicTabSteps[1]; track step; let first = $first) {
+                @for (step of journey.publicTabSteps[1]; track $index; let first = $first) {
                   @if (!first) {
                     <span class="step"> - {{ step }}</span>
                   }

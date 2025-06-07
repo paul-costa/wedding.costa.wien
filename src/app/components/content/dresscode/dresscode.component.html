@@ -30,13 +30,13 @@
         <div class="item-header">{{ item.header }}</div>
         <div class="item-content">
           <ul class="list">
-            @for (c of item.content; track c) {
+            @for (c of item.content; track $index) {
               <li>{{ c }}</li>
             }
           </ul>
 
           <div class="images-container">
-            @for (imageSrc of imagesSrc[gender][index]; track imageSrc) {
+            @for (imageSrc of DresscodeImagesSrc[gender][index]; track $index) {
               <img [src]="imageSrc" />
             }
           </div>

@@ -3,7 +3,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Hyperlink } from 'src/app/constants/fire-store.types';
+import { Hyperlink } from 'src/app/constants/firebase/fire-store.types';
 
 const materialModules = [MatButtonModule, MatIconModule, MatProgressSpinnerModule];
 

@@ -5,8 +5,8 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GuestsDialogComponent } from './components/content/guests-dialog/guests-dialog.component';
 import { ContentComponents } from './constants/app.constants';
-import { Content, DefaultSnackbarConfig, LocalStorageKeys } from './constants/shared-constants';
-import { ContentComponent, GuestsDialogCloseConfig } from './constants/shared-interfaces';
+import { Content, DefaultSnackbarConfig, LocalStorageKeys } from './constants/general.constants';
+import { ContentComponent, GuestsDialogCloseConfig } from './constants/general.interfaces';
 import { FireStoreService } from './services/fire-store.service';
 
 @Component({
@@ -67,7 +67,13 @@ export class AppComponent implements OnInit, OnDestroy {
           if (guestsDialogCloseConfig) {
             this.fireStoreService.setGuest(guestsDialogCloseConfig).then(() => {
               this._snackBar.open(config.accountDialog.guestSubmittedMessage, null, DefaultSnackbarConfig);
-              localStorage.setItem(LocalStorageKeys.SubmittedGuestId, guestsDialogCloseConfig.selectedGuest?.id);
+
+              const selectedGuest = guestsDialogCloseConfig.selectedGuest;
+
+              if (selectedGuest) {
+                localStorage.setItem(LocalStorageKeys.SubmittedGuestId, selectedGuest.id);
+                localStorage.setItem(LocalStorageKeys.SubmittedGuestFirstName, selectedGuest.firstName);
+              }
             });
           }
         });

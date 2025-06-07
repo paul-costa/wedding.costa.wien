@@ -1,0 +1,11 @@
+export const DresscodeCollection = 'dresscode';
+export const GuestsCollection = 'guests';
+export const AccountDialogCollection = 'accountDialog';
+export const UserMessagesCollection = 'userMessages';
+export const HomepageCollection = 'homepage';
+export const MessagesCollection = 'messages';
+export const LocationCollection = 'locationJourney';
+export const DosAndDontsCollection = 'dosAndDonts';
+export const TimetableCollection = 'timetable';
+export const GiftsCollection = 'gifts';
+export const GalleryCollection = 'gallery';

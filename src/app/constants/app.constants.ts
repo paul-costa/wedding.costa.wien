@@ -5,8 +5,8 @@ import { GiftsComponent } from '../components/content/gifts/gifts.component';
 import { HomeComponent } from '../components/content/home/home.component';
 import { LocationJourneyComponent } from '../components/content/location-journey/location-journey.component';
 import { TimetableComponent } from '../components/content/timetable/timetable.component';
-import { Content } from './shared-constants';
-import { ContentComponent } from './shared-interfaces';
+import { Content } from './general.constants';
+import { ContentComponent } from './general.interfaces';
 
 export const ContentComponents: Record<Content, ContentComponent> = {
   [Content.Home]: {
