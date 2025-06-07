@@ -1,8 +1,6 @@
 @import 'src/styles/config.scss';
 
 .main-container {
-  flex-direction: column;
-
   &.split {
     flex-direction: row;
     gap: 48px;

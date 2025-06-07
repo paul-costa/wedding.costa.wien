@@ -8,7 +8,7 @@
   <div class="main-container">
     <app-content-block contentPosition="grid" [headerText]="location.headerText" [bodyTexts]="location.bodyTexts">
       <div class="images-container is-hovered">
-        @for (i of imageSrc.chadim; track $index) {
+        @for (i of LocationJourneyImagesSrc.chadim; track $index) {
           <div class="img-container" (click)="websiteLink.click()">
             <img class="img" [src]="i" />
           </div>
@@ -25,7 +25,7 @@
           <img
             class="img"
             [ngStyle]="{ filter: googleMapsPreviewFilter }"
-            [src]="imageSrc.googleMaps"
+            [src]="LocationJourneyImagesSrc.googleMaps"
             (click)="googleMapsLink.click()"
             (mouseenter)="onMouseGoogleMapsImage(true)"
             (mouseleave)="onMouseGoogleMapsImage(false)"
@@ -62,7 +62,7 @@
                 <img
                   class="img"
                   [ngStyle]="{ filter: parkingPreviewFilter }"
-                  [src]="imageSrc.parking"
+                  [src]="LocationJourneyImagesSrc.parking"
                   (mouseenter)="onMouseParkingImage(true)"
                   (mouseleave)="onMouseParkingImage(false)"
                 />
@@ -122,7 +122,7 @@
 
   <div class="additional-info-card">
     <div class="header">
-      <img class="image" [src]="imageSrc.chadimLogo" />
+      <img class="image" [src]="LocationJourneyImagesSrc.chadimLogo" />
       <span class="title">{{ location.address.title }}</span>
     </div>
 
@@ -133,7 +133,7 @@
     <div class="actions">
       @for (l of links; track $index; let idx = $index) {
         <button mat-raised-button class="mat-button light-green" color="accent" (click)="OnOpenUrl(l)">
-          <mat-icon>{{ additionalInfoIcons[idx] }}</mat-icon>
+          <mat-icon>{{ LocationJourneyAdditionalInfoIcons[idx] }}</mat-icon>
           <span> {{ l.linkText }} </span>
         </button>
       }

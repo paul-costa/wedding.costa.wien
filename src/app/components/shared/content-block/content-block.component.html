@@ -7,9 +7,9 @@
     @for (t of bodyTexts; track $index) {
       <span
         [ngClass]="{
-          bold: bodyTextStylePerIndex?.[$index] === 'bold',
-          italic: bodyTextStylePerIndex?.[$index] === 'italic',
-          underline: bodyTextStylePerIndex?.[$index] === 'underline',
+          bold: bodyTextsStylePerIndex?.[$index] === 'bold',
+          italic: bodyTextsStylePerIndex?.[$index] === 'italic',
+          underline: bodyTextsStylePerIndex?.[$index] === 'underline',
         }"
       >
         {{ t }}</span

@@ -12,6 +12,7 @@ import { OnOpenUrl } from 'src/app/functions/on-open-url.function';
 import { UserAddressPipe } from 'src/app/pipes/user-address.pipe';
 import { FireStoreService } from 'src/app/services/fire-store.service';
 import { ContentBlock } from '../../shared/content-block/content-block.component';
+import { LocationJourneyAdditionalInfoIcons, LocationJourneyImagesSrc } from './location-journey.constants';
 
 const materialModules = [MatProgressBarModule, MatButtonModule, MatCardModule, MatIcon, MatTabsModule];
 
@@ -31,14 +32,8 @@ export class LocationJourneyComponent {
   readonly $locationJourney: Observable<LocationJourney>;
   readonly LoadingState = LoadingState;
 
-  readonly imageSrc = {
-    googleMaps: '/assets/images/location/googlemaps.jpg',
-    chadim: ['/assets/images/location/chadim1.jpg', '/assets/images/location/chadim2.jpg'],
-    chadimLogo: '/assets/images/location/chadim-logo.jpg',
-    parking: 'assets/images/location/parking.jpg',
-  };
-
-  readonly additionalInfoIcons = ['public', 'location_on'];
+  readonly LocationJourneyImagesSrc = LocationJourneyImagesSrc;
+  readonly LocationJourneyAdditionalInfoIcons = LocationJourneyAdditionalInfoIcons;
   readonly OnOpenUrl = OnOpenUrl;
 
   private readonly fireStoreService = inject(FireStoreService);

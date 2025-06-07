@@ -1,17 +1,19 @@
 @import 'src/styles/config.scss';
 
 .main-container {
-  flex-direction: column;
-
   .image-container {
     img {
       max-width: 60%;
       width: 400px;
       float: right;
 
+      @media only screen and (max-width: $md-breakpoint) {
+        margin: 0 20%;
+      }
+
       @media only screen and (max-width: $sm-breakpoint) {
-        max-width: 80%;
-        margin: 0 10%;
+        max-width: 100%;
+        margin: 0;
       }
     }
   }
